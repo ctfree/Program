@@ -1,0 +1,11 @@
+#!/bin/bash
+git config --global user.email "papierpourgithub@gmail.com"
+
+git add -v .
+
+git commit -m "commit"
+git remote add program https://github.com/BRICOMATA8/program.git
+
+git push -u -f program master
+firefox https://github.com/BRICOMATA8/program.git
+

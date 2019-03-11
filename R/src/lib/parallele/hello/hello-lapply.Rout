@@ -1,0 +1,169 @@
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env Rscript
+>  
+> hello.world <- function(i) {
++    sprintf('Hello from loop iteration %d running on rank %d on node %s',
++        i, Sys.getpid(), Sys.info()[c("nodename")]);
++ }
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> output.lines <- lapply( X=(1:128), FUN=hello.world )
+> cat(unlist(output.lines), sep='\n')
+Hello from loop iteration 1 running on rank 29540 on node dell
+Hello from loop iteration 2 running on rank 29540 on node dell
+Hello from loop iteration 3 running on rank 29540 on node dell
+Hello from loop iteration 4 running on rank 29540 on node dell
+Hello from loop iteration 5 running on rank 29540 on node dell
+Hello from loop iteration 6 running on rank 29540 on node dell
+Hello from loop iteration 7 running on rank 29540 on node dell
+Hello from loop iteration 8 running on rank 29540 on node dell
+Hello from loop iteration 9 running on rank 29540 on node dell
+Hello from loop iteration 10 running on rank 29540 on node dell
+Hello from loop iteration 11 running on rank 29540 on node dell
+Hello from loop iteration 12 running on rank 29540 on node dell
+Hello from loop iteration 13 running on rank 29540 on node dell
+Hello from loop iteration 14 running on rank 29540 on node dell
+Hello from loop iteration 15 running on rank 29540 on node dell
+Hello from loop iteration 16 running on rank 29540 on node dell
+Hello from loop iteration 17 running on rank 29540 on node dell
+Hello from loop iteration 18 running on rank 29540 on node dell
+Hello from loop iteration 19 running on rank 29540 on node dell
+Hello from loop iteration 20 running on rank 29540 on node dell
+Hello from loop iteration 21 running on rank 29540 on node dell
+Hello from loop iteration 22 running on rank 29540 on node dell
+Hello from loop iteration 23 running on rank 29540 on node dell
+Hello from loop iteration 24 running on rank 29540 on node dell
+Hello from loop iteration 25 running on rank 29540 on node dell
+Hello from loop iteration 26 running on rank 29540 on node dell
+Hello from loop iteration 27 running on rank 29540 on node dell
+Hello from loop iteration 28 running on rank 29540 on node dell
+Hello from loop iteration 29 running on rank 29540 on node dell
+Hello from loop iteration 30 running on rank 29540 on node dell
+Hello from loop iteration 31 running on rank 29540 on node dell
+Hello from loop iteration 32 running on rank 29540 on node dell
+Hello from loop iteration 33 running on rank 29540 on node dell
+Hello from loop iteration 34 running on rank 29540 on node dell
+Hello from loop iteration 35 running on rank 29540 on node dell
+Hello from loop iteration 36 running on rank 29540 on node dell
+Hello from loop iteration 37 running on rank 29540 on node dell
+Hello from loop iteration 38 running on rank 29540 on node dell
+Hello from loop iteration 39 running on rank 29540 on node dell
+Hello from loop iteration 40 running on rank 29540 on node dell
+Hello from loop iteration 41 running on rank 29540 on node dell
+Hello from loop iteration 42 running on rank 29540 on node dell
+Hello from loop iteration 43 running on rank 29540 on node dell
+Hello from loop iteration 44 running on rank 29540 on node dell
+Hello from loop iteration 45 running on rank 29540 on node dell
+Hello from loop iteration 46 running on rank 29540 on node dell
+Hello from loop iteration 47 running on rank 29540 on node dell
+Hello from loop iteration 48 running on rank 29540 on node dell
+Hello from loop iteration 49 running on rank 29540 on node dell
+Hello from loop iteration 50 running on rank 29540 on node dell
+Hello from loop iteration 51 running on rank 29540 on node dell
+Hello from loop iteration 52 running on rank 29540 on node dell
+Hello from loop iteration 53 running on rank 29540 on node dell
+Hello from loop iteration 54 running on rank 29540 on node dell
+Hello from loop iteration 55 running on rank 29540 on node dell
+Hello from loop iteration 56 running on rank 29540 on node dell
+Hello from loop iteration 57 running on rank 29540 on node dell
+Hello from loop iteration 58 running on rank 29540 on node dell
+Hello from loop iteration 59 running on rank 29540 on node dell
+Hello from loop iteration 60 running on rank 29540 on node dell
+Hello from loop iteration 61 running on rank 29540 on node dell
+Hello from loop iteration 62 running on rank 29540 on node dell
+Hello from loop iteration 63 running on rank 29540 on node dell
+Hello from loop iteration 64 running on rank 29540 on node dell
+Hello from loop iteration 65 running on rank 29540 on node dell
+Hello from loop iteration 66 running on rank 29540 on node dell
+Hello from loop iteration 67 running on rank 29540 on node dell
+Hello from loop iteration 68 running on rank 29540 on node dell
+Hello from loop iteration 69 running on rank 29540 on node dell
+Hello from loop iteration 70 running on rank 29540 on node dell
+Hello from loop iteration 71 running on rank 29540 on node dell
+Hello from loop iteration 72 running on rank 29540 on node dell
+Hello from loop iteration 73 running on rank 29540 on node dell
+Hello from loop iteration 74 running on rank 29540 on node dell
+Hello from loop iteration 75 running on rank 29540 on node dell
+Hello from loop iteration 76 running on rank 29540 on node dell
+Hello from loop iteration 77 running on rank 29540 on node dell
+Hello from loop iteration 78 running on rank 29540 on node dell
+Hello from loop iteration 79 running on rank 29540 on node dell
+Hello from loop iteration 80 running on rank 29540 on node dell
+Hello from loop iteration 81 running on rank 29540 on node dell
+Hello from loop iteration 82 running on rank 29540 on node dell
+Hello from loop iteration 83 running on rank 29540 on node dell
+Hello from loop iteration 84 running on rank 29540 on node dell
+Hello from loop iteration 85 running on rank 29540 on node dell
+Hello from loop iteration 86 running on rank 29540 on node dell
+Hello from loop iteration 87 running on rank 29540 on node dell
+Hello from loop iteration 88 running on rank 29540 on node dell
+Hello from loop iteration 89 running on rank 29540 on node dell
+Hello from loop iteration 90 running on rank 29540 on node dell
+Hello from loop iteration 91 running on rank 29540 on node dell
+Hello from loop iteration 92 running on rank 29540 on node dell
+Hello from loop iteration 93 running on rank 29540 on node dell
+Hello from loop iteration 94 running on rank 29540 on node dell
+Hello from loop iteration 95 running on rank 29540 on node dell
+Hello from loop iteration 96 running on rank 29540 on node dell
+Hello from loop iteration 97 running on rank 29540 on node dell
+Hello from loop iteration 98 running on rank 29540 on node dell
+Hello from loop iteration 99 running on rank 29540 on node dell
+Hello from loop iteration 100 running on rank 29540 on node dell
+Hello from loop iteration 101 running on rank 29540 on node dell
+Hello from loop iteration 102 running on rank 29540 on node dell
+Hello from loop iteration 103 running on rank 29540 on node dell
+Hello from loop iteration 104 running on rank 29540 on node dell
+Hello from loop iteration 105 running on rank 29540 on node dell
+Hello from loop iteration 106 running on rank 29540 on node dell
+Hello from loop iteration 107 running on rank 29540 on node dell
+Hello from loop iteration 108 running on rank 29540 on node dell
+Hello from loop iteration 109 running on rank 29540 on node dell
+Hello from loop iteration 110 running on rank 29540 on node dell
+Hello from loop iteration 111 running on rank 29540 on node dell
+Hello from loop iteration 112 running on rank 29540 on node dell
+Hello from loop iteration 113 running on rank 29540 on node dell
+Hello from loop iteration 114 running on rank 29540 on node dell
+Hello from loop iteration 115 running on rank 29540 on node dell
+Hello from loop iteration 116 running on rank 29540 on node dell
+Hello from loop iteration 117 running on rank 29540 on node dell
+Hello from loop iteration 118 running on rank 29540 on node dell
+Hello from loop iteration 119 running on rank 29540 on node dell
+Hello from loop iteration 120 running on rank 29540 on node dell
+Hello from loop iteration 121 running on rank 29540 on node dell
+Hello from loop iteration 122 running on rank 29540 on node dell
+Hello from loop iteration 123 running on rank 29540 on node dell
+Hello from loop iteration 124 running on rank 29540 on node dell
+Hello from loop iteration 125 running on rank 29540 on node dell
+Hello from loop iteration 126 running on rank 29540 on node dell
+Hello from loop iteration 127 running on rank 29540 on node dell
+Hello from loop iteration 128 running on rank 29540 on node dell
+> 
+> proc.time()
+   user  system elapsed 
+  0.150   0.017   0.158 

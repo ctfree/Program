@@ -1,14 +1,25 @@
-sudo apt-get install git
+#!/bin/bash
 
-git clone https://github.com/contiki-ng/contiki-ng.git
-cd contiki-ng
-git submodule update --init --recursive
+#sudo apt-get install git
 
-cd ..
-git clone https://github.com/contiki-os/contiki.git
-cd contiki
-git submodule update --init --recursive
+#git clone https://github.com/contiki-ng/contiki-ng.git
+#cd contiki-ng
+#git submodule update --init --recursive
 
-cd ..
-cp -rf res/vagrant contiki/tools/vagrant
-cp -rf res/vagrant-ng contiki-ng/tools/vagrant
+#cd ..
+#git clone https://github.com/contiki-os/contiki.git
+#cd contiki
+#git submodule update --init --recursive
+
+#cd ..
+#cp -rf res/vagrant contiki/tools/vagrant
+#cp -rf res/vagrant-ng contiki-ng/tools/vagrant
+
+
+sudo -u $USER git clone git://github.com/sdnwiselab/sdn-wise-contiki home/sdn-wise-contiki
+sudo -u $USER git clone git://github.com/sdnwiselab/onos home/onos
+sudo -u $USER git clone git://github.com/mininet/mininet home/mininet
+cd home/sdn-wise-contiki && sudo -u $USER git submodule update --init
+cd contiki/tools/cooja && sudo -u $USER git submodule update --init && cd
+
+

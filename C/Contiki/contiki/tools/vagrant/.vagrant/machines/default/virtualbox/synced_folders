@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/vagrant/contiki":{"guestpath":"/home/vagrant/contiki","hostpath":"/home/aghiles/These/Program/C/Contiki/contiki","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/aghiles/These/Program/C/Contiki/contiki/tools/vagrant","disabled":false,"__vagrantfile":true}}}

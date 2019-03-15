@@ -77,3 +77,35 @@ mv sdn-wise.$TARGET compiled/sink.$TARGET
 sudo make compiled/sink.upload MOTES=/dev/ttyUSB0
 sudo make login MOTES=/dev/ttyUSB0
 exit
+ld
+ls
+ls
+sudo make compiled/node.upload MOTES=/dev/ttyUSB0
+ls
+./setup 
+cd sdn-wise-contiki/sdn-wise
+cd
+./setup 
+./setup 
+./setup 
+. ./setup 
+cd
+./setup 
+. setup 
+sudo make TARGET=$TARGET DEFINE=SINK=1
+mv sdn-wise.$TARGET compiled/sink.$TARGET
+sudo make compiled/node.upload MOTES=/dev/ttyUSB0
+sudo make compiled/sink.upload MOTES=/dev/ttyUSB0
+sudo make login MOTES=/dev/ttyUSB0
+sudo make TARGET=$TARGET DEFINE=SINK=1
+sudo make sink.upload MOTES=/dev/ttyUSB0
+sudo make TARGET=$TARGET DEFINE=SINK=1
+sudo make sink.upload MOTES=/dev/ttyUSB0
+ls
+sudo make sdn-wise.upload MOTES=/dev/ttyUSB0
+sudo make login MOTES=/dev/ttyUSB0
+sudo make sdn-wise.upload MOTES=/dev/ttyUSB0
+sudo make TARGET=$TARGET DEFINE=SINK=1
+sudo make sdn-wise.upload MOTES=/dev/ttyUSB0
+sudo make login MOTES=/dev/ttyUSB0
+. setup 

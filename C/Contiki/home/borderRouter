@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Set up the Border Router
+cd ~/contiki/examples/zolertia/project/1-border-router/
+sudo make border-router.upload TARGET="zoul"
+
+
+# USB
+cd ~/contiki/tools/
+./tunslip6 -s /dev/ttyUSB0 aaaa::1/64
+
+
+# Setup of Traffic lights
+cd ~/contiki/examples/zolertia/tutorial/02-ipv6/03-udp-client-and-server/
+
+
+cd ~/contiki/examples/zolertia/project/2-trafficlight-control
+sudo make trafficlight-control.upload PORT=/dev/ttyUSB0 TARGET="zoul"
+
+
+# Set up touch sensors
+cd ~/contiki/examples/zolertia/project/3-sensors/
+sudo make touch-sensor.upload PORT=/dev/ttyUSB0 TARGET="zoul"
+
+
+# Prepare Ubidots for the reception of data
+cd ~/contiki/examples/zolertia/tutorial/02-ipv6/03-udp-client-and-server/
+
+
+
+# Final implementation for the project
+cd ~/contiki/examples/zolertia/project/1-border-router/paho-MQTT/
+python UDP-MQTT-final-server.py
+

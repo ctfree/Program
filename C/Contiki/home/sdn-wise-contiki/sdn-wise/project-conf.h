@@ -1,10 +1,3 @@
-/*
- *  project-conf.h
- *
- *  Created on: 27 jan 2016
- *      Author: Sebastiano Milardo
- */
-
 #ifndef PROJECT_CONF_H_
 #define PROJECT_CONF_H_
 

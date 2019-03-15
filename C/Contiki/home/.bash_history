@@ -15,3 +15,9 @@ TARGET="z1"
 sudo make TARGET=$TARGET DEFINE=SINK=1
 lsusb
 exit
+./bootstrap.sh 
+./sdn-wise.sh 
+cat sdn-wise.sh 
+./sdn-wise.sh 
+lsusb 
+exit

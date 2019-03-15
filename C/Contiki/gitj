@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#apt-get install git
+
+#git clone https://github.com/contiki-ng/contiki-ng.git
+#cd contiki-ng
+#git submodule update --init --recursive
+
+#cd ..
+#git clone https://github.com/contiki-os/contiki.git
+#cd contiki
+#git submodule update --init --recursive
+
+#cd ..
+#cp -rf res/vagrant contiki/tools/vagrant
+#cp -rf res/vagrant-ng contiki-ng/tools/vagrant
+
+
+#git clone git://github.com/millionb/sdn-wise-contiki home/sdn-wise-contiki
+git clone git://github.com/sdnwiselab/sdn-wise-contiki home/sdn-wise-contiki
+#mv home/sdn-wise-contiki/contiki home/sdn-wise-contiki/contiki-old
+#git clone git://github.com/IoT-UTLC/contiki home/sdn-wise-contiki/contiki
+git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
+git clone git://github.com/sdnwiselab/onos home/onos
+git clone git://github.com/mininet/mininet home/mininet
+cd home/sdn-wise-contiki && git submodule update --init
+cd contiki/tools/cooja && git submodule update --init
+
+cd ../../../../..
+mkdir home/Downloads home/Applications
+wget http://archive.apache.org/dist/karaf/3.0.2/apache-karaf-3.0.2.tar.gz -P home/Downloads
+tar -zxvf home/Downloads/apache-karaf-3.0.2.tar.gz -C home/Applications/
+

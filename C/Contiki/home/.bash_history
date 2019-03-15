@@ -21,3 +21,11 @@ cat sdn-wise.sh
 ./sdn-wise.sh 
 lsusb 
 exit
+ls
+lsusb 
+lsusb 
+lsusb 
+lsusb 
+cd sdn-wise-contiki/sdn-wise
+./RUNME.sh 
+./RUNME.sh 

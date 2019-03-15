@@ -1,0 +1,18 @@
+COMPILE_DEPS = [
+    '//lib:CORE_DEPS',
+    '//lib:openflowj',
+    '//lib:sdnwise',
+    '//protocols/sdnwise/api:onos-protocols-sdnwise-api',
+    '//protocols/sdnwise/protocol:onos-protocols-sdnwise-protocol',
+
+]
+
+TEST_DEPS = [
+    '//lib:TEST',
+    '//core/api:onos-api-tests',
+]
+
+osgi_jar_with_tests (
+    deps = COMPILE_DEPS,
+    test_deps = TEST_DEPS,
+)

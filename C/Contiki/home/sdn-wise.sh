@@ -22,6 +22,7 @@ source ~/.bashrc
 
 # Download sdn-wise-contiki
 sudo -u $User git clone git://github.com/sdnwiselab/sdn-wise-contiki
+sudo -u $User git clone git://github.com/millionb/sdn-wise-contiki.git sdn-wise-contiki-master
 
 # Download sdn-wise-java
 sudo -u $User git clone git://github.com/sdnwiselab/sdn-wise-java

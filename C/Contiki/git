@@ -16,11 +16,11 @@
 #cp -rf res/vagrant-ng contiki-ng/tools/vagrant
 
 
-sudo -u $USER git clone git://github.com/sdnwiselab/sdn-wise-contiki home/sdn-wise-contiki
-sudo -u $user git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
-sudo -u $USER git clone git://github.com/sdnwiselab/onos home/onos
-sudo -u $USER git clone git://github.com/mininet/mininet home/mininet
-cd home/sdn-wise-contiki && sudo -u $USER git submodule update --init
-cd contiki/tools/cooja && sudo -u $USER git submodule update --init && cd
+git clone git://github.com/sdnwiselab/sdn-wise-contiki home/sdn-wise-contiki
+#sudo -u $user git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
+#sudo -u $USER git clone git://github.com/sdnwiselab/onos home/onos
+#sudo -u $USER git clone git://github.com/mininet/mininet home/mininet
+#cd home/sdn-wise-contiki && sudo -u $USER git submodule update --init
+#cd contiki/tools/cooja && sudo -u $USER git submodule update --init && cd
 
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gedit ~/These/Program/C/Contiki/src/sdn-wise/sdn-wise-million/node-conf.c

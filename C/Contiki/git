@@ -16,11 +16,28 @@
 #cp -rf res/vagrant-ng contiki-ng/tools/vagrant
 
 
-git clone git://github.com/sdnwiselab/sdn-wise-contiki home/sdn-wise-contiki
+#git clone git://github.com/millionb/sdn-wise-contiki home/sdn-wise-contiki
 #sudo -u $user git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
 #sudo -u $USER git clone git://github.com/sdnwiselab/onos home/onos
 #sudo -u $USER git clone git://github.com/mininet/mininet home/mininet
 #cd home/sdn-wise-contiki && sudo -u $USER git submodule update --init
 #cd contiki/tools/cooja && sudo -u $USER git submodule update --init && cd
 
+mkdir home
+cp aghiles/* home/
 
+#git clone git://github.com/millionb/sdn-wise-contiki home/sdn-wise-contiki
+#git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
+#git clone git://github.com/sdnwiselab/onos home/onos
+#git clone git://github.com/mininet/mininet home/mininet
+## Downlad Apache Karaf
+#mkdir home/Downloads home/Applications
+#wget http://archive.apache.org/dist/karaf/3.0.2/apache-karaf-3.0.2.tar.gz -P home/Downloads
+#tar -zxvf home/Downloads/apache-karaf-3.0.2.tar.gz -C home/Applications/
+
+# Download sdn-wise subprojects
+#cd home/sdn-wise-contiki &&  git submodule update --init
+#cd contiki/tools/cooja && git submodule update --init && cd
+
+
+git clone https://github.com/IoT-UTLC/contiki.git

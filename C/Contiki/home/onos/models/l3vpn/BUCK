@@ -1,4 +1,0 @@
-yang_model(
-    app_name = 'org.onosproject.models.l3vpn',
-    title = 'L3VPN YANG Model',
-)

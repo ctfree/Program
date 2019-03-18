@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gnome-terminal --working-directory=These/Program/C/Contiki/djoudi/onos -e "ssh -p 8101 karaf@localhost"
+
+#app activate org.onosproject.sdnwise

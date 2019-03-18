@@ -1,2 +1,0 @@
-#!/bin/bash
-cd sdn-wise-contiki/contiki/tools/cooja/ && ant run

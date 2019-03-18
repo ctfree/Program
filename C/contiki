@@ -1,4 +1,0 @@
-#!/bin/bash
-cd aghiles
-sudo vagrant up
-sudo vagrant ssh

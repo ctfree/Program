@@ -1,5 +1,0 @@
-#!/bin/bash
-
-gnome-terminal --working-directory=These/Program/C/Contiki/djoudi/onos -e "sudo tools/build/onos-buck run onos-local -- clean debug"
-#cd onos && tools/build/onos-buck run onos-local -- clean debug
-

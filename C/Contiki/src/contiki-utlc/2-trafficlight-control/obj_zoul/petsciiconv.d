@@ -1,2 +1,3 @@
-obj_zoul/petsciiconv.o: ../../../../core/lib/petsciiconv.c
-../../../../core/lib/petsciiconv.c :
+obj_zoul/petsciiconv.o: \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/petsciiconv.c
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/petsciiconv.c :

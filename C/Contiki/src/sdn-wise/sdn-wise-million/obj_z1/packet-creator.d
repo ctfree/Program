@@ -1,4 +1,4 @@
-obj_z1/packet-creator.o: packet-creator.c \
+obj_z1/packet-creator.o: packet-creator.c address.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/battery-sensor.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/sensors.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h \
@@ -30,12 +30,11 @@ obj_z1/packet-creator.o: packet-creator.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/loader.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h \
- packet-buffer.h address.h packet-creator.h node-conf.h neighbor-table.h \
- sdn-wise.h \
+ neighbor-table.h packet-buffer.h node-conf.h packet-creator.h \
+ packet-handler.h sdn-wise.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h \
- packet-handler.h
-packet-creator.c :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h
+packet-creator.c address.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/battery-sensor.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/sensors.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h :
@@ -67,8 +66,7 @@ packet-creator.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/loader.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h :
- packet-buffer.h address.h packet-creator.h node-conf.h neighbor-table.h :
- sdn-wise.h :
+ neighbor-table.h packet-buffer.h node-conf.h packet-creator.h :
+ packet-handler.h sdn-wise.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h :
- packet-handler.h :

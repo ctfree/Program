@@ -1,4 +1,4 @@
-obj_z1/node-conf.o: node-conf.c address.h node-conf.h \
+obj_z1/node-conf.o: node-conf.c node-conf.h address.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rime.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/announcement.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h \
@@ -69,7 +69,7 @@ obj_z1/node-conf.o: node-conf.c address.h node-conf.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/mac.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/radio.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/trickle.h
-node-conf.c address.h node-conf.h :
+node-conf.c node-conf.h address.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rime.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/announcement.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h :

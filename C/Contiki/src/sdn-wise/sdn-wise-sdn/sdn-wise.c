@@ -1,23 +1,23 @@
 #include "contiki.h"
-#include "net/rime/rime.h"
-#include "net/linkaddr.h"  
-#include "dev/watchdog.h"
+#include "dev/leds.h"
 #include "dev/uart0.h"
-#include "dev/leds.h"  
+#include "dev/watchdog.h"
 #include "lib/list.h"
+#include "net/linkaddr.h"
+#include "net/rime/rime.h"
 #if CFS_ENABLED
 #include "cfs/cfs.h"
 #endif
 #if ELF_ENABLED
 #include "loader/elfloader.h"
 #endif
-#include "sdn-wise.h"
 #include "flowtable.h"
-#include "packet-buffer.h"
-#include "packet-handler.h"
-#include "packet-creator.h"
 #include "neighbor-table.h"
 #include "node-conf.h"
+#include "packet-buffer.h"
+#include "packet-creator.h"
+#include "packet-handler.h"
+#include "sdn-wise.h"
 
 #define UART_BUFFER_SIZE MAX_PACKET_LENGTH
 
@@ -61,8 +61,7 @@ PROCESS(data_timer_proc, "Data Timer Process");
 AUTOSTART_PROCESSES(&main_proc, &rf_u_send_proc, &rf_b_send_proc, &timer_proc,
 										//&update_topo_proc,
 										&beacon_timer_proc, &report_timer_proc,
-										&packet_handler_proc, &data_timer_proc
-);
+										&packet_handler_proc, &data_timer_proc);
 /*----------------------------------------------------------------------------*/
 static uint8_t uart_buffer[UART_BUFFER_SIZE];
 static uint8_t uart_buffer_index = 0;
@@ -140,7 +139,7 @@ static struct broadcast_conn bc;
 PROCESS_THREAD(main_proc, ev, data) {
 	PROCESS_BEGIN();
 
-	uart0_init(BAUD2UBR(115200));		/* set the baud rate as necessary */
+	uart0_init(BAUD2UBR(115200));			/* set the baud rate as necessary */
 	uart0_set_input(uart_rx_callback); /* set the callback function */
 
 	node_conf_init();

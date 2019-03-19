@@ -2,8 +2,6 @@
 TARGET="z1"
 
 #make TARGET=$TARGET DEFINES=COOJA=0,SINK=1 
-make TARGET=$TARGET DEFINE=SINK=1
-mv sdn-wise.$TARGET compiled/sink-sdn-wise.$TARGET 
 #make TARGET=$TARGET DEFINES=COOJA=0,SINK=0
 #make TARGET=$TARGET DEFINE=SINK=0
 #mv sdn-wise.$TARGET compiled/node1-sdn-wise.$TARGET 
@@ -17,3 +15,16 @@ mv sdn-wise.$TARGET compiled/sink-sdn-wise.$TARGET
 #mv sdn-wise.$TARGET compiled/node9-sdn-wise.$TARGET
 #mv sdn-wise.$TARGET compiled/node10-sdn-wise.$TARGET
 #make TARGET=$TARGET clean
+
+#make TARGET=$TARGET DEFINE=SINK=1
+#mv sdn-wise.$TARGET compiled/sink.$TARGET
+
+#make TARGET=$TARGET DEFINE=SINK=0
+#mv sdn-wise.$TARGET compiled/node.$TARGET
+
+sudo make compiled/node.upload MOTES=/dev/ttyUSB2
+sudo make login MOTES=/dev/ttyUSB2
+
+#sudo make compiled/sink.upload MOTES=/dev/ttyUSB1
+#sudo make login MOTES=/dev/ttyUSB1
+

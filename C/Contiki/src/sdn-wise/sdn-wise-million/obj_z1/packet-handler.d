@@ -1,4 +1,5 @@
-obj_z1/packet-handler.o: packet-handler.c \
+obj_z1/packet-handler.o: packet-handler.c packet-handler.h \
+ packet-buffer.h address.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/z1/./contiki-conf.h \
@@ -29,14 +30,23 @@ obj_z1/packet-handler.o: packet-handler.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/watchdog.h \
- packet-handler.h packet-buffer.h address.h packet-creator.h \
- neighbor-table.h flowtable.h \
+ flowtable.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h \
- node-conf.h sdn-wise.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h \
+ neighbor-table.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/netstack.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/mac.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/radio.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/rdc.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec802154.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/frame802154.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rime.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/announcement.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/runicast.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/stunicast.h \
@@ -45,11 +55,6 @@ obj_z1/packet-handler.o: packet-handler.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/broadcast.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/abc.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/packetbuf.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec802154.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/frame802154.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/tsch/tsch-conf.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/channel.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/chameleon.h \
@@ -58,6 +63,7 @@ obj_z1/packet-handler.o: packet-handler.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect-neighbor.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect-link-estimate.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/packetqueue.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/ipolite.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/mesh.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/multihop.h \
@@ -70,14 +76,10 @@ obj_z1/packet-handler.o: packet-handler.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/route.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rucb.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/timesynch.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/mac.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/radio.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/trickle.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/netstack.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/rdc.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h
-packet-handler.c :
+ node-conf.h packet-creator.h sdn-wise.h
+packet-handler.c packet-handler.h :
+ packet-buffer.h address.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/z1/./contiki-conf.h :
@@ -108,14 +110,23 @@ packet-handler.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/watchdog.h :
- packet-handler.h packet-buffer.h address.h packet-creator.h :
- neighbor-table.h flowtable.h :
+ flowtable.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h :
- node-conf.h sdn-wise.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h :
+ neighbor-table.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/netstack.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/mac.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/radio.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/rdc.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec802154.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/frame802154.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rime.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/announcement.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/linkaddr.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/runicast.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/stunicast.h :
@@ -124,11 +135,6 @@ packet-handler.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/broadcast.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/abc.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/packetbuf.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec802154.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/frame802154.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/tsch/tsch-conf.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/channel.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/chameleon.h :
@@ -137,6 +143,7 @@ packet-handler.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect-neighbor.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/collect-link-estimate.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/packetqueue.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/memb.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/ipolite.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/mesh.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/multihop.h :
@@ -149,10 +156,5 @@ packet-handler.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/route.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/rucb.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/timesynch.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/mac.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/radio.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/rime/trickle.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/netstack.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/llsec/llsec.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/rdc.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h :
+ node-conf.h packet-creator.h sdn-wise.h :

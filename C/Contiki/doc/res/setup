@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd sdn-wise-contiki/sdn-wise
-TARGET="z1"

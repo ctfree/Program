@@ -23,8 +23,8 @@
 #cd home/sdn-wise-contiki && sudo -u $USER git submodule update --init
 #cd contiki/tools/cooja && sudo -u $USER git submodule update --init && cd
 
-mkdir home
-cp aghiles/* home/
+#mkdir home
+#cp aghiles/* home/
 
 #git clone git://github.com/millionb/sdn-wise-contiki home/sdn-wise-contiki
 #git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
@@ -40,4 +40,6 @@ cp aghiles/* home/
 #cd contiki/tools/cooja && git submodule update --init && cd
 
 
-git clone https://github.com/IoT-UTLC/contiki.git
+git clone https://github.com/IoT-UTLC/contiki.git home/contiki
+cd home/contiki
+git submodule update --init

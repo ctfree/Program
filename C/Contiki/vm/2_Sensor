@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo vagrant up
+sudo vagrant ssh -c "cd contiki-utlc; ./2_Sensor"
+

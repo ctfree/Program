@@ -2,7 +2,7 @@
 
 sudo apt-get update
 
-sudo apt-get install git curl graphviz unzip wget zip build-essential automake gettext automake software-properties-common lib32z1 lib32ncurses5 gcc-arm-none-eabi gdb-arm-none-eabi gcc gcc-msp430 libc6-i386 net-tools gcc-arm-none-eabi 
+sudo apt-get install git curl graphviz unzip wget zip build-essential automake gettext automake software-properties-common lib32z1 lib32ncurses5 gcc-arm-none-eabi gdb-arm-none-eabi gcc gcc-msp430 libc6-i386 net-tools gcc-arm-none-eabi w3m w3m-img
 sudo apt-get -o Dpkg::Options::="--force-overwrite" install gdb-arm-none-eabi
 
 #sudo pip install paho-mqtt

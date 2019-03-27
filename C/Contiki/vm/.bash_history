@@ -109,3 +109,8 @@ cd 1-border-router
 sudo make border-router.upload PORT=/dev/ttyUSB0 TARGET="zoul"
 ls
 cd project 
+ sudo apt-get install w3m w3m-img
+w3m google.com
+w3m google.com
+w3m http://aaaa::212:4b00:60d:622b
+w3m http://[aaaa::212:4b00:60d:622b]

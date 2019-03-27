@@ -138,7 +138,8 @@ state_trafficlight(int value)
     leds_on(LEDS_RED);
     break;
   case 1:
-    leds_off(LEDS_ALL);
+    
+leds_off(LEDS_ALL);
     leds_on(LEDS_BLUE);
     break;
   case 2:
@@ -187,7 +188,7 @@ tcpip_handler(void)
     }
     if (rcv->option) {
         // Send confirmation of the new state
-        msg.id = 0x1;
+        msg.id = 0x2;
         msg.counter = counter;
         msg.value1 = my_state;
         msg.value2 = 1; /* Set QoS */
@@ -230,7 +231,7 @@ send_packet_event(void)
   uint16_t aux;
   counter++;
 
-  msg.id = 0x1; /* Set traffic light/sensor ID */
+  msg.id = 0x2; /* Set traffic light/sensor ID */
   msg.counter = counter;
   if (my_state == 0)  /* Set traffic light state */
     msg.value1 = 2;
@@ -270,7 +271,7 @@ send_packet_sensor(void)
   uint16_t aux;
   counter++;
 
-  msg.id = 0x1; /* Set traffic light/sensor ID */
+  msg.id = 0x2; /* Set traffic light/sensor ID */
   msg.counter = counter;
   if (my_state == 0)  /* Set traffic light state */
     msg.value1 = 2;
@@ -386,7 +387,7 @@ PROCESS_THREAD(udp_client_process, ev, data)
 #endif
 
   SENSORS_ACTIVATE(button_sensor);
-  leds_on(LEDS_RED); //Traffic lights 2 & 4 start at green, 1 & 3 at red
+  leds_on(LEDS_GREEN); //Traffic lights 2 & 4 start at green, 1 & 3 at red
   my_state = 0;
 
   /* Create a new connection with remote host.  When a connection is created

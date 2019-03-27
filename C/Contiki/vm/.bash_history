@@ -99,3 +99,13 @@ sudo apt update
 cd contiki-utlc/
 ls
 ./0_Router 
+ls
+cd 1-border-router
+ls
+cd contiki-utlc/
+ls
+cd cd 1-border-router
+cd 1-border-router
+sudo make border-router.upload PORT=/dev/ttyUSB0 TARGET="zoul"
+ls
+cd project 

@@ -114,3 +114,10 @@ w3m google.com
 w3m google.com
 w3m http://aaaa::212:4b00:60d:622b
 w3m http://[aaaa::212:4b00:60d:622b]
+w3m http://[aaaa::212:4b00:18e6:9d01]
+wget http://[aaaa::212:4b00:18e6:9d01]
+ls
+wget http://[aaaa::212:4b00:18e6:9d01]
+w3m http://[aaaa::212:4b00:18e6:9d01]
+w3m http://[aaaa::212:4b00:60d:b41c]
+wget http://[aaaa::212:4b00:60d:b41c]

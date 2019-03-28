@@ -1,6 +1,7 @@
 obj_zoul/slip-bridge.o: slip-bridge.c \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/slip.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/zoul/./contiki-conf.h \
  ../project-conf.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/zoul/remote-revb/board.h \
@@ -12,9 +13,6 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-default-conf.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/process.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/pt.h \
@@ -39,6 +37,11 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/rtimer.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart1.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h \
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-ds6.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/stimer.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-nd6.h \
@@ -55,14 +58,12 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-ds6-nbr.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/slip.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart1.h \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip-debug.h \
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/net-debug.h
 slip-bridge.c :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/slip.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/zoul/./contiki-conf.h :
  ../project-conf.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/platform/zoul/remote-revb/board.h :
@@ -74,9 +75,6 @@ slip-bridge.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-version.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./contiki-default-conf.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/process.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/pt.h :
@@ -101,6 +99,11 @@ slip-bridge.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/clock.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/energest.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/rtimer.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart1.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uipopt.h :
+ /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/tcpip.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-ds6.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./sys/stimer.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-nd6.h :
@@ -117,8 +120,5 @@ slip-bridge.c :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/mac/framer.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./lib/list.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ipv6/uip-ds6-nbr.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./dev/slip.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart1.h :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/cpu/cc2538/./dev/uart.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/ip/uip-debug.h :
  /home/aghiles/These/Program/C/Contiki/bin/contiki/core/./net/net-debug.h :

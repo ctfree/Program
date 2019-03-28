@@ -1,5 +1,6 @@
 #!/bin/bash
 
 sudo vagrant up
-sudo vagrant ssh -c "w3m http://[aaaa::212:4b00:60d:622b]"
+sudo vagrant ssh 
+#-c "w3m http://[aaaa::212:4b00:18e6:9d01]"
 

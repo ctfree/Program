@@ -38,7 +38,7 @@ title1="Connexion"
 title3="Server"
 
 cmd1="cd $projectPath/tools/ && make tunslip6 && sudo ./tunslip6 -s /dev/ttyUSB0 aaaa::1/64" 
-cmd3="cd 1-border-router/paho-mqtt/ && sudo python UDP-MQTT-final-server.py"
+cmd3="cd 4-paho-mqtt/ && sudo python UDP-MQTT-final-server.py"
 
 gnome-terminal --tab --title="$title1" --command="bash -c '$cmd1; $SHELL'" \
                --tab --title="$title3" --command="bash -c '$cmd3; $SHELL'" 

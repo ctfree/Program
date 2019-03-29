@@ -1,3 +1,2 @@
-obj_zoul/syscalls.o: \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/lib/newlib/syscalls.c
- /home/aghiles/These/Program/C/Contiki/bin/contiki/lib/newlib/syscalls.c :
+obj_zoul/syscalls.o: /home/vagrant/aghiles/contiki/lib/newlib/syscalls.c
+/home/vagrant/aghiles/contiki/lib/newlib/syscalls.c :

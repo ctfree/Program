@@ -1,5 +1,5 @@
 #!/bin/bash
 
 sudo vagrant up
-sudo vagrant ssh -c "cd contiki-utlc; ./4_Server"
+sudo vagrant ssh -c "cd aghiles/contiki-utlc; ./4_Server"
 

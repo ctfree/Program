@@ -3,7 +3,7 @@
 mytitle="Connexion"
 echo -e '\033]2;'$mytitle'\007'
 
-projectPath=~/contiki
+projectPath=/home/vagrant/aghiles/contiki
 #contikiPath=/home/aghiles/These/Program/C/Contiki/src/contiki-utlc
 ## Set up the Border Router
 #cd $contikiPath/examples/zolertia/project/1-border-router/

@@ -5,16 +5,16 @@ sudo apt-get update
 sudo apt-get install git curl graphviz unzip wget zip build-essential automake gettext automake software-properties-common lib32z1 lib32ncurses5 gcc-arm-none-eabi gdb-arm-none-eabi gcc gcc-msp430 libc6-i386 net-tools gcc-arm-none-eabi w3m w3m-img
 sudo apt-get -o Dpkg::Options::="--force-overwrite" install gdb-arm-none-eabi
 
-#sudo pip install paho-mqtt
-
+sudo apt-get install linux-image-extra-virtual
 sudo modprobe usbserial
 sudo dmesg
 lsusb
 
-#sudo apt-get install python-pip
-#sudo pip install --upgrade pip
-#sudo python -m pip install pyserial
-#sudo python -m pip install networkx
+sudo apt-get install python-pip
+sudo pip install --upgrade pip
+sudo pip install paho-mqtt
+sudo python -m pip install pyserial
+sudo python -m pip install networkx
 
 #Aller dans /contiki/tools/cc2538-bsl
 #Faire git clone https://github.com/JelmerT/cc2538-bsl.git

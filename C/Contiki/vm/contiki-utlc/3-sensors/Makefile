@@ -11,7 +11,7 @@ MODULES += /dev/bme280
 
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ~/contiki
+CONTIKI = /home/vagrant/aghiles/contiki
 #CONTIKI_WITH_RIME = 1
 CONTIKI_WITH_IPV6 = 1
 include $(CONTIKI)/Makefile.include

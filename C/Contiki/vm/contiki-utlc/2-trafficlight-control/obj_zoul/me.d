@@ -1,5 +1,4 @@
-obj_zoul/me.o: \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/me.c \
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/me_tabs.h
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/me.c :
- /home/aghiles/These/Program/C/Contiki/bin/contiki/core/lib/me_tabs.h :
+obj_zoul/me.o: /home/vagrant/aghiles/contiki/core/lib/me.c \
+ /home/vagrant/aghiles/contiki/core/lib/me_tabs.h
+/home/vagrant/aghiles/contiki/core/lib/me.c :
+ /home/vagrant/aghiles/contiki/core/lib/me_tabs.h :

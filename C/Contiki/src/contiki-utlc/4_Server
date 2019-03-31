@@ -3,8 +3,8 @@
 mytitle="Server"
 echo -e '\033]2;'$mytitle'\007'
 
-projectPath=/home/aghiles/These/Program/C/Contiki/bin/contiki
-contikiPath=/home/aghiles/These/Program/C/Contiki/src/contiki-utlc
+projectPath=/home/aghiles/Aghiles/Program/C/Contiki/bin/contiki
+contikiPath=/home/aghiles/Aghiles/Program/C/Contiki/src/contiki-utlc
 ## Set up the Border Router
 #cd $contikiPath/examples/zolertia/project/1-border-router/
 #sudo make border-router.upload PORT=/dev/ttyUSB0 TARGET="zoul"
@@ -38,7 +38,7 @@ title1="Connexion"
 title3="Server"
 
 cmd1="cd $projectPath/tools/ && make tunslip6 && sudo ./tunslip6 -s /dev/ttyUSB0 aaaa::1/64" 
-cmd3="cd 1-border-router/paho-mqtt/ && sudo python UDP-MQTT-final-server.py"
+cmd3="cd 4-paho-mqtt/ && sudo python UDP-MQTT-final-server.py"
 
 gnome-terminal --tab --title="$title1" --command="bash -c '$cmd1; $SHELL'" \
                --tab --title="$title3" --command="bash -c '$cmd3; $SHELL'" 

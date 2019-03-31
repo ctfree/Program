@@ -18,15 +18,15 @@ contikiPath=/home/aghiles/These/Program/C/Contiki/src/contiki-utlc
 #sudo make trafficlight-control.upload PORT=/dev/ttyUSB1 TARGET="zoul"
 
 
-cd 2-trafficlight-control
-sudo make trafficlight-control-slave.upload PORT=/dev/ttyUSB2 TARGET="zoul"
-sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB2 login
+#cd 2-trafficlight-control
+#sudo make trafficlight-control.upload PORT=/dev/ttyUSB2 TARGET="zoul"
+#sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB2 login
 
 
 ## Set up touch sensors
-#cd $contikiPath/3-sensors/
-#sudo make touch-sensor.upload PORT=/dev/ttyUSB1 TARGET="zoul"
-#sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB1 login
+cd 3-sensors
+sudo make touch-sensor.upload PORT=/dev/ttyUSB2 TARGET="zoul"
+sudo make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB2 login
 
 ## Final implementation for the project
 #cd $contikiPath/examples/zolertia/project/1-border-router/paho-mqtt/

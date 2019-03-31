@@ -8,23 +8,23 @@
  * 1. Redistributions of source code must retain the above copyright
  *		notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *		notice, this list of conditions and the following disclaimer in
- *the documentation and/or other materials provided with the distribution.
+ *		notice, this list of conditions and the following disclaimer in the
+ *		documentation and/or other materials provided with the distribution.
  * 3. Neither the name of the Institute nor the names of its contributors
- *		may be used to endorse or promote products derived from this
- *software without specific prior written permission.
+ *		may be used to endorse or promote products derived from this software
+ *		without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.	IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE
- *LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- *CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- *SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- *INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- *CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- *ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- *POSSIBILITY OF SUCH DAMAGE.
+ * ARE DISCLAIMED.	IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
  *
  */
 
@@ -85,7 +85,7 @@ static void slip_input_callback(void) {
 		uip_clear_buf();
 	}
 	/* Save the last sender received over SLIP to avoid bouncing the
-					 packet back if no route is found */
+		 packet back if no route is found */
 	uip_ipaddr_copy(&last_sender, &UIP_IP_BUF->srcipaddr);
 }
 /*---------------------------------------------------------------------------*/
@@ -98,7 +98,7 @@ static void init(void) {
 static int output(void) {
 	if (uip_ipaddr_cmp(&last_sender, &UIP_IP_BUF->srcipaddr)) {
 		/* Do not bounce packets back over SLIP if the packet was received
-						 over SLIP */
+			 over SLIP */
 		PRINTF("slip-bridge: Destination off-link but no route src=");
 		PRINT6ADDR(&UIP_IP_BUF->srcipaddr);
 		PRINTF(" dst=");
@@ -125,7 +125,7 @@ int putchar(int c) {
 	}
 
 	/* Need to also print '\n' because for example COOJA will not show
-					 any output before line end */
+		 any output before line end */
 	slip_arch_writeb((char)c);
 
 	/*

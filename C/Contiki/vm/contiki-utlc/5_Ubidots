@@ -1,3 +1,0 @@
-#!/bin/bash
-
-firefox https://app.ubidots.com/ubi/datasources/#/list

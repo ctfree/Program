@@ -1,0 +1,38 @@
+#!/bin/bash
+mypath=`realpath $0`
+directory=`dirname $mypath`
+filename=`basename $directory`
+cd $directory
+
+#git clone https://github.com/contiki-ng/contiki-ng.git
+#cd contiki-ng
+#git submodule update --init --recursive
+
+git clone https://github.com/contiki-os/contiki.git
+cd contiki
+git submodule update --init --recursive
+
+cd $directorys
+git clone git://github.com/millionb/sdn-wise-contiki
+git clone git://github.com/sdnwiselab/sdn-wise-java
+git clone git://github.com/sdnwiselab/onos
+git clone git://github.com/mininet/mininet
+cd sdn-wise-contiki && sudo git submodule update --init
+cd contiki/tools/cooja && sudo git submodule update --init
+
+mkdir home
+cp aghiles/* home/
+
+git clone git://github.com/millionb/sdn-wise-contiki home/sdn-wise-contiki
+git clone git://github.com/sdnwiselab/sdn-wise-java home/sdn-wise-java
+git clone git://github.com/sdnwiselab/onos home/onos
+git clone git://github.com/mininet/mininet home/mininet
+# Downlad Apache Karaf
+mkdir home/Downloads home/Applications
+wget http://archive.apache.org/dist/karaf/3.0.2/apache-karaf-3.0.2.tar.gz -P home/Downloads
+tar -zxvf home/Downloads/apache-karaf-3.0.2.tar.gz -C home/Applications/
+
+# Download sdn-wise subprojects
+cd home/sdn-wise-contiki &&  git submodule update --init
+cd contiki/tools/cooja && git submodule update --init && cd
+

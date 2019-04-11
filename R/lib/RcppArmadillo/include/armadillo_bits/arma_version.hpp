@@ -20,9 +20,9 @@
 
 
 #define ARMA_VERSION_MAJOR 9
-#define ARMA_VERSION_MINOR 100
-#define ARMA_VERSION_PATCH 5
-#define ARMA_VERSION_NAME  "Armatus Ad Infinitum"
+#define ARMA_VERSION_MINOR 300
+#define ARMA_VERSION_PATCH 2
+#define ARMA_VERSION_NAME  "Fomo Spiral"
 
 
 
@@ -39,7 +39,8 @@ struct arma_version
     {
     const char* nickname = ARMA_VERSION_NAME;
     
-    std::stringstream ss;
+    std::ostringstream ss;
+    
     ss << arma_version::major
        << '.'
        << arma_version::minor

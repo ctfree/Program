@@ -43,6 +43,11 @@
   #define arma_cgeev  cgeev
   #define arma_zgeev  zgeev
   
+  #define arma_sgeevx sgeevx
+  #define arma_dgeevx dgeevx
+  #define arma_cgeevx cgeevx
+  #define arma_zgeevx zgeevx
+  
   #define arma_ssyev  ssyev
   #define arma_dsyev  dsyev
 
@@ -178,6 +183,11 @@
   #define arma_cgecon cgecon
   #define arma_zgecon zgecon
   
+  #define arma_spocon spocon
+  #define arma_dpocon dpocon
+  #define arma_cpocon cpocon
+  #define arma_zpocon zpocon
+  
   #define arma_ilaenv ilaenv
   
   #define arma_slahqr slahqr
@@ -218,6 +228,11 @@
   #define arma_dgeev  DGEEV
   #define arma_cgeev  CGEEV
   #define arma_zgeev  ZGEEV
+  
+  #define arma_sgeevx SGEEVX
+  #define arma_dgeevx DGEEVX
+  #define arma_cgeevx CGEEVX
+  #define arma_zgeevx ZGEEVX
   
   #define arma_ssyev  SSYEV
   #define arma_dsyev  DSYEV
@@ -354,6 +369,11 @@
   #define arma_cgecon CGECON
   #define arma_zgecon ZGECON
   
+  #define arma_spocon SPOCON
+  #define arma_dpocon DPOCON
+  #define arma_cpocon CPOCON
+  #define arma_zpocon ZPOCON
+  
   #define arma_ilaenv ILAENV
   
   #define arma_slahqr SLAHQR
@@ -404,6 +424,14 @@ extern "C"
   // eigen decomposition of general matrix (complex)
   void arma_fortran(arma_cgeev)(char* jobvl, char* jobvr, blas_int* N, void* a, blas_int* lda, void* w, void* vl, blas_int* ldvl, void* vr, blas_int* ldvr, void* work, blas_int* lwork,  float* rwork, blas_int* info);
   void arma_fortran(arma_zgeev)(char* jobvl, char* jobvr, blas_int* N, void* a, blas_int* lda, void* w, void* vl, blas_int* ldvl, void* vr, blas_int* ldvr, void* work, blas_int* lwork, double* rwork, blas_int* info);
+  
+  // eigen decomposition of general matrix (real; advanced form)
+  void arma_fortran(arma_sgeevx)(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n,  float* a, blas_int* lda,  float* wr,  float* wi,  float* vl, blas_int* ldvl,  float* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi,  float* scale,  float* abnrm,  float* rconde,  float* rcondv,  float* work, blas_int* lwork, blas_int* iwork, blas_int* info);
+  void arma_fortran(arma_dgeevx)(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n, double* a, blas_int* lda, double* wr, double* wi, double* vl, blas_int* ldvl, double* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi, double* scale, double* abnrm, double* rconde, double* rcondv, double* work, blas_int* lwork, blas_int* iwork, blas_int* info);
+  
+  // eigen decomposition of general matrix (complex; advanced form)
+  void arma_fortran(arma_cgeevx)(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n, void* a, blas_int* lda, void* w, void* vl, blas_int* ldvl, void* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi,  float* scale,  float* abnrm,  float* rconde,  float* rcondv, void* work, blas_int* lwork,  float* rwork, blas_int* info);
+  void arma_fortran(arma_zgeevx)(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n, void* a, blas_int* lda, void* w, void* vl, blas_int* ldvl, void* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi, double* scale, double* abnrm, double* rconde, double* rcondv, void* work, blas_int* lwork, double* rwork, blas_int* info);
   
   // eigen decomposition of symmetric real matrices
   void arma_fortran(arma_ssyev)(char* jobz, char* uplo, blas_int* n,  float* a, blas_int* lda,  float* w,  float* work, blas_int* lwork, blas_int* info);
@@ -581,13 +609,21 @@ extern "C"
   float  arma_fortran(arma_clange)(char* norm, blas_int* m, blas_int* n,   void* a, blas_int* lda,  float* work);
   double arma_fortran(arma_zlange)(char* norm, blas_int* m, blas_int* n,   void* a, blas_int* lda, double* work);
   
-  // reciprocal of condition number (real)
+  // reciprocal of condition number (real, generic matrix)
   void arma_fortran(arma_sgecon)(char* norm, blas_int* n,  float* a, blas_int* lda,  float* anorm,  float* rcond,  float* work, blas_int* iwork, blas_int* info);
   void arma_fortran(arma_dgecon)(char* norm, blas_int* n, double* a, blas_int* lda, double* anorm, double* rcond, double* work, blas_int* iwork, blas_int* info);
   
-  // reciprocal of condition number (complex)
+  // reciprocal of condition number (complex, generic matrix)
   void arma_fortran(arma_cgecon)(char* norm, blas_int* n, void* a, blas_int* lda,  float* anorm,  float* rcond, void* work,  float* rwork, blas_int* info);
   void arma_fortran(arma_zgecon)(char* norm, blas_int* n, void* a, blas_int* lda, double* anorm, double* rcond, void* work, double* rwork, blas_int* info);
+  
+  // reciprocal of condition number (real, symmetric positive definite matrix)
+  void arma_fortran(arma_spocon)(char* uplo, blas_int* n,  float* a, blas_int* lda,  float* anorm,  float* rcond,  float* work, blas_int* iwork, blas_int* info);
+  void arma_fortran(arma_dpocon)(char* uplo, blas_int* n, double* a, blas_int* lda, double* anorm, double* rcond, double* work, blas_int* iwork, blas_int* info);
+  
+  // reciprocal of condition number (complex, hermitian positive definite matrix)
+  void arma_fortran(arma_cpocon)(char* uplo, blas_int* n, void* a, blas_int* lda,  float* anorm,  float* rcond, void* work,  float* rwork, blas_int* info);
+  void arma_fortran(arma_zpocon)(char* uplo, blas_int* n, void* a, blas_int* lda, double* anorm, double* rcond, void* work, double* rwork, blas_int* info);
   
   // obtain parameters according to the local configuration of lapack
   blas_int arma_fortran(arma_ilaenv)(blas_int* ispec, char* name, char* opts, blas_int* n1, blas_int* n2, blas_int* n3, blas_int* n4);

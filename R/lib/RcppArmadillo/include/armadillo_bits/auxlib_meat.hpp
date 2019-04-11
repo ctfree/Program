@@ -1091,6 +1091,216 @@ auxlib::eig_gen
 
 
 
+//! eigen decomposition of general square matrix (real, balance given matrix)
+template<typename T1>
+inline
+bool
+auxlib::eig_gen_balance
+  (
+         Mat< std::complex<typename T1::pod_type> >& vals,
+         Mat< std::complex<typename T1::pod_type> >& vecs,
+  const bool                                         vecs_on,
+  const Base<typename T1::pod_type,T1>&              expr
+  )
+  {
+  arma_extra_debug_sigprint();
+  
+  #if defined(ARMA_USE_LAPACK)
+    {
+    typedef typename T1::pod_type T;
+    
+    Mat<T> X = expr.get_ref();
+    
+    arma_debug_check( (X.is_square() == false), "eig_gen(): given matrix must be square sized" );
+    
+    arma_debug_assert_blas_size(X);
+    
+    if(X.is_empty())
+      {
+      vals.reset();
+      vecs.reset();
+      return true;
+      }
+    
+    if(X.is_finite() == false)  { return false; }
+    
+    vals.set_size(X.n_rows, 1);
+    
+    Mat<T> tmp(1,1);
+    
+    if(vecs_on)
+      {
+      vecs.set_size(X.n_rows, X.n_rows);
+       tmp.set_size(X.n_rows, X.n_rows);
+      }
+    
+    podarray<T> junk(1);
+    
+    char     bal   = 'B'; 
+    char     jobvl = 'N';
+    char     jobvr = (vecs_on) ? 'V' : 'N';
+    char     sense = 'N';
+    blas_int N     = blas_int(X.n_rows);
+    T*       vl    = junk.memptr();
+    T*       vr    = (vecs_on) ? tmp.memptr() : junk.memptr();
+    blas_int ldvl  = blas_int(1);
+    blas_int ldvr  = (vecs_on) ? blas_int(tmp.n_rows) : blas_int(1);
+    blas_int ilo   = blas_int(0);
+    blas_int ihi   = blas_int(0);
+    T        abnrm = T(0);
+    blas_int lwork = 3 * ((std::max)(blas_int(1), blas_int(2*N)));
+    blas_int info  = blas_int(0);
+    
+    podarray<T>  scale(X.n_rows);
+    podarray<T> rconde(X.n_rows);
+    podarray<T> rcondv(X.n_rows);
+    
+    podarray<T>         work( static_cast<uword>(lwork) );
+    podarray<blas_int> iwork( uword(1) );  // iwork not used by lapack::geevx() as sense = 'N'
+    
+    podarray<T> vals_real(X.n_rows);
+    podarray<T> vals_imag(X.n_rows);
+    
+    arma_extra_debug_print("lapack::geevx() -- START");
+    lapack::geevx(&bal, &jobvl, &jobvr, &sense, &N, X.memptr(), &N, vals_real.memptr(), vals_imag.memptr(), vl, &ldvl, vr, &ldvr, &ilo, &ihi, scale.memptr(), &abnrm, rconde.memptr(), rcondv.memptr(), work.memptr(), &lwork, iwork.memptr(), &info);
+    arma_extra_debug_print("lapack::geevx() -- END");
+    
+    if(info != 0)  { return false; }
+    
+    arma_extra_debug_print("reformatting eigenvalues and eigenvectors");
+    
+    std::complex<T>* vals_mem = vals.memptr();
+    
+    for(uword i=0; i < X.n_rows; ++i)  { vals_mem[i] = std::complex<T>(vals_real[i], vals_imag[i]); }
+    
+    if(vecs_on)
+      {
+      for(uword j=0; j < X.n_rows; ++j)
+        {
+        if( (j < (X.n_rows-1)) && (vals_mem[j] == std::conj(vals_mem[j+1])) )
+          {
+          for(uword i=0; i < X.n_rows; ++i)
+            {
+            vecs.at(i,j)   = std::complex<T>( tmp.at(i,j),  tmp.at(i,j+1) );
+            vecs.at(i,j+1) = std::complex<T>( tmp.at(i,j), -tmp.at(i,j+1) );
+            }
+          
+          ++j;
+          }
+        else
+          {
+          for(uword i=0; i<X.n_rows; ++i)
+            {
+            vecs.at(i,j) = std::complex<T>(tmp.at(i,j), T(0));
+            }
+          }
+        }
+      }
+    
+    return true;
+    }
+  #else
+    {
+    arma_ignore(vals);
+    arma_ignore(vecs);
+    arma_ignore(vecs_on);
+    arma_ignore(expr);
+    arma_stop_logic_error("eig_gen(): use of LAPACK must be enabled");
+    return false;
+    }
+  #endif
+  }
+
+
+
+//! eigen decomposition of general square matrix (complex, balance given matrix)
+template<typename T1>
+inline
+bool
+auxlib::eig_gen_balance
+  (
+         Mat< std::complex<typename T1::pod_type> >&     vals,
+         Mat< std::complex<typename T1::pod_type> >&     vecs, 
+  const bool                                             vecs_on,
+  const Base< std::complex<typename T1::pod_type>, T1 >& expr
+  )
+  {
+  arma_extra_debug_sigprint();
+  
+  #if defined(ARMA_CRIPPLED_LAPACK)
+    {
+    arma_extra_debug_print("auxlib::eig_gen_balance(): redirecting to auxlib::eig_gen() due to crippled LAPACK");
+    
+    return auxlib::eig_gen(vals, vecs, vecs_on, expr);
+    }
+  #elif defined(ARMA_USE_LAPACK)
+    {
+    typedef typename T1::pod_type     T;
+    typedef typename std::complex<T> eT;
+    
+    Mat<eT> X = expr.get_ref();
+    
+    arma_debug_check( (X.is_square() == false), "eig_gen(): given matrix must be square sized" );
+    
+    arma_debug_assert_blas_size(X);
+    
+    if(X.is_empty())
+      {
+      vals.reset();
+      vecs.reset();
+      return true;
+      }
+    
+    if(X.is_finite() == false)  { return false; }
+    
+    vals.set_size(X.n_rows, 1);
+    
+    if(vecs_on)  { vecs.set_size(X.n_rows, X.n_rows); }
+    
+    podarray<eT> junk(1);
+    
+    char     bal   = 'B';
+    char     jobvl = 'N';
+    char     jobvr = (vecs_on) ? 'V' : 'N';
+    char     sense = 'N';
+    blas_int N     = blas_int(X.n_rows);
+    eT*      vl    = junk.memptr();
+    eT*      vr    = (vecs_on) ? vecs.memptr() : junk.memptr();
+    blas_int ldvl  = blas_int(1);
+    blas_int ldvr  = (vecs_on) ? blas_int(vecs.n_rows) : blas_int(1);
+    blas_int ilo   = blas_int(0);
+    blas_int ihi   = blas_int(0);
+    T        abnrm = T(0);
+    blas_int lwork = 3 * ((std::max)(blas_int(1), blas_int(2*N)));
+    blas_int info  = blas_int(0);
+    
+    podarray<T>  scale(X.n_rows);
+    podarray<T> rconde(X.n_rows);
+    podarray<T> rcondv(X.n_rows);
+    
+    podarray<eT>  work( static_cast<uword>(lwork) );
+    podarray< T> rwork( static_cast<uword>(2*N)   );
+    
+    arma_extra_debug_print("lapack::cx_geevx() -- START");
+    lapack::cx_geevx(&bal, &jobvl, &jobvr, &sense, &N, X.memptr(), &N, vals.memptr(), vl, &ldvl, vr, &ldvr, &ilo, &ihi, scale.memptr(), &abnrm, rconde.memptr(), rcondv.memptr(), work.memptr(), &lwork, rwork.memptr(), &info);
+    arma_extra_debug_print("lapack::cx_geevx() -- END");
+    
+    return (info == 0);
+    }
+  #else
+    {
+    arma_ignore(vals);
+    arma_ignore(vecs);
+    arma_ignore(vecs_on);
+    arma_ignore(expr);
+    arma_stop_logic_error("eig_gen(): use of LAPACK must be enabled");
+    return false;
+    }
+  #endif
+  }
+
+
+
 //! eigendecomposition of general square real matrix pair (real)
 template<typename T1, typename T2>
 inline
@@ -1651,6 +1861,49 @@ auxlib::eig_sym_dc(Col<T>& eigval, Mat< std::complex<T> >& eigvec, const Base<st
     arma_ignore(eigvec);
     arma_ignore(X);
     arma_stop_logic_error("eig_sym(): use of LAPACK must be enabled");
+    return false;
+    }
+  #endif
+  }
+
+
+
+template<typename eT>
+inline
+bool
+auxlib::chol_simple(Mat<eT>& X)
+  {
+  arma_extra_debug_sigprint();
+  
+  #if defined(ARMA_USE_ATLAS)
+    {
+    arma_debug_assert_atlas_size(X);
+    
+    int info = 0;
+    
+    arma_extra_debug_print("atlas::clapack_potrf()");
+    info = atlas::clapack_potrf(atlas::CblasColMajor, atlas::CblasUpper, X.n_rows, X.memptr(), X.n_rows);
+    
+    return (info == 0);
+    }
+  #elif defined(ARMA_USE_LAPACK)
+    {
+    arma_debug_assert_blas_size(X);
+    
+    char      uplo = 'U';
+    blas_int  n    = blas_int(X.n_rows);
+    blas_int  info = 0;
+    
+    arma_extra_debug_print("lapack::potrf()");
+    lapack::potrf(&uplo, &n, X.memptr(), &n, &info);
+    
+    return (info == 0);
+    }
+  #else
+    {
+    arma_ignore(X);
+    
+    arma_stop_logic_error("chol(): use of ATLAS or LAPACK must be enabled");
     return false;
     }
   #endif
@@ -3176,7 +3429,7 @@ auxlib::solve_square_fast(Mat<typename T1::elem_type>& out, Mat<typename T1::ele
 template<typename T1>
 inline
 bool
-auxlib::solve_square_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate)
+auxlib::solve_square_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -3255,8 +3508,7 @@ auxlib::solve_square_refine(Mat<typename T1::pod_type>& out, typename T1::pod_ty
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -3265,6 +3517,7 @@ auxlib::solve_square_refine(Mat<typename T1::pod_type>& out, typename T1::pod_ty
     arma_ignore(A);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -3277,7 +3530,7 @@ auxlib::solve_square_refine(Mat<typename T1::pod_type>& out, typename T1::pod_ty
 template<typename T1>
 inline
 bool
-auxlib::solve_square_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate)
+auxlib::solve_square_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -3357,8 +3610,7 @@ auxlib::solve_square_refine(Mat< std::complex<typename T1::pod_type> >& out, typ
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -3367,6 +3619,7 @@ auxlib::solve_square_refine(Mat< std::complex<typename T1::pod_type> >& out, typ
     arma_ignore(A);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -3474,7 +3727,7 @@ auxlib::solve_sympd_fast_common(Mat<typename T1::elem_type>& out, Mat<typename T
 template<typename T1>
 inline
 bool
-auxlib::solve_sympd_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate)
+auxlib::solve_sympd_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -3534,8 +3787,7 @@ auxlib::solve_sympd_refine(Mat<typename T1::pod_type>& out, typename T1::pod_typ
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -3544,6 +3796,7 @@ auxlib::solve_sympd_refine(Mat<typename T1::pod_type>& out, typename T1::pod_typ
     arma_ignore(A);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -3556,7 +3809,7 @@ auxlib::solve_sympd_refine(Mat<typename T1::pod_type>& out, typename T1::pod_typ
 template<typename T1>
 inline
 bool
-auxlib::solve_sympd_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate)
+auxlib::solve_sympd_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -3564,7 +3817,7 @@ auxlib::solve_sympd_refine(Mat< std::complex<typename T1::pod_type> >& out, type
     {
     arma_extra_debug_print("auxlib::solve_band_refine(): redirecting to auxlib::solve_square_refine() due to crippled LAPACK");
     
-    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, equilibrate);
+    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, equilibrate, allow_ugly);
     }
   #elif defined(ARMA_USE_LAPACK)
     {
@@ -3623,8 +3876,7 @@ auxlib::solve_sympd_refine(Mat< std::complex<typename T1::pod_type> >& out, type
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -3633,6 +3885,7 @@ auxlib::solve_sympd_refine(Mat< std::complex<typename T1::pod_type> >& out, type
     arma_ignore(A);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -4108,7 +4361,7 @@ auxlib::solve_band_fast_common(Mat<typename T1::elem_type>& out, const Mat<typen
 template<typename T1>
 inline
 bool
-auxlib::solve_band_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const uword KL, const uword KU, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate)
+auxlib::solve_band_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const uword KL, const uword KU, const Base<typename T1::pod_type,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -4183,8 +4436,7 @@ auxlib::solve_band_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -4195,6 +4447,7 @@ auxlib::solve_band_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type
     arma_ignore(KU);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -4207,7 +4460,7 @@ auxlib::solve_band_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type
 template<typename T1>
 inline
 bool
-auxlib::solve_band_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const uword KL, const uword KU, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate)
+auxlib::solve_band_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const uword KL, const uword KU, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool equilibrate, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -4218,7 +4471,7 @@ auxlib::solve_band_refine(Mat< std::complex<typename T1::pod_type> >& out, typen
     arma_ignore(KL);
     arma_ignore(KU);
     
-    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, equilibrate);
+    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, equilibrate, allow_ugly);
     }
   #elif defined(ARMA_USE_LAPACK)
     {
@@ -4292,8 +4545,7 @@ auxlib::solve_band_refine(Mat< std::complex<typename T1::pod_type> >& out, typen
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -4304,6 +4556,7 @@ auxlib::solve_band_refine(Mat< std::complex<typename T1::pod_type> >& out, typen
     arma_ignore(KU);
     arma_ignore(B_expr);
     arma_ignore(equilibrate);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -4405,7 +4658,7 @@ auxlib::solve_tridiag_fast_common(Mat<typename T1::elem_type>& out, const Mat<ty
 template<typename T1>
 inline
 bool
-auxlib::solve_tridiag_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr)
+auxlib::solve_tridiag_refine(Mat<typename T1::pod_type>& out, typename T1::pod_type& out_rcond, Mat<typename T1::pod_type>& A, const Base<typename T1::pod_type,T1>& B_expr, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -4473,8 +4726,7 @@ auxlib::solve_tridiag_refine(Mat<typename T1::pod_type>& out, typename T1::pod_t
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -4482,6 +4734,7 @@ auxlib::solve_tridiag_refine(Mat<typename T1::pod_type>& out, typename T1::pod_t
     arma_ignore(out_rcond);
     arma_ignore(A);
     arma_ignore(B_expr);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -4494,7 +4747,7 @@ auxlib::solve_tridiag_refine(Mat<typename T1::pod_type>& out, typename T1::pod_t
 template<typename T1>
 inline
 bool
-auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr)
+auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, typename T1::pod_type& out_rcond, Mat< std::complex<typename T1::pod_type> >& A, const Base<std::complex<typename T1::pod_type>,T1>& B_expr, const bool allow_ugly)
   {
   arma_extra_debug_sigprint();
   
@@ -4502,7 +4755,7 @@ auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, ty
     {
     arma_extra_debug_print("auxlib::solve_tridiag_refine(): redirecting to auxlib::solve_square_refine() due to crippled LAPACK");
     
-    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, false);
+    return auxlib::solve_square_refine(out, out_rcond, A, B_expr, false, allow_ugly);
     }
   #elif defined(ARMA_USE_LAPACK)
     {
@@ -4528,7 +4781,7 @@ auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, ty
     
     arma_debug_assert_blas_size(out, B);
     
-    char     fact  = 'N'; 
+    char     fact  = 'N';
     char     trans = 'N';
     blas_int n     = blas_int(N);
     blas_int nrhs  = blas_int(B.n_cols);
@@ -4569,8 +4822,7 @@ auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, ty
     
     out_rcond = rcond;
     
-    //return ((info == 0) || (info == (n+1)));
-    return (info == 0);
+    return (allow_ugly) ? ((info == 0) || (info == (n+1))) : (info == 0);
     }
   #else
     {
@@ -4578,6 +4830,7 @@ auxlib::solve_tridiag_refine(Mat< std::complex<typename T1::pod_type> >& out, ty
     arma_ignore(out_rcond);
     arma_ignore(A);
     arma_ignore(B_expr);
+    arma_ignore(allow_ugly);
     arma_stop_logic_error("solve(): use of LAPACK must be enabled");
     return false;
     }
@@ -4970,77 +5223,61 @@ auxlib::qz(Mat< std::complex<T> >& A, Mat< std::complex<T> >& B, Mat< std::compl
 
 
 
-template<typename T1>
+template<typename eT>
 inline
-typename T1::pod_type
-auxlib::rcond(const Base<typename T1::pod_type,T1>& A_expr)
+eT
+auxlib::rcond(Mat<eT>& A)
   {
-  typedef typename T1::pod_type T;
-  
   #if defined(ARMA_USE_LAPACK)
     {
-    typedef typename T1::elem_type eT;
-    
-    Mat<eT> A = A_expr.get_ref();
-    
-    arma_debug_check( (A.is_square() == false), "rcond(): matrix must be square sized" );
-    
-    if(A.is_empty()) { return Datum<T>::inf; }
-    
     arma_debug_assert_blas_size(A);
     
     char     norm_id  = '1';
     blas_int m        = blas_int(A.n_rows);
     blas_int n        = blas_int(A.n_rows);  // assuming square matrix
     blas_int lda      = blas_int(A.n_rows);
-    T        norm_val = T(0);
-    T        rcond    = T(0);
+    eT       norm_val = eT(0);
+    eT       rcond    = eT(0);
     blas_int info     = blas_int(0);
     
     podarray<eT>        work(4*A.n_rows);
-    podarray<blas_int> iwork(A.n_rows);
+    podarray<blas_int> iwork(  A.n_rows);
     podarray<blas_int> ipiv( (std::min)(A.n_rows, A.n_cols) );
     
+    arma_extra_debug_print("lapack::lange()");
     norm_val = lapack::lange(&norm_id, &m, &n, A.memptr(), &lda, work.memptr());
     
+    arma_extra_debug_print("lapack::getrf()");
     lapack::getrf(&m, &n, A.memptr(), &lda, ipiv.memptr(), &info);
     
-    if(info != blas_int(0))  { return T(0); }
+    if(info != blas_int(0))  { return eT(0); }
     
+    arma_extra_debug_print("lapack::gecon()");
     lapack::gecon(&norm_id, &n, A.memptr(), &lda, &norm_val, &rcond, work.memptr(), iwork.memptr(), &info);
     
-    if(info != blas_int(0))  { return T(0); }
+    if(info != blas_int(0))  { return eT(0); }
     
     return rcond;
     }
   #else
     {
-    arma_ignore(A_expr);
+    arma_ignore(A);
     arma_stop_logic_error("rcond(): use of LAPACK must be enabled");
+    return eT(0);
     }
   #endif
-  
-  return T(0);
   }
 
 
 
-template<typename T1>
+template<typename T>
 inline
-typename T1::pod_type
-auxlib::rcond(const Base<std::complex<typename T1::pod_type>,T1>& A_expr)
+T
+auxlib::rcond(Mat< std::complex<T> >& A)
   {
-  typedef typename T1::pod_type T;
-  
   #if defined(ARMA_USE_LAPACK)
     {
-    typedef typename T1::elem_type eT;
-    
-    Mat<eT> A = A_expr.get_ref();
-    
-    arma_debug_check( (A.is_square() == false), "rcond(): matrix must be square sized" );
-    
-    if(A.is_empty()) { return Datum<T>::inf; }
+    typedef typename std::complex<T> eT;
     
     arma_debug_assert_blas_size(A);
     
@@ -5052,18 +5289,20 @@ auxlib::rcond(const Base<std::complex<typename T1::pod_type>,T1>& A_expr)
     T        rcond    = T(0);
     blas_int info     = blas_int(0);
     
-    podarray< T>       junk(1);
+    podarray< T>        junk(1);
     podarray<eT>        work(2*A.n_rows);
     podarray< T>       rwork(2*A.n_rows);
-    podarray<blas_int> iwork(A.n_rows);
     podarray<blas_int> ipiv( (std::min)(A.n_rows, A.n_cols) );
     
+    arma_extra_debug_print("lapack::lange()");
     norm_val = lapack::lange(&norm_id, &m, &n, A.memptr(), &lda, junk.memptr());
     
+    arma_extra_debug_print("lapack::getrf()");
     lapack::getrf(&m, &n, A.memptr(), &lda, ipiv.memptr(), &info);
     
     if(info != blas_int(0))  { return T(0); }
     
+    arma_extra_debug_print("lapack::cx_gecon()");
     lapack::cx_gecon(&norm_id, &n, A.memptr(), &lda, &norm_val, &rcond, work.memptr(), rwork.memptr(), &info);
     
     if(info != blas_int(0))  { return T(0); }
@@ -5072,12 +5311,126 @@ auxlib::rcond(const Base<std::complex<typename T1::pod_type>,T1>& A_expr)
     }
   #else
     {
-    arma_ignore(A_expr);
+    arma_ignore(A);
     arma_stop_logic_error("rcond(): use of LAPACK must be enabled");
+    return T(0);
     }
   #endif
-  
-  return T(0);
+  }
+
+
+
+template<typename eT>
+inline
+eT
+auxlib::rcond_sympd(Mat<eT>& A, bool& calc_ok)
+  {
+  #if defined(ARMA_USE_LAPACK)
+    {
+    arma_debug_assert_blas_size(A);
+    
+    calc_ok = false;
+    
+    char     norm_id  = '1';
+    char     uplo     = 'L';
+    blas_int m        = blas_int(A.n_rows);
+    blas_int n        = blas_int(A.n_rows);  // assuming square matrix
+    blas_int lda      = blas_int(A.n_rows);
+    eT       norm_val = eT(0);
+    eT       rcond    = eT(0);
+    blas_int info     = blas_int(0);
+    
+    podarray<eT>        work(3*A.n_rows);
+    podarray<blas_int> iwork(  A.n_rows);
+    
+    arma_extra_debug_print("lapack::lange()");
+    norm_val = lapack::lange(&norm_id, &m, &n, A.memptr(), &lda, work.memptr());
+    
+    arma_extra_debug_print("lapack::potrf()");
+    lapack::potrf(&uplo, &n, A.memptr(), &lda, &info);
+    
+    if(info != blas_int(0))  { return eT(0); }
+    
+    arma_extra_debug_print("lapack::pocon()");
+    lapack::pocon(&uplo, &n, A.memptr(), &lda, &norm_val, &rcond, work.memptr(), iwork.memptr(), &info);
+    
+    if(info != blas_int(0))  { return eT(0); }
+    
+    calc_ok = true;
+    
+    return rcond;
+    }
+  #else
+    {
+    arma_ignore(A);
+    calc_ok = false;
+    arma_stop_logic_error("rcond(): use of LAPACK must be enabled");
+    return eT(0);
+    }
+  #endif
+  }
+
+
+
+template<typename T>
+inline
+T
+auxlib::rcond_sympd(Mat< std::complex<T> >& A, bool& calc_ok)
+  {
+  #if defined(ARMA_CRIPPLED_LAPACK)
+    {
+    arma_extra_debug_print("auxlib::rcond_sympd(): redirecting to auxlib::rcond() due to crippled LAPACK");
+    
+    calc_ok = true;
+    
+    return auxlib::rcond(A);
+    }
+  #elif defined(ARMA_USE_LAPACK)
+    {
+    typedef typename std::complex<T> eT;
+    
+    arma_debug_assert_blas_size(A);
+    
+    calc_ok = false;
+    
+    char     norm_id  = '1';
+    char     uplo     = 'L';
+    blas_int m        = blas_int(A.n_rows);
+    blas_int n        = blas_int(A.n_rows);  // assuming square matrix
+    blas_int lda      = blas_int(A.n_rows);
+    T        norm_val = T(0);
+    T        rcond    = T(0);
+    blas_int info     = blas_int(0);
+    
+    podarray< T>  junk(1);
+    podarray<eT>  work(2*A.n_rows);
+    podarray< T> rwork(  A.n_rows);
+    
+    arma_extra_debug_print("lapack::lange()");
+    norm_val = lapack::lange(&norm_id, &m, &n, A.memptr(), &lda, junk.memptr());
+    
+    arma_extra_debug_print("lapack::potrf()");
+    lapack::potrf(&uplo, &n, A.memptr(), &lda, &info);
+    
+    if(info != blas_int(0))  { return T(0); }
+    
+    arma_extra_debug_print("lapack::cx_pocon()");
+    lapack::cx_pocon(&uplo, &n, A.memptr(), &lda, &norm_val, &rcond, work.memptr(), rwork.memptr(), &info);
+    
+    if(info != blas_int(0))  { return T(0); }
+    
+    calc_ok = true;
+    
+    return rcond;
+    }
+  #else
+    {
+    arma_ignore(A);
+    calc_ok = false;
+    arma_stop_logic_error("rcond(): use of LAPACK must be enabled");
+    return T(0);
+    }
+  #endif
   }
 
 

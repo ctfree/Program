@@ -212,7 +212,7 @@
     #endif
   #endif
   
-  #if !defined(ARMA_USE_CXX11) && !defined(__GXX_EXPERIMENTAL_CXX0X__) && (__cplusplus < 201103L) 
+  #if !defined(ARMA_USE_CXX11) && !defined(__GXX_EXPERIMENTAL_CXX0X__) && (__cplusplus < 201103L) && !defined(ARMA_DONT_USE_TR1)
     #if defined(_GLIBCXX_USE_C99_MATH_TR1) && defined(_GLIBCXX_USE_C99_COMPLEX_TR1)
       #define ARMA_HAVE_TR1
     #endif
@@ -386,6 +386,11 @@
   #pragma warning(disable: 4711)  // call was inlined
   #pragma warning(disable: 4714)  // __forceinline can't be inlined
   #pragma warning(disable: 4800)  // value forced to bool
+  
+  #if defined(ARMA_USE_CXX11)
+    #pragma warning(disable: 4519)  // default template args are only allowed on a class template
+  #endif
+  
   
   // #if (_MANAGED == 1) || (_M_CEE == 1)
   //   

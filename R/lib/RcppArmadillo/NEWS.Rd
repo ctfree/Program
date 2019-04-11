@@ -3,6 +3,84 @@
 \newcommand{\ghpr}{\href{https://github.com/RcppCore/RcppArmadillo/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/RcppCore/RcppArmadillo/issues/#1}{##1}}
 
+\section{Changes in RcppArmadillo version 0.9.300.2.0 (2019-03-21)}{
+  \itemize{
+    \item Upgraded to Armadillo release 9.300.2 (Fomo Spiral)
+    \itemize{
+      \item Faster handling of compound complex matrix expressions by
+      \code{trace()} 
+      \item More efficient handling of element access for inplace
+      modifications in sparse matrices 
+      \item Added \code{.is_sympd()} to check whether a matrix is
+      symmetric/hermitian positive definite 
+      \item Added \code{interp2()} for 2D data interpolation
+      \item Added \code{expm1()} and \code{log1p()}
+      \item Expanded \code{.is_sorted()} with options "strictascend" and
+      "strictdescend" 
+      \item Expanded \code{eig_gen()} to optionally perform balancing
+      prior to decomposition 
+    }
+  }
+}
+
+\section{Changes in RcppArmadillo version 0.9.200.7.1 (2019-03-08)}{
+  \itemize{
+    \item Explicit setting of \code{RNGversion("3.5.0")} in one unit
+    test to accomodate the change in \code{sample()} in R 3.6.0
+    \item Back-ported a fix to the Wishart RNG from upstream (Dirk in
+    \ghpr{248} fixing \ghit{247})
+  }
+}
+
+\section{Changes in RcppArmadillo version 0.9.200.7.0 (2019-01-17)}{
+  \itemize{
+    \item Upgraded to Armadillo release 9.200.7 (Carpe Noctem)
+    \item Fixes in 9.200.7 compared to 9.200.5:
+    \itemize{
+      \item handling complex compound expressions by \code{trace()}
+      \item handling \code{.rows()} and \code{.cols()} by the
+      \code{Cube} class 
+    }
+  }
+}
+
+\section{Changes in RcppArmadillo version 0.9.200.5.0 (2018-11-27)}{
+  \itemize{
+    \item Upgraded to Armadillo release 9.200.5 (Carpe Noctem)
+    \item Changes in this release
+    \itemize{
+      \item linking issue when using fixed size matrices and vectors
+      \item faster handling of common cases by \code{princomp()}
+    }
+  }
+}
+
+\section{Changes in RcppArmadillo version 0.9.200.4.0 (2018-11-09)}{
+  \itemize{
+    \item Upgraded to Armadillo release 9.200.4 (Carpe Noctem)
+    \itemize{
+      \item faster handling of symmetric positive definite matrices by
+      \code{rcond()}
+      \item faster transpose of matrices with size ≥ 512x512
+      \item faster handling of compound sparse matrix expressions by
+      \code{accu()},  \code{diagmat()}, \code{trace()}
+      \item faster handling of sparse matrices by \code{join_rows()}
+      \item expanded \code{sign()} to handle scalar arguments
+      \item expanded operators (\code{*}, \code{\%}, \code{+}, \code{−})
+      to handle sparse matrices with differing element types
+      (eg. multiplication of complex matrix by real matrix) 
+      \item expanded \code{conv_to()} to allow conversion between sparse
+      matrices with differing element types 
+      \item expanded \code{solve()} to optionally allow keeping
+      solutions of systems singular to working precision
+      \item workaround for \code{gcc} and \code{clang} bug in C++17 mode
+    }
+    \item Commented-out sparse matrix test consistently failing on the
+    fedora-clang machine CRAN, and only there. No fix without access.
+    \item The 'Unit test' vignette is no longer included.
+  }
+}
+
 \section{Changes in RcppArmadillo version 0.9.100.5.0 (2018-08-16)}{
   \itemize{
     \item Upgraded to Armadillo release 9.100.4 (Armatus Ad Infinitum)

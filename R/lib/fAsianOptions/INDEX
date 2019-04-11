@@ -1,0 +1,7 @@
+BesselFunctions         Modified Bessel Functions
+EBMAsianOptions         Exponential Brownian Motion Distributions
+EBMDistribution         Exponential Brownian Motion Distributions
+GammaFunctions          Gamma and Related Functions
+HypergeometricFunctions
+                        Confluent Hypergeometric Functions
+fAsianOptions-package   EBM and Asian Option Valuation

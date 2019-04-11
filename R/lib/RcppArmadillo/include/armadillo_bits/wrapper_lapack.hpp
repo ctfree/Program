@@ -174,6 +174,52 @@ namespace lapack
   template<typename eT>
   inline
   void
+  geevx(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n, eT* a, blas_int* lda, eT* wr, eT* wi, eT* vl, blas_int* ldvl, eT* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi, eT* scale, eT* abnrm, eT* rconde, eT* rcondv, eT* work, blas_int* lwork, blas_int* iwork, blas_int* info)
+    {
+    arma_type_check(( is_supported_blas_type<eT>::value == false ));
+
+    if(is_float<eT>::value)
+      {
+      typedef float T;
+      arma_fortran(arma_sgeevx)(balanc, jobvl, jobvr, sense, n, (T*)(a), lda, (T*)(wr), (T*)(wi), (T*)(vl), ldvl, (T*)(vr), ldvr, ilo, ihi, (T*)(scale), (T*)(abnrm), (T*)(rconde), (T*)(rcondv), (T*)(work), lwork, iwork, info);
+      }
+    else
+    if(is_double<eT>::value)
+      {
+      typedef double T;
+      arma_fortran(arma_dgeevx)(balanc, jobvl, jobvr, sense, n, (T*)(a), lda, (T*)(wr), (T*)(wi), (T*)(vl), ldvl, (T*)(vr), ldvr, ilo, ihi, (T*)(scale), (T*)(abnrm), (T*)(rconde), (T*)(rcondv), (T*)(work), lwork, iwork, info);
+      }
+    }
+  
+  
+  
+  template<typename eT>
+  inline
+  void
+  cx_geevx(char* balanc, char* jobvl, char* jobvr, char* sense, blas_int* n, eT* a, blas_int* lda, eT* w, eT* vl, blas_int* ldvl, eT* vr, blas_int* ldvr, blas_int* ilo, blas_int* ihi, typename eT::value_type* scale, typename eT::value_type* abnrm, typename eT::value_type* rconde, typename eT::value_type* rcondv, eT* work, blas_int* lwork, typename eT::value_type* rwork, blas_int* info)
+    {
+    arma_type_check(( is_supported_blas_type<eT>::value == false ));
+    
+    if(is_supported_complex_float<eT>::value)
+      {
+      typedef float T;
+      typedef typename std::complex<T> cx_T;
+      arma_fortran(arma_cgeevx)(balanc, jobvl, jobvr, sense, n, (cx_T*)(a), lda, (cx_T*)(w), (cx_T*)(vl), ldvl, (cx_T*)(vr), ldvr, ilo, ihi, (T*)(scale), (T*)(abnrm), (T*)(rconde), (T*)(rcondv), (cx_T*)(work), lwork, (T*)(rwork), info);
+      }
+    else
+    if(is_supported_complex_double<eT>::value)
+      {
+      typedef double T;
+      typedef typename std::complex<T> cx_T;
+      arma_fortran(arma_zgeevx)(balanc, jobvl, jobvr, sense, n, (cx_T*)(a), lda, (cx_T*)(w), (cx_T*)(vl), ldvl, (cx_T*)(vr), ldvr, ilo, ihi, (T*)(scale), (T*)(abnrm), (T*)(rconde), (T*)(rcondv), (cx_T*)(work), lwork, (T*)(rwork), info);
+      }
+    }
+  
+  
+  
+  template<typename eT>
+  inline
+  void
   syev(char* jobz, char* uplo, blas_int* n, eT* a, blas_int* lda, eT* w,  eT* work, blas_int* lwork, blas_int* info)
     {
     arma_type_check(( is_supported_blas_type<eT>::value == false ));
@@ -1310,6 +1356,54 @@ namespace lapack
       typedef double                   pod_T;
       typedef typename std::complex<T>  cx_T;
       arma_fortran(arma_zgecon)(norm, n, (cx_T*)a, lda, (pod_T*)anorm, (pod_T*)rcond, (cx_T*)work, (pod_T*)rwork, info);
+      }
+    }
+  
+  
+  
+  template<typename eT>
+  inline
+  void
+  pocon(char* uplo, blas_int* n, eT* a, blas_int* lda, eT* anorm, eT* rcond, eT* work, blas_int* iwork, blas_int* info)
+    {
+    arma_type_check(( is_supported_blas_type<eT>::value == false ));
+    
+    if(is_float<eT>::value)
+      {
+      typedef float T;
+      arma_fortran(arma_spocon)(uplo, n, (T*)a, lda, (T*)anorm, (T*)rcond, (T*)work, iwork, info);
+      }
+    else
+    if(is_double<eT>::value)
+      {
+      typedef double T;
+      arma_fortran(arma_dpocon)(uplo, n, (T*)a, lda, (T*)anorm, (T*)rcond, (T*)work, iwork, info);
+      }
+    }
+  
+  
+  
+  template<typename T>
+  inline
+  void
+  cx_pocon(char* uplo, blas_int* n, std::complex<T>* a, blas_int* lda, T* anorm, T* rcond, std::complex<T>* work, T* rwork, blas_int* info)
+    {
+    typedef typename std::complex<T> eT;
+    
+    arma_type_check(( is_supported_blas_type<eT>::value == false ));
+    
+    if(is_supported_complex_float<eT>::value)
+      {
+      typedef float                    pod_T;
+      typedef typename std::complex<T>  cx_T;
+      arma_fortran(arma_cpocon)(uplo, n, (cx_T*)a, lda, (pod_T*)anorm, (pod_T*)rcond, (cx_T*)work, (pod_T*)rwork, info);
+      }
+    else
+    if(is_supported_complex_double<eT>::value)
+      {
+      typedef double                   pod_T;
+      typedef typename std::complex<T>  cx_T;
+      arma_fortran(arma_zpocon)(uplo, n, (cx_T*)a, lda, (pod_T*)anorm, (pod_T*)rcond, (cx_T*)work, (pod_T*)rwork, info);
       }
     }
   

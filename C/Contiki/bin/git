@@ -4,19 +4,19 @@ directory=`dirname $mypath`
 filename=`basename $directory`
 cd $directory
 
-#git clone https://github.com/contiki-ng/contiki-ng.git
-#cd contiki-ng
-#git submodule update --init --recursive
-
+# Contiki
 git clone https://github.com/contiki-os/contiki.git
 cd contiki && git submodule update --init --recursive
 cd tools/cooja && git submodule update --init
 
+# Onos
 cd $directory
 git clone git://github.com/sdnwiselab/onos
+
+# Mininet
 git clone git://github.com/mininet/mininet
 
-# Downlad Apache Karaf
+# Application: Downlad Apache Karaf
 mkdir $directory/Downloads $directory/Applications
 wget http://archive.apache.org/dist/karaf/3.0.2/apache-karaf-3.0.2.tar.gz -P $directory/Downloads
 tar -zxvf $directory/Downloads/apache-karaf-3.0.2.tar.gz -C $directory/Applications/
@@ -30,10 +30,5 @@ sudo echo "export ONOS_ROOT=$directory/onos" >> ~/.bashrc
 source ~/.bashrc
 source $ONOS_ROOT/tools/dev/bash_profile
 
-# Install Mininet
-mininet/util/install.sh -nfv
 
-cd $directory/onos
-tools/build/onos-buck build onos --show-output 
-tools/build/onos-buck run onos-local -- clean debug
 

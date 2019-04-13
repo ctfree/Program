@@ -12,6 +12,6 @@ git add -v .
 git commit -m "commit"
 git remote add $filename https://github.com/BRICOMATA8/$filename.git
 
-git push -u -f $filename master
+git pull -u -f $filename master
 #firefox https://github.com/BRICOMATA8/$filename.git
 

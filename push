@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mypath=`realpath $0`
+directory=`dirname $mypath`
+filename=`basename $directory`
+
+
+git config --global user.email "papierpourgithub@gmail.com"
+
+git add -v .
+
+git commit -m "commit"
+git remote add $filename https://github.com/BRICOMATA8/$filename.git
+
+git push -u -f $filename master
+#firefox https://github.com/BRICOMATA8/$filename.git
+

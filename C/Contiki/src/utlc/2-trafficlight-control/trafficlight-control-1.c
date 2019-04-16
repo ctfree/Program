@@ -1,40 +1,3 @@
-/*
- * Copyright (c) 2016, Zolertia - http://www.zolertia.com
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 3. Neither the name of the Institute nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
- *
- * This file is part of the Contiki operating system.
- * 
- * -----------------------------------------------------------------
- * 
- * Traffic lights developement for IoT-UTLC project by Jérémy Petit
- * jeremy.petit2@outlook.fr
- * and 6 ECE Paris students
- *
- */
 /*---------------------------------------------------------------------------*/
 #include "contiki.h"
 #include "lib/random.h"
@@ -104,8 +67,7 @@ static struct etimer tima;
 static struct my_msg_t msg;
 static struct my_msg_t *msgPtr = &msg;
 
-typedef struct
-{
+typedef struct{
   int data;
   int qos;
   int option;
@@ -127,12 +89,10 @@ AUTOSTART_PROCESSES(&udp_client_process);
 
 /*---------------------------------------------------------------------------*/
 static void
-state_trafficlight(int value)
-{
+state_trafficlight(int value){
   if (value > 2)
     printf("Err value: %u", value);
-  switch (value)
-  {
+  switch (value){
   case 0:
     leds_off(LEDS_ALL);
     leds_on(LEDS_RED);
@@ -158,22 +118,18 @@ state_trafficlight(int value)
  * us
  */
 static void
-tcpip_handler(void)
-{
+tcpip_handler(void){
   char *str;
   rcv = malloc(sizeof(MSG_RCV));
-  if (uip_newdata())
-  {
+  if (uip_newdata()){
     /* Get the buffer pointer */
     rcv = uip_appdata;
     printf("Test des valeurs : data:%u qos:%u option:%u\n", rcv->data, rcv->qos, rcv->option);
 
-    if (my_state != rcv->data) /* New state */
-    {
+    if (my_state != rcv->data) /* New state */{
       printf("New value %u != %u \n", my_state, rcv->data);
 
-      if (rcv->data == 0)
-      {
+      if (rcv->data == 0){
         state_trafficlight(1);
         printf("Switch to yellow \n");
       }
@@ -181,8 +137,7 @@ tcpip_handler(void)
       PAUSE = 1;
       my_state = rcv->data;
     }
-    else
-    {
+    else{
       printf("%u == %u \n", my_state, rcv->data);
     }
     if (rcv->option) {
@@ -213,8 +168,7 @@ tcpip_handler(void)
       printf("Reset\n");
       RESET = 1;
     }
-    if (rcv->data > 2000 && rcv->qos > 200 && rcv->option > 200)
-    { //Buffer overflow detected
+    if (rcv->data > 2000 && rcv->qos > 200 && rcv->option > 200){ //Buffer overflow detected
       wrong_data_ctr++;
       printf("Wrong data, possible overflow\n");
       if (wrong_data_ctr > 10)
@@ -225,8 +179,7 @@ tcpip_handler(void)
 
 /*---------------------------------------------------------------------------*/
 static void
-send_packet_event(void)
-{
+send_packet_event(void){
   uint16_t aux;
   counter++;
 
@@ -265,8 +218,7 @@ send_packet_event(void)
 }
 /*---------------------------------------------------------------------------*/
 static void
-send_packet_sensor(void)
-{
+send_packet_sensor(void){
   uint16_t aux;
   counter++;
 
@@ -305,23 +257,19 @@ send_packet_sensor(void)
 }
 /*---------------------------------------------------------------------------*/
 static void
-print_local_addresses(void)
-{
+print_local_addresses(void){
   int i;
   uint8_t state;
 
   PRINTF("Client IPv6 addresses:\n");
-  for (i = 0; i < UIP_DS6_ADDR_NB; i++)
-  {
+  for (i = 0; i < UIP_DS6_ADDR_NB; i++){
     state = uip_ds6_if.addr_list[i].state;
     if (uip_ds6_if.addr_list[i].isused &&
-        (state == ADDR_TENTATIVE || state == ADDR_PREFERRED))
-    {
+        (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)){
       PRINT6ADDR(&uip_ds6_if.addr_list[i].ipaddr);
       PRINTF("\n");
       /* hack to make address "final" */
-      if (state == ADDR_TENTATIVE)
-      {
+      if (state == ADDR_TENTATIVE){
         uip_ds6_if.addr_list[i].state = ADDR_PREFERRED;
       }
     }
@@ -330,8 +278,7 @@ print_local_addresses(void)
 /*---------------------------------------------------------------------------*/
 /* This is a hack to set ourselves the global address, use for testing */
 static void
-set_global_address(void)
-{
+set_global_address(void){
   uip_ipaddr_t ipaddr;
 
   /* The choice of server address determines its 6LoWPAN header compression.
@@ -351,8 +298,7 @@ set_global_address(void)
   uip_ds6_addr_add(&ipaddr, 0, ADDR_AUTOCONF);
 }
 /*---------------------------------------------------------------------------*/
-PROCESS_THREAD(udp_client_process, ev, data)
-{
+PROCESS_THREAD(udp_client_process, ev, data){
 
   PROCESS_BEGIN();
 
@@ -397,8 +343,7 @@ PROCESS_THREAD(udp_client_process, ev, data)
    */
   client_conn = udp_new(NULL, UIP_HTONS(UDP_SERVER_PORT), NULL);
 
-  if (client_conn == NULL)
-  {
+  if (client_conn == NULL){
     PRINTF("No UDP connection available, exiting the process!\n");
     PROCESS_EXIT();
   }
@@ -417,18 +362,15 @@ PROCESS_THREAD(udp_client_process, ev, data)
 
   etimer_set(&periodic, SEND_INTERVAL);
 
-  while (1)
-  {
+  while (1){
     PROCESS_YIELD();
 
     /* Incoming events from the TCP/IP module */
-    if (ev == tcpip_event)
-    {
+    if (ev == tcpip_event){
       tcpip_handler();
     }
     i = i + 1;
-    if (RESET)
-    {
+    if (RESET){
       printf("RESET");
       if (msg.id == 1) { /* Reset time for trafficlight 1 cycle of 30s */
         etimer_set(&periodic, SEND_INTERVAL / 2);
@@ -441,8 +383,7 @@ PROCESS_THREAD(udp_client_process, ev, data)
       RESET = 0;
     }
 
-    if (PAUSE)
-    {
+    if (PAUSE){
       printf("Pause\n");
       etimer_set(&tim, 3 * CLOCK_SECOND);
       PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&tim));
@@ -452,15 +393,13 @@ PROCESS_THREAD(udp_client_process, ev, data)
     }
     /* Send data to the server */
     /* QoS 0: Non-priority data sent every minutes with 30s shift for data sent to server every 30s */
-    if (ev == PROCESS_EVENT_TIMER)
-    {
+    if (ev == PROCESS_EVENT_TIMER){
       if(PAUSE==1 || TT == 1){ // Verification to avoid time conflict using PAUSE
         PAUSE=0;
         TT=0;
       }else {
         send_packet_event();
-        if (etimer_expired(&periodic))
-        {
+        if (etimer_expired(&periodic)){
           if(ND == 1) //To get back the normal interval
             etimer_set(&periodic, SEND_INTERVAL);
           else
@@ -470,10 +409,8 @@ PROCESS_THREAD(udp_client_process, ev, data)
     }
 
     /* QoS 2: Priority data when pressing the user button */
-    if (ev == sensors_event && data == &button_sensor)
-    {
-      if (i % 2 == 0)
-      {
+    if (ev == sensors_event && data == &button_sensor){
+      if (i % 2 == 0){
         send_packet_sensor();
       }
     }

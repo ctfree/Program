@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ls -ls boot
+touch ssh
+echo "dtoverlay=dwc2" >> config.txt
+#echo "modules-load=dwc2,g_ether" >> /Volumes/boot/cmdline.txt
+
+
+
+
+ssh-keygen -R raspberrypi.local
+ssh pi@raspberrypi.local

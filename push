@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mypath=`realpath "$0"`
 directory=`dirname "$mypath"`

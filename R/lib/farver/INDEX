@@ -1,4 +1,0 @@
-compare_colour          Calculate the distance between colours
-convert_colour          Convert between colour spaces
-farver-package          farver: Vectorised Colour Conversion and
-                        Comparison

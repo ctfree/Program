@@ -1,0 +1,3 @@
+#!/bin/bash
+coojaPath=/home/aghiles/Aghiles/.Library/contiki/tools/cooja
+cd $coojaPath && ant run

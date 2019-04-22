@@ -1,0 +1,31 @@
+addrv                   Adding Random Variables to a Probability Space
+cards                   A Standard Set of Playing Cards
+cfbeta                  Characteristic functions
+countrep                Count Repetitions
+empirical               Empirical Summary of a Simulation
+euchredeck              A Deck of Playing Cards for Euchre
+gen2wayTable            Generate Two-way Tables
+genIndepTable           Generate Independent Two-way Table
+genLogRegData           Generate data for logistic regression
+genXdata                Generate continuous model matrix data
+iidspace                Independent Identical Experiments
+intersect               Intersection of Subsets
+is.probspace            Testing for a Probability Space
+isin                    Test Whether One Vector Is In Another Vector
+isrep                   Is Repeated in a Vector
+marginal                Marginal Distributions
+noorder                 Sort and Merge Probability Space Outcomes
+nsamp                   Number of Samples from an Urn
+permsn                  Generate All Permutations of x Elements Taken m
+                        at a Time
+prob                    Probability and Conditional Probability
+prob-package            Elementary Probability on Finite Sample Spaces
+probspace               Probability Spaces
+rolldie                 Rolling a Die
+roulette                Roulette
+setdiff                 Set Difference of Subsets
+sim                     Simulate Draws from a Sample Space
+subset                  Subsets of Probability Spaces
+tosscoin                Tossing a Coin
+union                   Union of Subsets
+urnsamples              Sampling from Urns

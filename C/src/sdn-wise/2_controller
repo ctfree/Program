@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ssh -p 8101 onos@localhost
+
+#app activate org.onosproject.sdnwise

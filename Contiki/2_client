@@ -1,5 +1,0 @@
-#!/bin/bash
-
-gnome-terminal -e "ssh -p 8101 karaf@localhost"
-
-#app activate org.onosproject.sdnwise

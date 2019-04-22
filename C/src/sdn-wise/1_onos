@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#tools/build/onos-buck build onos --show-output
+
+title1="ONOS"
+titl1=/home/aghiles/Aghiles/Program/C/bin/onos
+cmd="sudo tools/build/onos-buck run onos-local -- clean debug"
+
+gnome-terminal --tab --title="$title1" --command="bash -c 'cd $titl1; $cmd; $SHELL'"
+

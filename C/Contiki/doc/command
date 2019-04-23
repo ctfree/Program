@@ -1,5 +1,0 @@
-
-TARGET="z1"
-make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB0 hello-world.upload
-make TARGET=zoul BOARD=firefly PORT=/dev/ttyUSB0 login
-

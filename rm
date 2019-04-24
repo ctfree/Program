@@ -1,1 +1,3 @@
+git update-ref -d refs/original/refs/heads/master
+
 git filter-branch --tree-filter 'rm -rf R/src/PI_caliopen/res/mails_caliopen.csv' HEAD

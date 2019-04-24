@@ -3,7 +3,7 @@
 mytitle="Server"
 echo -e '\033]2;'$mytitle'\007'
 
-projectPath=/home/aghiles/Aghiles/Tool/bin/contiki
+projectPath=/home/aghiles/Aghiles/Program/C/bin/contiki
 
 title1="Connexion"
 title3="Server"

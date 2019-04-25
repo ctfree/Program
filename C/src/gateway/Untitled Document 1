@@ -1,10 +1,10 @@
 #!/bin/sh
 
-ls -ls boot
+ls -ls .
 touch ssh
-echo "dtoverlay=dwc2" >> config.txt
-#echo "modules-load=dwc2,g_ether" >> /Volumes/boot/cmdline.txt
-
+echo "dtoverlay=dwc2,dr_mode=peripheral" >> config.txt
+#echo "modules-load=dwc2,g_ether" >> cmdline.txt
+touch ssh
 
 
 

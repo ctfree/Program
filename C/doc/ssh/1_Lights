@@ -1,5 +1,0 @@
-#!/bin/bash
-
-sudo vagrant up
-sudo vagrant ssh -c "cd aghiles/contiki-utlc; ./1_Lights"
-

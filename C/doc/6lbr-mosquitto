@@ -1,5 +1,9 @@
 #!/bin/sh
 
+apt-get install libncurses5-dev bridge-utils libssl-dev ares.dev libwebsockets.dev uuid.dev      
+sudo apt install cmake g++ libssl-dev libc-ares-dev uuid-dev xsltproc docbook-xsl
+
+
 cd /home/aghiles/Aghiles/Program/C/bin/contiki/examples/ipv6/slip-radio/
 make TARGET=zoul savetarget
 BOARD=remote make slip-radio.upload PORT=/dev/ttyUSB0
@@ -10,10 +14,6 @@ BOARD=remote make login PORT=/dev/ttyUSB1
 
 
 cd /home/aghiles/Downloads
-apt-get install libncurses5-dev bridge-utils libssl-dev ares.dev libwebsockets.dev uuid.dev      
-sudo apt install cmake g++ libssl-dev libc-ares-dev uuid-dev xsltproc docbook-xsl
-
-
 # 6lbr installation
 git clone https://github.com/cetic/6lbr
 cd 6lbr
@@ -61,22 +61,22 @@ sudo ifconfig
 
 
 
-firefox http://[bbbb::100]
-Edit Configuration Global Settings
-Channel: 26
-IP Configuration Prefix: fd00::
-IP Configuration 6LoPWAN context 0: fd00::
-IP Configuration Address autoconfiguration: on
-Eth Network prefix: bbbb::
-Eth Network Address autoconfiguration: off
-IP64 IP64: on
-IP64 DHCP: on
-RA Daemon RA Daemon: active
-Click Submit and it will reboot the 6lbr daemon
-ping google.com, open http://[bbbb::100]
-Connect slip Mote to Linux host
-Turn on Mqtt Client mote
-Click Sensor Tab to see the IPv6 Motes
+#firefox http://[bbbb::100]
+#Edit Configuration Global Settings
+#Channel: 26
+#IP Configuration Prefix: fd00::
+#IP Configuration 6LoPWAN context 0: fd00::
+#IP Configuration Address autoconfiguration: on
+#Eth Network prefix: bbbb::
+#Eth Network Address autoconfiguration: off
+#IP64 IP64: on
+#IP64 DHCP: on
+#RA Daemon RA Daemon: active
+#Click Submit and it will reboot the 6lbr daemon
+#ping google.com, open http://[bbbb::100]
+#Connect slip Mote to Linux host
+#Turn on Mqtt Client mote
+#Click Sensor Tab to see the IPv6 Motes
 
 
 

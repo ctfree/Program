@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mypath=`realpath "$0"`
+directory=`dirname "$mypath"`
+filename=`basename "$directory"`
+cd "$directory"
+
+java -jar coap-shell-1.0.7.jar

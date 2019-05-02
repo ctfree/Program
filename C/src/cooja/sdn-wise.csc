@@ -43,8 +43,8 @@
       </interface_config>
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>53.73777469044286</x>
-        <y>72.4340747021229</y>
+        <x>55.62530741606964</x>
+        <y>64.88394379961578</y>
         <z>0.0</z>
       </interface_config>
       <motetype_identifier>apptype1</motetype_identifier>
@@ -120,8 +120,8 @@
     <width>280</width>
     <z>0</z>
     <height>160</height>
-    <location_x>400</location_x>
-    <location_y>0</location_y>
+    <location_x>485</location_x>
+    <location_y>12</location_y>
   </plugin>
   <plugin>
     org.contikios.cooja.plugins.Visualizer
@@ -132,9 +132,14 @@
       <skin>org.contikios.cooja.plugins.skins.TrafficVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.UDGMVisualizerSkin</skin>
       <skin>org.contikios.cooja.plugins.skins.MoteTypeVisualizerSkin</skin>
-      <viewport>3.0516027202057194 0.0 0.0 3.0516027202057194 79.41396890335146 28.177152320589187</viewport>
+      <skin>org.contikios.cooja.plugins.skins.LEDVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.AddressVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.PositionVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.AttributeVisualizerSkin</skin>
+      <skin>org.contikios.cooja.plugins.skins.LogVisualizerSkin</skin>
+      <viewport>2.1191685556984163 0.0 0.0 2.1191685556984163 123.8985895162163 73.9563557781869</viewport>
     </plugin_config>
-    <width>400</width>
+    <width>470</width>
     <z>1</z>
     <height>400</height>
     <location_x>1</location_x>
@@ -148,10 +153,10 @@
       <coloring />
     </plugin_config>
     <width>360</width>
-    <z>3</z>
+    <z>2</z>
     <height>240</height>
-    <location_x>400</location_x>
-    <location_y>160</location_y>
+    <location_x>737</location_x>
+    <location_y>181</location_y>
   </plugin>
   <plugin>
     org.contikios.cooja.plugins.TimeLine
@@ -179,22 +184,22 @@
       <notes>Enter notes here</notes>
       <decorations>true</decorations>
     </plugin_config>
-    <width>80</width>
+    <width>418</width>
     <z>4</z>
     <height>160</height>
-    <location_x>680</location_x>
-    <location_y>0</location_y>
+    <location_x>922</location_x>
+    <location_y>4</location_y>
   </plugin>
   <plugin>
     org.contikios.cooja.plugins.RadioLogger
     <plugin_config>
-      <split>150</split>
+      <split>199</split>
       <formatted_time />
       <showdups>false</showdups>
       <hidenodests>false</hidenodests>
     </plugin_config>
-    <width>500</width>
-    <z>2</z>
+    <width>941</width>
+    <z>3</z>
     <height>300</height>
     <location_x>243</location_x>
     <location_y>450</location_y>

@@ -8,6 +8,7 @@ a10s_1 <- read.csv(file="10s_1.csv", header=T, sep=",")*1000
 data <- c(a1s_0,a1s_1,a5s_0,a5s_1,a10s_0,a10s_1)
 data
 
+# Histogram
 pdf("../bin/delay.pdf")
 layout(rbind(1:2, 3:4, 5:6))
 for (i in c(1,3,5,7,9,11)) {
@@ -108,8 +109,13 @@ dev.off()
 # }
 # dev.off()
 
+names(calc_cent)[1]  <- "Pkt sent each 1s & QoS level 0"
+names(calc_cent)[3]  <- "Pkt sent each 1s & QoS level 1"
+names(calc_cent)[10] <- "Pkt sent each 10s & QoS level 0"
+names(calc_cent)[12] <- "Pkt sent each 10s & QoS level 1"
 # plot CDF
-pdf("../bin/centralities_cdf.pdf")
+setEPS()
+postscript("whatever.eps", width=6, height=6)
 layout(rbind(1:2, 3:4))
 for (i in c(1,3,10,12)) {
   tryCatch({cdfcomp(calc_dist[[i]],ylab= "CDF (%)", xlab="Delay (ms)", xlim = c(200,500), main=names(calc_cent)[i])}   ,error = function(error_condition) {})
@@ -123,15 +129,15 @@ dev.off()
 library(RColorBrewer)
 colors <- sort(brewer.pal(6, "Set1"), decreasing = F)
 
-setEPS()
-postscript("whatever.eps")
+pdf("cdf.eps", width=6, height=6)
 j=1
+plot(NA,xlim = c(200,500), ylim = c(0,1),xlab=NA,ylab=NA,main=NA) # Empty plot
 for (i in c(1,3,10,12)) {
   x <- calc_cent[[i]]
-  curve(pgumbel(x, calc_dist[[i]]$gumbel$estimate[1], calc_dist[[i]]$gumbel$estimate[2]), 200, 450, col = colors[j], xlab='Delay (ms)', ylab='CDF (%)', cex.lab=1.5, lwd = 2, add = TRUE)
+  curve(plogis(x, calc_dist[[i]]$logis$estimate[1], calc_dist[[i]]$logis$estimate[2]), 200, 450, col = colors[j], xlab='Delay (ms)', ylab='CDF (%)', cex.lab=1.5, lwd = 2, add = TRUE)
   j<-j+1
 }
-legend('bottomright', names(calc_cent)[c(1,3,10,12)] , lty=1, col=colors, bty='n', cex=1.5, lw=2)
+legend('bottomright', names(calc_cent)[c(1,3,10,12)] , lty=1, col=colors, bty='n', cex=1.2, lw=2)
 dev.off()
 
 

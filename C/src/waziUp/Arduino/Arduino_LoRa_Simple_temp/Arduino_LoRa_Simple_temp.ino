@@ -31,7 +31,7 @@
  
 #include <SPI.h> 
 // Include the SX1272
-#include "SX1272.h"
+#include "/home/aghiles/Aghiles/Program/C/src/waziUp/Arduino/libraries/SX1272/src/SX1272.h"
 #include "my_temp_sensor_code.h"
 
 /********************************************************************

@@ -17,7 +17,7 @@
  *  along with the program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *****************************************************************************
- * last update: May 21th, 2019 by C. Pham
+ * last update: March 26th, 2019 by C. Pham
  * 
  * This version uses the same structure than the Arduino_LoRa_Demo_Sensor where
  * the sensor-related code is in a separate file
@@ -31,7 +31,7 @@
  
 #include <SPI.h> 
 // Include the SX1272
-#include "SX1272.h"
+#include "/home/aghiles/Aghiles/Program/C/src/waziUp/Arduino/libraries/SX1272/src/SX1272.h"
 #include "my_temp_sensor_code.h"
 
 /********************************************************************
@@ -51,18 +51,14 @@
 ///////////////////////////////////////////////////////////////////
 // COMMENT OR UNCOMMENT TO CHANGE FEATURES. 
 // ONLY IF YOU KNOW WHAT YOU ARE DOING!!! OTHERWISE LEAVE AS IT IS
-#define WITH_EEPROM
-//#define WITH_APPKEY
+//#define WITH_EEPROM
+#define WITH_APPKEY
 //if you are low on program memory, comment STRING_LIB to save about 2K
 #define STRING_LIB
-#define LOW_POWER
+//#define LOW_POWER
 #define LOW_POWER_HIBERNATE
 //#define WITH_ACK
 //#define LOW_POWER_TEST
-//uncomment to use a customized frequency. TTN plan includes 868.1/868.3/868.5/867.1/867.3/867.5/867.7/867.9 for LoRa
-//#define MY_FREQUENCY 868.1
-//when sending to a LoRaWAN gateway (e.g. running util_pkt_logger) but with no native LoRaWAN format, just to set the correct sync word
-//#define USE_LORAWAN_SW
 ///////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////
@@ -96,7 +92,7 @@
 //
 // uncomment if your radio is an HopeRF RFM92W, HopeRF RFM95W, Modtronix inAir9B, NiceRF1276
 // or you known from the circuit diagram that output use the PABOOST line instead of the RFO line
-#define PABOOST
+//#define PABOOST
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 ///////////////////////////////////////////////////////////////////
@@ -175,9 +171,9 @@ const uint32_t DEFAULT_CHANNEL=CH_04_868;
 const uint32_t DEFAULT_CHANNEL=CH_10_868;
 #endif
 #elif defined BAND900
-const uint32_t DEFAULT_CHANNEL=CH_05_900;
-//For HongKong, Japan, Malaysia, Singapore, Thailand, Vietnam: 920.36MHz     
-//const uint32_t DEFAULT_CHANNEL=CH_08_900;
+//const uint32_t DEFAULT_CHANNEL=CH_05_900;
+// For HongKong, Japan, Malaysia, Singapore, Thailand, Vietnam: 920.36MHz     
+const uint32_t DEFAULT_CHANNEL=CH_08_900;
 #elif defined BAND433
 const uint32_t DEFAULT_CHANNEL=CH_00_433;
 #endif
@@ -390,18 +386,6 @@ void setup()
   PRINT_CSTSTR("%s","Setting Mode: state ");
   PRINT_VALUE("%d", e);
   PRINTLN;
-    
-#ifdef MY_FREQUENCY
-  e = sx1272.setChannel(MY_FREQUENCY*1000000.0*RH_LORA_FCONVERT);
-  PRINT_CSTSTR("%s","Setting customized frequency: ");
-  PRINT_VALUE("%f", MY_FREQUENCY);
-  PRINTLN;
-#else
-  e = sx1272.setChannel(DEFAULT_CHANNEL);  
-#endif  
-  PRINT_CSTSTR("%s","Setting Channel: state ");
-  PRINT_VALUE("%d", e);
-  PRINTLN;
 
   // enable carrier sense
   sx1272._enableCarrierSense=true;
@@ -410,18 +394,25 @@ void setup()
   // there seem to be some issue with RSSI reading
   sx1272._RSSIonSend=false;
 #endif   
-
-#ifdef USE_LORAWAN_SW
-  e = sx1272.setSyncWord(0x34);
-  PRINT_CSTSTR("%s","Set sync word to 0x34: state ");
+    
+  // Select frequency channel
+  e = sx1272.setChannel(DEFAULT_CHANNEL);
+  PRINT_CSTSTR("%s","Setting Channel: state ");
   PRINT_VALUE("%d", e);
   PRINTLN;
-#endif
-
+  
   // Select amplifier line; PABOOST or RFO
 #ifdef PABOOST
-  sx1272._needPABOOST=true; 
+  sx1272._needPABOOST=true;
+  // previous way for setting output power
+  // powerLevel='x';
+#else
+  // previous way for setting output power
+  // powerLevel='M';  
 #endif
+
+  // previous way for setting output power
+  // e = sx1272.setPower(powerLevel); 
 
   e = sx1272.setPowerDBM((uint8_t)MAX_DBM);
   PRINT_CSTSTR("%s","Setting Power: state ");
@@ -624,22 +615,29 @@ void loop(void)
       PRINT_CSTSTR("%s","SAMD21G18A wakes up from standby\n");      
       FLUSHOUTPUT
 #else
+      nCycle = idlePeriodInMin*60/LOW_POWER_PERIOD; //+ random(2,4);
 
 #if defined __MK20DX256__ || defined __MKL26Z64__ || defined __MK64FX512__ || defined __MK66FX1M0__
       // warning, setTimer accepts value from 1ms to 65535ms max
-      // milliseconds      
-      // by default, LOW_POWER_PERIOD is 60s for those microcontrollers      
-      timer.setTimer(LOW_POWER_PERIOD*1000);
-#endif
+      timer.setTimer(LOW_POWER_PERIOD*1000 + random(1,5)*1000);// milliseconds
 
       nCycle = idlePeriodInMin*60/LOW_POWER_PERIOD;
-                
-      for (uint8_t i=0; i<nCycle; i++) {  
+#endif          
+      for (int i=0; i<nCycle; i++) {  
 
-#if defined ARDUINO_AVR_MEGA2560 || defined ARDUINO_AVR_PRO || defined ARDUINO_AVR_NANO || defined ARDUINO_AVR_UNO || defined ARDUINO_AVR_MINI || defined __AVR_ATmega32U4__ 
-          // ATmega2560, ATmega328P, ATmega168, ATmega32U4
+#if defined ARDUINO_AVR_PRO || defined ARDUINO_AVR_NANO || defined ARDUINO_AVR_UNO || defined ARDUINO_AVR_MINI || defined __AVR_ATmega32U4__ 
+          // ATmega328P, ATmega168, ATmega32U4
           LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
           
+          //LowPower.idle(SLEEP_8S, ADC_OFF, TIMER2_OFF, TIMER1_OFF, TIMER0_OFF, 
+          //              SPI_OFF, USART0_OFF, TWI_OFF);
+#elif defined ARDUINO_AVR_MEGA2560
+          // ATmega2560
+          LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+          
+          //LowPower.idle(SLEEP_8S, ADC_OFF, TIMER5_OFF, TIMER4_OFF, TIMER3_OFF, 
+          //      TIMER2_OFF, TIMER1_OFF, TIMER0_OFF, SPI_OFF, USART3_OFF, 
+          //      USART2_OFF, USART1_OFF, USART0_OFF, TWI_OFF);
 #elif defined __MK20DX256__ || defined __MKL26Z64__ || defined __MK64FX512__ || defined __MK66FX1M0__
           // Teensy31/32 & TeensyLC
 #ifdef LOW_POWER_HIBERNATE
@@ -658,16 +656,18 @@ void loop(void)
 #endif                        
           PRINT_CSTSTR("%s",".");
           FLUSHOUTPUT
-          delay(1);                        
+          delay(10);                        
       }
+      
+      delay(50);
 #endif      
       
 #else
       PRINT_VALUE("%ld", nextTransmissionTime);
       PRINTLN;
       PRINT_CSTSTR("%s","Will send next value at\n");
-      // can use a random part also to avoid collision
-      nextTransmissionTime=millis()+(unsigned long)idlePeriodInMin*60*1000; //+(unsigned long)random(15,60)*1000;
+      // use a random part also to avoid collision
+      nextTransmissionTime=millis()+(unsigned long)idlePeriodInMin*60*1000+(unsigned long)random(15,60)*1000;
       PRINT_VALUE("%ld", nextTransmissionTime);
       PRINTLN;
   }

@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                          %
+% Author : Sakshama Ghoslya                %
+%          IIT Hyderabad, Hyderabad, India %
+% Email  : sakshama.ghosliya@gmail.com     %
+%                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 clear all; close all; clc;
 
 SF = 8;  % Spreading Factor

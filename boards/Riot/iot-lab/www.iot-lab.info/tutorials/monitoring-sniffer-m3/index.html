@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/monitoring-sniffer-m3/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:20:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Radio sniffer with M3 nodes &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-7317 page-child parent-pageid-7210 page-template-default layout-1c">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+	
+	<div id="primary" class="content-area col-sm-8">
+
+				<main id="main" class="site-main" role="main">
+
+			<article role="article" id="post-7317" class="post-7317 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><h2>Radio sniffer with M3 nodes</h2>
+<p>&nbsp;</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="" width="30" height="30" /> <strong>Difficulty</strong>: Medium</p>
+<p><img class="alignnone size-full wp-image-1253" src="../../wp-content/uploads/2014/02/duration.jpg" alt="" width="30" height="30" /> <strong>Duration</strong>: 30 minutes</p>
+<p><em><strong>Prerequisites</strong>: <a title="Configure your SSH access" href="../ssh-access/index.html" target="_blank">Configure SSH Access</a> / <a title="Submit" href="../submit-experiment-m3-web/index.html" target="_blank">Submit an experiment with M3 nodes using the web portal</a> / <em><a href="../serial-aggregator/index.html">Nodes Serial Link Aggregation</a></em></em></p>
+<p><em><strong>Description</strong>: Each node of an experiment is monitored by its Control Node (users have no access to it). It monitors node consumption, radio, selects power supply (battery or DC). </em><em>A Profile represents the Control Node configuration during the experiment. The aim of this tutorial is to create a profile for capturing and analyzing radio communication. You can capture frames in defined channel over the air and visualize them in <a title="Wireshark" href="https://www.wireshark.org/" target="_blank">Wireshark.</a></em></p>
+<p><em><strong>Note</strong>: Wireshark must be installed on your PC (<code>mypc_ubuntu&gt; sudo apt-get install wireshark</code>)</em></p>
+<ol>
+<li><a href="../../testbed/index.html" target="_blank">Log into the Webportal</a></li>
+<li>Select the <strong>Resources / Monitoring profiles</strong> tab</li>
+<li>Click the <strong>New profile</strong> button to create a new profile</li>
+<li>Set this monitoring profile with
+<ul>
+<li>Name <b>sniff_11</b> and Architecture <strong>M3</strong></li>
+<li>Monitor <b>Radio</b> with <strong> sniffer on Channel 11</strong> (default channel in the tutorial firmware)</li>
+</ul>
+</li>
+<li>Save this new profile.</li>
+<li>Submit a new experiment
+<ul>
+<li>Duration : <strong>20 minutes</strong> and select “<strong>As soon as possible</strong>”</li>
+<li>Choose around 5 M3 nodes with <strong>same radio neighborhood</strong></li>
+<li>Click on <strong>node id</strong> link</li>
+<li>Select Archi = M3 (at86rf231) / Site = Grenoble / IDs = 7 (sniffer node in our experiment) and click <b>Add to experiment</b></li>
+<li>Select Archi = M3 (at86rf231) / Site = Grenoble / IDs = 8-11 and click <b>Add to experiment</b></li>
+</ul>
+</li>
+<li>For nodes association: use the monitoring profile you have created earlier and the <a href="https://raw.githubusercontent.com/wiki/iot-lab/iot-lab/firmwares/tutorial_m3.elf">tutorial firmware file</a>
+<ul>
+<li>Add firmware and profile for m3-7 node (sniffer node in our experiment)</li>
+<li>Add firmware for other nodes (m3-[8-11])</li>
+</ul>
+</li>
+<li>Click on the experiment in the list and wait for the experiment to become running.</li>
+<li>Connect to the SSH frontend of Grenoble
+<pre><strong>ssh &lt;login&gt;@grenoble.iot-lab.info</strong></pre>
+</li>
+<li>If you didn&#8217;t authenticate using <strong><tt>iotlab-auth</tt></strong>, do it now:
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-auth -u login</strong></pre>
+</li>
+<li>Interact with the nodes. Connect to all nodes using <code>serial_aggregator</code>
+<pre>&lt;login&gt;@grenoble:~$ <strong>serial_aggregator</strong>
+1421069467.222714;Aggregator started
+1421069467.380965;m3-7;A
+1421069467.381105;m3-7;
+1421069467.382198;m3-7;IoT-LAB Simple Demo program
+1421069467.382308;m3-7;Type command
+1421069467.390591;m3-7;	h:	print this help
+1421069467.390705;m3-7;	t:	temperature measure
+1421069467.390800;m3-7;	l:	luminosity measure
+1421069467.390889;m3-7;	p:	pressure measure
+1421069467.391089;m3-7;	s:	send a radio packet
+1421069467.391181;m3-7;	b:	send a big radio packet
+1421069467.391376;m3-7;	e:	toggle leds blinking
+1421069467.391474;m3-7;
+1421069467.391560;m3-7; Type Enter to stop printing this help
+
+<strong># Hit "Space+Enter" to stop the flood.</strong></pre>
+</li>
+<li>Use Sniffer aggregator in another terminal with your sniffer node
+<pre>&lt;login&gt;@grenoble:~$ <strong>sniffer_aggregator -l grenoble,m3,7 -o m3-7.pcap</strong>
+1421070437.561983;Aggregator started
+</pre>
+<div class="alert alert-info">The <code>sniffer_aggregator</code> is a python script based on the cli-tools and asyncore to aggregate all the nodes sniffer links (TCP socket on port 30000).</div>
+</li>
+<li>Send a packet with your sniffer node from the <code>serial_aggregator</code>
+<pre><strong>m3-7;s</strong>
+1421071098.774563;m3-7;cmd &gt; 
+1421071098.774889;m3-7;radio &gt; Packet sent
+1421071098.775016;m3-7;
+1421071098.775577;m3-11;cmd &gt; 
+1421071098.775741;m3-10;cmd &gt; 
+1421071098.775966;m3-8;cmd &gt; 
+1421071098.776343;m3-9;cmd &gt; 
+1421071098.776828;m3-11;radio &gt; Got packet from 2261. Len: 16 Rssi: -50: 'Hello World!: 0'
+1421071098.776943;m3-11;
+1421071098.777363;m3-10;radio &gt; Got packet from 2261. Len: 16 Rssi: -49: 'Hello World!: 0'
+1421071098.777479;m3-10;
+1421071098.777632;m3-8;radio &gt; Got packet from 2261. Len: 16 Rssi: -50: 'Hello World!: 0'
+1421071098.777970;m3-8;
+1421071098.778143;m3-9;radio &gt; Got packet from 2261. Len: 16 Rssi: -64: 'Hello World!: 0'
+1421071098.778223;m3-9;
+</pre>
+</li>
+<li>Send a big packet with another node
+<pre><strong>m3-11;b</strong>
+1421071240.053937;m3-11;cmd &gt; 
+1421071240.054842;m3-11;radio &gt; Big packet sent
+1421071240.054965;m3-11;
+1421071240.056961;m3-7;cmd &gt; 
+1421071240.057126;m3-9;cmd &gt; 
+1421071240.057558;m3-10;cmd &gt; 
+1421071240.057842;m3-8;cmd &gt; 
+1421071240.059232;m3-8;radio &gt; Got packet from 8679. Len: 60 Rssi: -45: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1421071240.059847;m3-10;radio &gt; Got packet from 8679. Len: 60 Rssi: -46: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1421071240.060044;m3-10;
+1421071240.060173;m3-9;radio &gt; Got packet from 8679. Len: 60 Rssi: -61: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1421071240.060261;m3-9;
+1421071240.060699;m3-8;
+1421071240.061153;m3-7;radio &gt; Got packet from 8679. Len: 60 Rssi: -49: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1421071240.061248;m3-7;
+</pre>
+</li>
+<li>Close the sniffer aggregator script (<strong>Ctrl-C</strong>)
+<pre>&lt;login&gt;@grenoble:~$ <strong>sniffer_aggregator -l grenoble,m3,7 -o m3-7.pcap</strong>
+1421070437.561983;Aggregator started
+^C1421071309.916621;Stopping
+1421071309.917010;m3-7;Connection closed
+</pre>
+</li>
+<li>View sniffer packets capture
+<pre>&lt;login&gt;@grenoble:~$ <strong>/usr/sbin/tcpdump -v -r m3-7.pcap</strong> 
+reading from file m3-7.pcap, link-type EN10MB (Ethernet)
+14:58:18.776806 IP (tos 0x0, ttl 255, id 0, offset 0, flags [DF], proto UDP (17), length 82)
+    localhost.17754 &gt; localhost.17754: UDP, length 54
+15:00:40.059490 IP (tos 0x0, ttl 255, id 0, offset 0, flags [DF], proto UDP (17), length 126)
+    localhost.17754 &gt; localhost.17754: UDP, length 98
+</pre>
+</li>
+<li>Analyse the traffic in wireshark on your computer. In the tutorial firmware we use a custom mac layer (CSMA) without 802.15.4 framing.
+<pre>your@yourpc:~$ <strong>scp &lt;login&gt;@grenoble.iot-lab.info:m3-7.pcap m3-7.pcap</strong> 
+your@yourpc:~$ wireshark m3-7.pcap</pre>
+<p>On the first screenshot you can see the channel and device ID informations of the sniffer node. You have <tt>30 07</tt> hexadecimal value (12295 in decimal system) in the frame for m3-7 node. You can view also the payload of the packet sent by m3-7 node with &#8220;Hello World&#8221; string.</p>
+<p><a href="../../wp-content/uploads/2015/01/wireshark1_sniffer.jpg" rel="lightbox[gallery-TkHW]"><img class="aligncenter  wp-image-4016" src="../../wp-content/uploads/2015/01/wireshark1_sniffer.jpg" alt="wireshark1_sniffer" width="511" height="420" /></a></p>
+<p>On the second screenshot you can view the capture of the second packet sent by m3-11 node with the payload &#8220;Big Hello World&#8221; string. The first two bytes of the frame contain the source and destination address of the packet: <tt>8679</tt> is the Iot-LAB uid of the node m3-11 and <tt>FFFF</tt> is the broadcast address. You can note also that you have a timestamp value which corresponds to reception of the packet by sniffer node. It&#8217;s the same common time base used by Control Node for monitoring consumption.</p>
+<p><a href="../../wp-content/uploads/2015/01/wireshark2_sniffer.jpg" rel="lightbox[gallery-TkHW]"><img class="aligncenter  wp-image-4023" src="../../wp-content/uploads/2015/01/wireshark2_sniffer.jpg" alt="wireshark2_sniffer" width="507" height="411" /></a></li>
+</ol>
+<p>&nbsp;</p>
+<div class="well">
+<h3>Additional details</h3>
+<p>For more details on the whole sniffer chain <strong>implementation</strong>, see the explaination on <a title="iot-lab:wiki/Control-Node-Sniffer" href="https://github.com/iot-lab/iot-lab/wiki/Control-Node-Sniffer" target="_blank">GitHub</a></p>
+</div>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-7317 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/monitoring-sniffer-m3/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:00 GMT -->
+</html>

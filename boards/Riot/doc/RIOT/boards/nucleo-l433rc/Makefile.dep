@@ -1,3 +1,0 @@
-FEATURES_REQUIRED += periph_lpuart
-
-include $(RIOTBOARD)/common/nucleo/Makefile.dep

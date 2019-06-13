@@ -1,5 +1,0 @@
-# Put defined MCU peripherals here (in alphabetical order)
-FEATURES_PROVIDED += periph_rtt
-FEATURES_PROVIDED += periph_timer
-
--include $(RIOTCPU)/nrf51/Makefile.features

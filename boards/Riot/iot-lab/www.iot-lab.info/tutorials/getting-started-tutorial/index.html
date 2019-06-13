@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/getting-started-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:20:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Getting started with IoT-LAB &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-7685 page-child parent-pageid-7210 page-template page-template-templates page-template-page-full page-template-templatespage-full-php layout-default">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+		<div id="primary" class="col-sm-12">
+
+				<main id="main" class="site-main" role="main">
+
+		<article role="article" id="post-7685" class="post-7685 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><h2>Getting started with IoT-LAB &#8211; the tutorial for beginners</h2>
+<p>&nbsp;</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="" width="30" height="30" /> <strong>Difficulty</strong>: Easy</p>
+<p><img class="size-full wp-image-1253 alignnone" src="../../wp-content/uploads/2014/02/duration.jpg" alt="" width="30" height="30" /> <strong>Duration</strong>: 20 minutes</p>
+<p><em><strong>Description</strong>: This tutorial will show you how to use IoT-LAB without having to setup anything: all actions will be done via the IoT-LAB testbed webportal.You&#8217;ll submit your first experiment and then interact with M3 nodes.</em></p>
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-image.png" rel="lightbox[gallery-81Oj]"><img class="alignnone  wp-image-7689" src="../../wp-content/uploads/2019/01/getting-started-image.png" alt="getting-started-image" width="796" height="312" /></a></p>
+<ol>
+<li><a href="../../testbed/index.html" target="_blank">Log into the Webportal</a></li>
+<li>Start a new experiment:
+<ul>
+<li>Click on &#8220;New experiment&#8221;:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-new-experiment.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7697" src="../../wp-content/uploads/2019/01/getting-started-new-experiment-1024x289.png" alt="getting-started-new-experiment" width="940" height="265" /></a></p>
+</li>
+<li>Select architecture <strong>M3</strong> (1), site <strong>Saclay</strong> (2), number of nodes <strong>2</strong> (3) and add them to your experiment (4):
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-select-nodes.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7698" src="../../wp-content/uploads/2019/01/getting-started-select-nodes-1024x421.png" alt="getting-started-select-nodes" width="940" height="386" /></a></p>
+</li>
+<li>Open the firmware selection dialog by clicking on the &#8220;Add firmware&#8221; button:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-add-firmware.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7704" src="../../wp-content/uploads/2019/01/getting-started-add-firmware-1024x506.png" alt="getting-started-add-firmware" width="940" height="464" /></a></p>
+</li>
+<li>In the &#8220;Presets&#8221; tab, choose the &#8220;iotlab_m3_tutorial&#8221; firmware:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-presets-firmwares.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7705" src="../../wp-content/uploads/2019/01/getting-started-presets-firmwares-1024x429.png" alt="getting-started-presets-firmwares" width="940" height="394" /></a></p>
+</li>
+<li>Verify that everything is correctly configured: 2 M3 nodes on the Saclay with &#8220;iotlab_m3_tutorial&#8221; firmware and click on <strong>Submit experiment</strong>
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-verify-and-launch.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7706" src="../../wp-content/uploads/2019/01/getting-started-verify-and-launch-1024x515.png" alt="getting-started-verify-and-launch" width="940" height="473" /></a></p>
+</li>
+</ul>
+</li>
+<li>You are now redirected to your personal dashboard (&#8220;My Experiments&#8221; tab). Your experiment is in the state <strong>Waiting</strong>, then <strong>Launching</strong> and will finally (and hopefully!) be in the state <strong>Running</strong>:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-experiment-status.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7708" src="../../wp-content/uploads/2019/01/getting-started-experiment-status-1024x445.png" alt="getting-started-experiment-status" width="940" height="408" /></a></p>
+</li>
+<li>
+<ul>
+<li>Let&#8217;s have a look at the experiment details by clicking on the <strong>Id</strong> link of your experiment:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-experiment-select.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7710" src="../../wp-content/uploads/2019/01/getting-started-experiment-select-1024x213.png" alt="getting-started-experiment-select" width="940" height="196" /></a></p>
+</li>
+<li>Several actions are possible on each node: start/stop will poweron/poweroff the node, reset, flash a new firmware, monitoring and open a remote terminal:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-terminal-action.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7712" src="../../wp-content/uploads/2019/01/getting-started-terminal-action-1024x401.png" alt="getting-started-terminal-action" width="940" height="368" /></a></p>
+</li>
+</ul>
+<ul>
+<li>Open the remote terminal on the first node by clicking the &#8220;Open Terminal&#8221; button. Then press &#8220;Enter&#8221; or any key to stop the infinite print loop. You are now able to interact remotely with the serial port of the M3 node via your web browser:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-terminal-open.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7713" src="../../wp-content/uploads/2019/01/getting-started-terminal-open-1024x483.png" alt="getting-started-terminal-open" width="940" height="443" /></a></p>
+<p>You can read the temperature when pressing key <strong>t</strong> and &#8220;Enter&#8221;, luminosity (<strong>l</strong>), atmospheric pressure (<strong>p</strong>), etc</li>
+<li>Let&#8217;s now exchange messages between the nodes. Open the second terminal and press <strong>s</strong> and then <strong>b</strong> to send a small and a big packet:
+<p align="center"><a href="../../wp-content/uploads/2019/01/getting-started-terminal-send.png" rel="lightbox[gallery-81Oj]"><img class="alignnone size-large wp-image-7715" src="../../wp-content/uploads/2019/01/getting-started-terminal-send-1024x649.png" alt="getting-started-terminal-send" width="940" height="596" /></a></p>
+<p>You can see the messages received by the second node. Congratulations, you completed the beginners tutorial of IoT-LAB with success!</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>&nbsp;</p>
+<div class="alert alert-info">
+<h3>Go further</h3>
+<ul>
+<li>Follow the <a title="Configure your SSH access" href="../ssh-access/index.html">Configure your SSH access</a> tutorial to have more powerful access to the IoT-LAB nodes</li>
+<li>Follow the command-line <a title="Experiment CLI client" href="../iotlab-experimenttools-client/index.html">Experiment CLI client </a>and <a title="Node CLI client" href="../iotlab-nodetools-client/index.html">Node CLI client</a> tutorials</li>
+<li>Look at all other <a title="IoT-LAB tutorials" href="../index.html">IoT-LAB tutorials</a></li>
+</ul>
+</div>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-7685 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/getting-started-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:20:47 GMT -->
+</html>

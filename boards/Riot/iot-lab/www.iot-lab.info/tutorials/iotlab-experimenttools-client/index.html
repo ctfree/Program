@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/iotlab-experimenttools-client/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Experiment CLI client &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-6647 page-child parent-pageid-7210 page-template-default layout-1c">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+	
+	<div id="primary" class="content-area col-sm-8">
+
+				<main id="main" class="site-main" role="main">
+
+			<article role="article" id="post-6647" class="post-6647 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><div id="toc_container" class="toc_wrap_right no_bullets"><p class="toc_title">Contents</p><ul class="toc_list"><li><a href="#First_step"><span class="toc_number toc_depth_1">1</span> First step</a></li><li><a href="#Submit_an_experiment"><span class="toc_number toc_depth_1">2</span> Submit an experiment</a></li><li><a href="#Get_experiment_state"><span class="toc_number toc_depth_1">3</span> Get experiment state</a></li><li><a href="#Get_the_list_of_resourcesnodes_of_an_experiment"><span class="toc_number toc_depth_1">4</span> Get the list of resources/nodes of an experiment</a></li><li><a href="#Get_the_list_of_your_experiments"><span class="toc_number toc_depth_1">5</span> Get the list of your experiments</a></li><li><a href="#Get_experiments_list_with_state_Running"><span class="toc_number toc_depth_1">6</span> Get experiments list with state Running</a></li><li><a href="#Submit_an_experiment_with_associations"><span class="toc_number toc_depth_1">7</span> Submit an experiment with associations</a></li><li><a href="#Submit_a_schedule_experiment"><span class="toc_number toc_depth_1">8</span> Submit a schedule experiment</a></li><li><a href="#Stop_experiment"><span class="toc_number toc_depth_1">9</span> Stop experiment</a></li><li><a href="#Get_platform_nodes_list_representation"><span class="toc_number toc_depth_1">10</span> Get platform nodes list representation</a></li></ul></div>
+
+<p class="h2">Experiment CLI client</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="difficulty" width="30" height="30" /><strong> Difficulty:</strong> Medium</p>
+<p><img class="size-full wp-image-1253 alignnone" src="../../wp-content/uploads/2014/02/duration.jpg" alt="duration" width="30" height="30" /><strong> Duration</strong>: 20 minutes</p>
+<p><em><strong>Description</strong>: This document shows how to use the Experiment CLI Tool utility on the frontend SSH. You will learn how to submit an experiment, start an experiment, and so much. The supported format for IoT-LAB <abbr title="Application Programming Interface">API</abbr> requests and responses with CLI Tools is JSON representation.</em></p>
+<h3><span id="First_step">First step</span></h3>
+<p>Connect to frontend SSH and get help :</p>
+<pre>my_computer$ ssh &lt;<strong>login</strong>&gt;@&lt;<strong>site</strong>&gt;.iot-lab.info (<strong>site</strong> = grenoble, lille, lyon, saclay, strasbourg)
+&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment -h</strong>
+usage: iotlab-experiment [-h] [-u USERNAME] [-p PASSWORD] [-v]
+                      {submit,stop,get,load,info,wait} ...
+
+iotlab-experiment command-line manage experiments on testbed.
+
+positional arguments:
+  {submit,stop,get,load,info,wait}
+    submit              submit user experiment
+    stop                stop user experiment
+...
+</pre>
+<p>If you have not authenticated using <strong><tt>iotlab-auth </tt></strong><tt>yet</tt>, do it now:</p>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-auth -u &lt;login&gt;</strong></pre>
+<h3><span id="Submit_an_experiment">Submit an experiment</span></h3>
+<div>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -h</strong></pre>
+<p>For example, we want to book five M3 nodes on Grenoble site for 30 minutes as soon as possible. Note that in these examples, the nodes are flashed with the default firmware &#8220;Idle&#8221;.</p>
+<p>There are two ways to submit an experiment  :</p>
+<ul>
+<li>based on <strong>nodes id list</strong>. The testbed grants you nodes M3 with Id 2,4, 5, 9 and 11 on Grenoble site (m3-{2,4,5,9,11}.grenoble.iot-lab.info)</li>
+</ul>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -n tuto_cli -d 30 -l grenoble,m3,2+4-5+9+11</strong>
+{
+    "id": 7412
+}</pre>
+<ul>
+<li>based on <strong>nodes properties list</strong> (archi, site) and the number of nodes desired. The testbed grants you five nodes with these properties.</li>
+</ul>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -n tuto_cli -d 30 -l 5,archi=m3:at86rf231+site=grenoble</strong>
+{
+    "id": 7413
+}</pre>
+<p>The response is the<strong> id </strong>of your experiment.</p>
+<h3><span id="Get_experiment_state">Get experiment state</span></h3>
+<p>The following command gives you the status of experiment with Id 7412.</p>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment get -i 7412 -s</strong>
+{
+    "state": "Running"
+}</pre>
+<h3><span id="Get_the_list_of_resourcesnodes_of_an_experiment">Get the list of resources/nodes of an experiment</span></h3>
+<p>The following command returns the list of nodes involved in experiment with id 7412, its architecture, its mobility feature, site, state and coordinates.</p>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment get -i 7412 -r</strong>
+{
+    "items": [
+        {
+            "archi": "m3:at86rf231", 
+            "mobile": "false", 
+            "network_address": "m3-9.grenoble.iot-lab.info", 
+            "site": "grenoble", 
+            "state": "Alive", 
+            "x": "25.75", 
+            "y": "26.76", 
+            "z": "-0.04"
+        }, 
+        ....
+}</pre>
+<h3><span id="Get_the_list_of_your_experiments">Get the list of your experiments</span></h3>
+<p>The following command returns the list of all experiments run by the user who authenticated, past, waiting and running.</p>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment get -l</strong>
+{
+    "items": [
+        {
+            "date": 1490771215, 
+            "duration": 1327, 
+            "id": 11943, 
+            "name": "", 
+            "nb_resources": 5, 
+            "owner": "login", 
+            "resources": [
+                            "m3-10.grenoble.iot-lab.info", 
+                            "m3-11.grenoble.iot-lab.info", 
+                            "m3-12.grenoble.iot-lab.info", 
+                            "m3-13.grenoble.iot-lab.info", 
+                            "m3-14.grenoble.iot-lab.info"
+                         ], 
+            "state": "Terminated"
+        }, 
+        ...
+    ]
+}
+
+&lt;login&gt;@&lt;site&gt;:~$ iotlab-experiment get -l --state Running
+...</pre>
+<h3><span id="Get_experiments_list_with_state_Running">Get experiments list with state Running</span></h3>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment get -e</strong>
+{
+ "Running": [
+ 7412,
+ 7413
+ ]
+}</pre>
+<h3><span id="Submit_an_experiment_with_associations">Submit an experiment with associations</span></h3>
+<p>By default, if you don&#8217;t make associations :</p>
+<ul>
+<li>with no profile, the nodes are configured with a power supply method dc</li>
+<li>
+<div>with no firmware, the sensor nodes are programmed with the firmware &#8220;idle&#8221;.</div>
+</li>
+</ul>
+<p>You can associate every node of your experiment with different firmwares and Profile configurations.</p>
+<p>Here are the different examples :</p>
+<ul>
+<li>Associate one node with a firmware and other nodes with another firmware</li>
+</ul>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -d 30 -l grenoble,m3,2,sink_node.elf -l grenoble,m3,4-5+9+11,node.elf</strong></pre>
+<ul>
+<li>Associate all nodes with a Profile. You must have uploaded on the server a Profile with name &#8220;profile_name&#8221;, see <a title="Profile CLI client" href="../iotlab-profile-client/index.html">Profile CLI Client tutorial</a>.</li>
+</ul>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -d 30 -l grenoble,m3,2+4-5+9+11,,profile_name</strong></pre>
+<ul>
+<li>Associate all nodes with a firmware and Profile</li>
+</ul>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -d 30 -l grenoble,m3,2+4-5+9+11,node.elf,profile_radio</strong></pre>
+<p>&nbsp;</p>
+<h3><span id="Submit_a_schedule_experiment">Submit a schedule experiment</span></h3>
+<p>To schedule an experiment,  we use Linux epoch timestamp. Submit experiment with a schedule date (e.g. 20 May 2014 14:00:00)</p>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment submit -d 20 -l grenoble,m3,2+4-5+9+11 -r $(date +%s -d "20 May 2014 14:00:00 UTC")</strong></pre>
+</div>
+<h3><span id="Stop_experiment">Stop experiment</span></h3>
+<div>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment stop -i 7412</strong></pre>
+</div>
+<h3><span id="Get_platform_nodes_list_representation">Get platform nodes list representation</span></h3>
+<div>
+<pre>&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment info -li</strong>
+{
+    "items": [
+        {
+            "grenoble": {
+                "m3": {
+                    "Alive": "13-15+17-18+21+23+25+29-33+35+37-40+44-45+48-49+51+55+59+61+63+65+68-69+71-73+77+80+85+88+91+94+101-102+105-106+109+113-118+122-125+129-136+139-142+146-147+151-152+155+157-162+167+169+171+174-175+178-182+185+187-189+191-192+194+196-198+203-204+206+208+210+212-214+216+219-220+222+226-227+231-232+234-237+239+241-242+244-246+248+253-254+257-258+260+262-265+267+271-273+278+280+282+285+288-290+292-293+297-301+303+307+309-314+317-318+321-322+324-325+328+335+337-339+343-344+346+348-349+354+359-360+363+366-368+371+374-377+379-380", 
+                    "Busy": "2+4-5+9+11", 
+                    "Suspected": "138+148+150+252"
+                },
+              ..... 
+}
+&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment info -l
+{</strong>
+    "items": [
+        {
+            "archi": "m3:at86rf231", 
+            "mobile": 0, 
+            "network_address": "m3-2.grenoble.iot-lab.info", 
+            "site": "grenoble", 
+            "state": "Busy", 
+            "uid": "9982", 
+            "x": "20.70", 
+            "y": "26.76", 
+            "z": "-0.04"
+        }, 
+        .....
+}
+
+&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment info -l --site grenoble --archi m3</strong>
+....
+
+&lt;login&gt;@&lt;site&gt;:~$ <strong>iotlab-experiment info -li --site saclay --archi a8</strong>
+....</pre>
+</div>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-6647 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/iotlab-experimenttools-client/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:08 GMT -->
+</html>

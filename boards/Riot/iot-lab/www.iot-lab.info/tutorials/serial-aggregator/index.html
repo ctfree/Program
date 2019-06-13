@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/serial-aggregator/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Nodes serial link aggregation &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-6829 page-child parent-pageid-7210 page-template-default layout-1c">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+	
+	<div id="primary" class="content-area col-sm-8">
+
+				<main id="main" class="site-main" role="main">
+
+			<article role="article" id="post-6829" class="post-6829 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><div id="toc_container" class="toc_wrap_right no_bullets"><p class="toc_title">Contents</p><ul class="toc_list"><li><a href="#Description"><span class="toc_number toc_depth_1">1</span> Description</a></li><li><a href="#Usage"><span class="toc_number toc_depth_1">2</span> Usage</a><ul><li><a href="#Reading_messages_from_the_nodes"><span class="toc_number toc_depth_2">2.1</span> Reading messages from the nodes</a></li><li><a href="#Sending_messages_to_the_nodes"><span class="toc_number toc_depth_2">2.2</span> Sending messages to the nodes</a></li></ul></li><li><a href="#Practical_tutorial"><span class="toc_number toc_depth_1">3</span> Practical tutorial</a></li><li><a href="#Advanced_usage"><span class="toc_number toc_depth_1">4</span> Advanced usage</a><ul><li><a href="#Simply_running_from_your_computer"><span class="toc_number toc_depth_2">4.1</span> Simply running from your computer</a></li><li><a href="#Give_access_as_a_tcp_socket"><span class="toc_number toc_depth_2">4.2</span> Give access as a tcp socket</a></li></ul></li></ul></div>
+
+<p class="h1">Nodes Serial Link Aggregation</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="difficulty" width="30" height="30" /> <strong> Difficulty</strong>: Medium</p>
+<p><img class="size-full wp-image-1253 alignnone" src="../../wp-content/uploads/2014/02/duration.jpg" alt="duration" width="30" height="30" /> <strong>Duration</strong>: 30 minutes</p>
+<p><em><strong>Prerequisites</strong>: <a title="Submit an experiment with M3 nodes using the web portal" href="../submit-experiment-m3-web/index.html">Submit an experiment with M3 nodes using the web portal</a> / <a title="Experiment CLI client" href="../iotlab-experimenttools-client/index.html">Experiment CLI Client</a></em></p>
+<p><em><strong>Description</strong>: This document shows how to use the <code>serial_aggregator</code> tool on the ssh frontend. You will learn how to quickly get the output of all your experiment nodes and how to send messages to some of them.</em></p>
+<h2><span id="Description">Description</span></h2>
+<div>
+<p>Each node serial link can be accessed via a tcp socket to the node url on port 20000. Here is an example using net cat on node M3 with Id 10 on Grenoble site involved in your running experiment :</p>
+<pre>user@grenoble~$ <strong>nc m3-10 20000</strong></pre>
+</div>
+<p>When running experiments with many nodes, you may want to access the serial link of all the nodes of your experiment at once. The presented tool <code>serial_aggregator</code> should relieve the pain of having multiple terminals each connected to one node.</p>
+<p>You will have all the nodes output in one terminal, prefixed by a timestamp and the node identifier.</p>
+<pre class="code bash">$ harter@grenoble:~$ <strong>serial_aggregator</strong>
+1417086154.415922;Aggregator started
+1417086156.031700;m3-11;     iotlab_uid() == 9971
+1417086156.039846;m3-11;   platform_uid() == 9971
+1417086156.039986;m3-11;node_from_uid(id) == 3:00B
+1417086156.040103;m3-11;         node_str == m3-11
+1417086157.998551;m3-10;     iotlab_uid() == 8772
+1417086157.999130;m3-10;   platform_uid() == 8772
+1417086157.999130;m3-10;node_from_uid(id) == 0:000
+1417086157.999130;m3-10;Unknown node
+1417086162.639063;Stopping                            # Stopping using 'Ctrl+C'</pre>
+<div class="alert alert-info">
+<p>The <code>serial_aggregator</code> is a python script based on the cli-tools and asyncore to aggregate all the nodes serial links.</p>
+<p>It&#8217;s shipped in the aggregation-tools repository (<a title="github:aggregation-tools" href="https://github.com/iot-lab/aggregation-tools">github:aggregation-tools</a>) and released on all sites as <code>serial_aggregator</code> executable and as a python module to be imported (<small><samp>import iotlabaggregator</samp></small>).</p>
+</div>
+<h2><span id="Usage">Usage</span></h2>
+<p>To  access the serial links, it <strong>should be run on the ssh frontends of the sites where the nodes are reserved</strong> only.</p>
+<pre class="code bash">user@grenoble:~$ <strong>serial_aggregator --help</strong>
+usage: serial_aggregator [-h] [-u USERNAME] [-p PASSWORD]
+                            [-i EXPERIMENT_ID] [-l NODES_LIST] [--with-a8]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -u USERNAME, --user USERNAME
+  -p PASSWORD, --password PASSWORD
+
+Nodes selection:
+  By default, select currently running experiment nodes
+
+  -i EXPERIMENT_ID, --id EXPERIMENT_ID
+                        experiment id submission
+  -l NODES_LIST, --list NODES_LIST
+                        nodes list in format: "site,archi,1-5+9". Can be
+                        supplied multiple times
+  --with-a8             redirect open-a8 serial port.
+                        `/etc/init.d/serial_redirection` must be running on
+                        the nodes</pre>
+<div>
+<p>First, you must  have setup the cli-tools on the server by running:</p>
+<pre>user@grenoble:~$ <strong>iotlab-auth --user &lt;your_username&gt;</strong></pre>
+</div>
+<div>
+<p>It can then be used in different modes:</p>
+<ul>
+<li>Without parameter to run on the currently running experiment.</li>
+<li>With <code>-i</code> option to run on the nodes of the specified experiment</li>
+<li>With <code>-l</code> option to specify the nodes on which to run</li>
+</ul>
+</div>
+<pre>user@grenoble:~$ <strong>serial_aggregator</strong>                                                  # runs on nodes from currently running experiment
+user@grenoble:~$ <strong>serial_aggregator -i &lt;exp_id&gt;</strong>                                      # runs on nodes from experiment number &lt;exp_id&gt;
+user@grenoble:~$ <strong>serial_aggregator -l grenoble,m3,1-4  -l grenoble,wsn430,1+2+4+8</strong>   # runs on nodes from experiment number &lt;exp_id&gt;</pre>
+<h3><span id="Reading_messages_from_the_nodes">Reading messages from the nodes</span></h3>
+<div>
+<p>The received text lines will be printed as <samp>timestamp;node-id;received_line</samp>. Example:</p>
+<pre>1417086156.031700;m3-11;     iotlab_uid() == 9971</pre>
+</div>
+<h3><span id="Sending_messages_to_the_nodes">Sending messages to the nodes</span></h3>
+<div>
+<p>Standard input is continuously read and parsed to allow sending messages to the nodes.</p>
+<p>Parsing is done using the function <code>extract_nodes_and_message(line)</code>. Its docstring lists all allowed values and formats.</p>
+<pre>Examples
+--------
+
+    ''    -&gt; does not send anything to anyone, allows 'blanking' lines
+
+    ' '   -&gt; sends ' n'   to all nodes
+    'msg' -&gt; sends 'msgn' to all nodes
+
+    'm3,1-3+5;message'  -&gt; sends 'messagen' to nodes m3-1, m3-2, m3-3 and m3-5
+    'm3-1;message'      -&gt; sends 'messagen' to nodes m3-1
+
+    'csv;message;with;semicolons' -&gt; sends 'csv;message;with;semicolons' to all
+                                     nodes as 'csv;' is not a valid
+                                     node identifier</pre>
+</div>
+<h2><span id="Practical_tutorial">Practical tutorial</span></h2>
+<p>You can now replay the first tutorial using the serial_aggregator to interact with the nodes in a single terminal.</p>
+<p>Replay <strong>steps 1 to 9</strong> of the tutorial <a title="Submit an experiment with M3 nodes using the web portal" href="../submit-experiment-m3-web/index.html"><em>Submit an experiment with M3 nodes using the web portal</em> </a>using more nodes:</p>
+<ul>
+<li>Nodes selection: Archi = m3:at86rf231 / Site = grenoble <strong>/ Number = 10 / </strong>Mobile = no</li>
+</ul>
+<p>&nbsp;</p>
+<ol start="9">
+<li>Connect to the SSH frontend of Grenoble
+<pre>my_computer$ <strong>ssh &lt;login&gt;@grenoble.iot-lab.info</strong></pre>
+</li>
+<li>Interact with the nodes. Connect to all nodes using <code>serial_aggregator</code>
+<pre>&lt;login&gt;@grenoble:~$ <strong>serial_aggregator</strong>
+1417707651.307328;Aggregator started
+1417707651.710586;m3-2;
+1417707651.711210;m3-2;
+1417707651.711310;m3-2;IoT-LAB Simple Demo program
+1417707651.711399;m3-2;Type command
+1417707651.712371;m3-2;    h:    print this help
+1417707651.712477;m3-2;    t:    temperature measure
+1417707651.713344;m3-2;    l:    luminosity measure
+1417707651.713444;m3-2;    p:    pressure measure
+1417707651.722638;m3-2;    s:    send a radio packet
+1417707651.722750;m3-2;    b:    send a big radio packet
+1417707651.722841;m3-2;    e:    toggle leds blinking
+1417707651.722926;m3-2;
+1417707651.723009;m3-2; Type Enter to stop printing this help
+
+<strong># Hit "Space+Enter" to stop the flood.</strong></pre>
+</li>
+<li>Test some commands to get sensors measures (<strong>t</strong>, <strong>l</strong>, <strong>p</strong>)
+<pre># Type 'l' + enter to send 'l' to all nodes<strong>
+l</strong>
+1417707771.347801;m3-5;cmd &gt; Luminosity measure: 4.8828125E-1 lux
+1417707771.347801;m3-5;
+1417707771.347844;m3-2;cmd &gt; Luminosity measure: 4.8828125E-1 lux
+1417707771.347941;m3-2;
+1417707771.348187;m3-7;cmd &gt; Luminosity measure: 7.324219E-1 lux
+1417707771.348652;m3-7;
+1417707771.348775;m3-4;cmd &gt; Luminosity measure: 4.8828125E-1 lux
+1417707771.348866;m3-4;
+1417707771.348969;m3-3;cmd &gt; Luminosity measure: 7.324219E-1 lux
+1417707771.349059;m3-3;
+1417707771.349171;m3-289;cmd &gt; Luminosity measure: 4.8828125E-1 lux
+1417707771.349259;m3-289;
+1417707771.349361;m3-288;cmd &gt; Luminosity measure: 7.324219E-1 lux
+1417707771.349448;m3-288;
+1417707771.349600;m3-6;cmd &gt; Luminosity measure: 7.324219E-1 lux
+1417707771.349690;m3-6;
+1417707771.349811;m3-9;cmd &gt; Luminosity measure: 7.324219E-1 lux
+1417707771.349897;m3-9;
+1417707771.349996;m3-8;cmd &gt; Luminosity measure: 4.8828125E-1 lux
+1417707771.350082;m3-8;</pre>
+</li>
+<li>Test packet sending. As we want only one node to send a radio packet, we will specify its id before the message, using this format: <code>&lt;node-id&gt;;&lt;message&gt;</code>You will see the other nodes receiving the message.
+<pre><strong>m3-2;s</strong>
+1417708038.478605;m3-2;cmd &gt; 
+1417708038.478860;m3-2;radio &gt; Packet sent
+1417708038.479028;m3-6;cmd &gt; 
+1417708038.479174;m3-4;cmd &gt; 
+1417708038.479442;m3-3;cmd &gt; 
+1417708038.479565;m3-2;
+1417708038.479672;m3-289;cmd &gt; 
+1417708038.479795;m3-288;cmd &gt; 
+1417708038.480001;m3-7;cmd &gt; 
+1417708038.480116;m3-5;cmd &gt; 
+1417708038.480319;m3-9;cmd &gt; 
+1417708038.480531;m3-8;cmd &gt; 
+1417708038.480865;m3-9;radio &gt; Got packet from 9982. Len: 16 Rssi: -69: 'Hello World!: 1'
+1417708038.480962;m3-9;
+1417708038.481413;m3-7;radio &gt; Got packet from 9982. Len: 16 Rssi: -76: 'Hello World!: 1'
+1417708038.481513;m3-7;
+1417708038.481620;m3-5;radio &gt; Got packet from 9982. Len: 16 Rssi: -56: 'Hello World!: 1'
+1417708038.481707;m3-5;
+1417708038.481843;m3-3;radio &gt; Got packet from 9982. Len: 16 Rssi: -42: 'Hello World!: 1'
+1417708038.481931;m3-3;
+1417708038.482042;m3-8;radio &gt; Got packet from 9982. Len: 16 Rssi: -81: 'Hello World!: 1'
+1417708038.482128;m3-8;
+1417708038.482262;m3-6;radio &gt; Got packet from 9982. Len: 16 Rssi: -64: 'Hello World!: 1'
+1417708038.482351;m3-6;
+1417708038.486606;m3-4;radio &gt; Got packet from 9982. Len: 16 Rssi: -55: 'Hello World!: 1'
+1417708038.486802;m3-4;
+1417708038.487167;m3-289;radio &gt; Got packet from 9982. Len: 16 Rssi: -61: 'Hello World!: 1'
+1417708038.487324;m3-289;
+1417708038.487610;m3-288;radio &gt; Got packet from 9982. Len: 16 Rssi: -64: 'Hello World!: 1'
+1417708038.487917;m3-288;</pre>
+</li>
+<li>Now try to send a &#8216;big packet&#8217; from another node
+<pre><strong>m3-4;b</strong>
+1417708181.538321;m3-4;cmd &gt; 
+1417708181.538482;m3-4;radio &gt; Big packet sent
+1417708181.538663;m3-4;
+1417708181.543271;m3-7;cmd &gt; 
+1417708181.543410;m3-6;cmd &gt; 
+1417708181.543527;m3-5;cmd &gt; 
+1417708181.543651;m3-3;cmd &gt; 
+1417708181.544045;m3-2;cmd &gt; 
+1417708181.544158;m3-289;cmd &gt; 
+1417708181.544547;m3-289;radio &gt; Got packet from 9176. Len: 60 Rssi: -67: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.544667;m3-289;
+1417708181.544784;m3-288;cmd &gt; 
+1417708181.544872;m3-288;radio &gt; Got packet from 9176. Len: 60 Rssi: -64: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.544958;m3-288;
+1417708181.545061;m3-9;cmd &gt; 
+1417708181.545148;m3-9;radio &gt; Got packet from 9176. Len: 60 Rssi: -76: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.545233;m3-9;
+1417708181.545333;m3-8;cmd &gt; 
+1417708181.545419;m3-8;radio &gt; Got packet from 9176. Len: 60 Rssi: -74: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.545503;m3-8;
+1417708181.545634;m3-7;radio &gt; Got packet from 9176. Len: 60 Rssi: -67: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.545724;m3-7;
+1417708181.545824;m3-6;radio &gt; Got packet from 9176. Len: 60 Rssi: -52: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.545911;m3-6;
+1417708181.546010;m3-5;radio &gt; Got packet from 9176. Len: 60 Rssi: -49: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.546096;m3-5;
+1417708181.546196;m3-3;radio &gt; Got packet from 9176. Len: 60 Rssi: -43: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.546282;m3-3;
+1417708181.546379;m3-2;radio &gt; Got packet from 9176. Len: 60 Rssi: -55: 'Big Hello World!: 0 012345678901234567890123456789012345678'
+1417708181.546480;m3-2;</pre>
+</li>
+</ol>
+<hr />
+<div class="alert-info">
+<h2><span id="Advanced_usage">Advanced usage</span></h2>
+<p>Here follow some advanced usage ideas.</p>
+<h3><span id="Simply_running_from_your_computer">Simply running from your computer</span></h3>
+<p>You can run the serial_aggregator directly from your computer using ssh. The input and output will be directly available on your computer.</p>
+<pre>my_computer$ <strong>ssh &lt;login&gt;@grenoble.iot-lab.info "serial_aggregator -i &lt;exp_id&gt;"</strong></pre>
+<h3><span id="Give_access_as_a_tcp_socket">Give access as a tcp socket</span></h3>
+<p>Using socat, you can easily wrap it in a tcp socket to, for example, connect a graphical application on it:</p>
+<pre>my_computer$ <strong>socat tcp-listen:20000,fork,reuseaddr exec:'ssh &lt;login&gt;@grenoble.iot-lab.info "serial_aggregator -i &lt;exp_id&gt;"'</strong></pre>
+<p>And then connect to it</p>
+<pre>my_computer$ <strong>nc localhost 20000</strong>
+<strong>p</strong>  # type 'p' + Enter
+1417708815.191377;m3-9;Pressure measure: 9.85E2 mabar
+1417708815.199245;m3-7;Pressure measure: 9.845237E2 mabar
+1417708815.199423;m3-7;
+1417708815.199607;m3-6;Pressure measure: 9.848386E2 mabar
+1417708815.199768;m3-6;
+...</pre>
+<p>Note: Every time you connect and disconnect, the serial_aggregator program will start and stop, so the connections will take a few seconds to get ready.</p>
+</div>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-6829 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/serial-aggregator/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:10 GMT -->
+</html>

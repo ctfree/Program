@@ -1,0 +1,280 @@
+
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>FIT/IoT-LAB</title>
+	<atom:link href="https://www.iot-lab.info/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.iot-lab.info</link>
+	<description>Very large scale open wireless sensor network testbed</description>
+	<lastBuildDate>Wed, 24 Apr 2019 12:38:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.1</generator>
+	<item>
+		<title>New web terminal available on the testbed webportal and websocket CLI tools</title>
+		<link>https://www.iot-lab.info/new-web-terminal-webportal/</link>
+		<comments>https://www.iot-lab.info/new-web-terminal-webportal/#comments</comments>
+		<pubDate>Tue, 19 Mar 2019 15:25:41 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandre Abadie]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7822</guid>
+		<description><![CDATA[We would like to inform you about new features available that simplify the access to the serial port of FIT IoT-LAB nodes . Direct access via the testbed webportal It is now possible to access the serial port of all nodes but the A8 from the experiment details page on the testbed webportal. Each node ... <a href="https://www.iot-lab.info/new-web-terminal-webportal/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We would like to inform you about new features available that simplify the access to the serial port of FIT IoT-LAB nodes .</p>
+<h3>Direct access via the testbed webportal</h3>
+<p>It is now possible to access the serial port of all nodes but the A8 from the experiment details page on the testbed webportal.<br />
+Each node in an experiment now provides a <i>terminal icon</i> in the list of supported actions: just click on it and a web terminal pops up with direct access to the serial port of the node.</p>
+<p>This makes the user experience as simple as possible when using FIT IoT-LAB via the testbed webportal!</p>
+<p>There are things to take into account though:</p>
+<ul>
+<li>The access to the serial port is similar to the netcat access on port 20000 from the SSH frontends: only one TCP connection at a time is possible. This means that you cannot use the web terminal if a TCP connection is already opened using netcat. And vice-versa.</li>
+<li>The serial stream transport uses a websocket connection between the browser and the FIT IoT-LAB web server. For performance reasons, only 2 websocket connections on a single node are allowed at a time and 10 websocket connections per site per user in total are allowed.</li>
+</ul>
+<p>Discover this new feature by following our <a href="https://www.iot-lab.info/tutorials/getting-started-tutorial/">new getting started tutorial</a>.</p>
+<h3>New websocket CLI Tools</h3>
+<p>The access to the node serial port via websockets also makes it possible to aggregate serial input/output of nodes from different sites on a single computer. To do this, we released a new CLI tool: the <a href="https://github.com/iot-lab/ws-cli-tools">ws-cli-tools</a>.<br />
+It is open source, compatible with Python 2 and Python 3 and available on <a href="https://pypi.org/project/iotlabwscli/">PyPI</a>.</p>
+<p>Just follow the <a href="https://github.com/iot-lab/ws-cli-tools/blob/master/README.rst">README</a> on github to learn how to install and use it with the FIT IoT-LAB testbed.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-web-terminal-webportal/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Deployement of Le Cube on Lille site</title>
+		<link>https://www.iot-lab.info/new-open-nodes-available-on-lille-site/</link>
+		<comments>https://www.iot-lab.info/new-open-nodes-available-on-lille-site/#comments</comments>
+		<pubDate>Thu, 10 Jan 2019 15:59:14 +0000</pubDate>
+		<dc:creator><![CDATA[Matthieu Berthomé]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7530</guid>
+		<description><![CDATA[We are very happy to announce the release of a new location for open nodes on the Lille site of IoT-LAB. We&#8217;ve added Le Cube, a space for heterogeneous interoperability &#38; compatibility For now, we&#8217;ve deployed nodes that are capable of 802.15.4 in both 2.4 GHz and sub-GHz, nodes using BLE, and nodes using LoRa. ... <a href="https://www.iot-lab.info/new-open-nodes-available-on-lille-site/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are very happy to announce the release of a new location for open nodes on the Lille site of IoT-LAB.</p>
+<p>We&#8217;ve added Le Cube, a space for heterogeneous interoperability &amp; compatibility </p>
+<p>For now, we&#8217;ve deployed nodes that are capable of 802.15.4 in both 2.4 GHz and sub-GHz, nodes using BLE, and nodes using LoRa. They all coexist in a small vicinity:</p>
+<ul>
+<li>5 m3 nodes</li>
+<li>5 firefly nodes</li>
+<li>5 st-lrwan1 nodes</li>
+<li>5 microbit nodes</li>
+<li>5 samr21 nodes</li>
+</ul>
+<p>The panel of offered MCUs and radio chipsets is intended to grow (total available 64 gateways), and can include your own boards, just follow our <a href="https://github.com/iot-lab/iot-lab-gateway/blob/master/DEVELOPER.md">documentation</a> on the iot-lab-gateway repository to start, and we&#8217;ll be glad to physically plug them in LeCube. </p>
+<p>We hope you will enjoy working with this new space.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-open-nodes-available-on-lille-site/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>New open nodes available on Saclay site</title>
+		<link>https://www.iot-lab.info/new-open-nodes-available-on-saclay-site/</link>
+		<comments>https://www.iot-lab.info/new-open-nodes-available-on-saclay-site/#comments</comments>
+		<pubDate>Thu, 22 Nov 2018 09:35:23 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandre Abadie]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7491</guid>
+		<description><![CDATA[We are very happy to announce the release of a new batch of 46 open nodes on the Saclay site of IoT-LAB. With these new nodes, the possibilities already provided by IoT-LAB are even more extended: &#8211; The are nodes from different vendors: NXP, Microchip, ST, Nordic, Phytec, etc &#8211; The nodes provide different radios: ... <a href="https://www.iot-lab.info/new-open-nodes-available-on-saclay-site/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are very happy to announce the release of a new batch of 46 open nodes on the Saclay site of IoT-LAB.</p>
+<p>With these new nodes, the possibilities already provided by IoT-LAB are even more extended:<br />
+&#8211; The are nodes from different vendors: NXP, Microchip, ST, Nordic, Phytec, etc<br />
+&#8211; The nodes provide different radios: 802.15.4, BLE, WiFi, Sub-GHz</p>
+<p>The nodes with 802.15.4 radio are deployed in the same room in order to allow developers testing wireless connectivity between heterogeneous platforms. Nodes with BLE radios are deployed in another room and are quite close to each other.<br />
+For more details on the deployment, please have a look at the <a href="https://www.iot-lab.info/deployment/saclay/">Saclay site deployment page</a>.</p>
+<p>We recall that adding support for new nodes can be done by anyone: just follow our <a href="https://github.com/iot-lab/iot-lab-gateway/blob/master/DEVELOPER.md">documentation</a> on the iot-lab-gateway repository.</p>
+<p>We hope you will enjoy working with these new open nodes.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-open-nodes-available-on-saclay-site/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>New Web portal for IoT-LAB testbed</title>
+		<link>https://www.iot-lab.info/new-testbed-web-portal/</link>
+		<comments>https://www.iot-lab.info/new-testbed-web-portal/#comments</comments>
+		<pubDate>Fri, 28 Sep 2018 12:00:51 +0000</pubDate>
+		<dc:creator><![CDATA[Benoit Formet]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7401</guid>
+		<description><![CDATA[We are glad to announce the release of our new Web portal for IoT-LAB experiments submission. The new Web portal covers everything from the previous site, with some new features. What&#8217;s new: Faster dashboard with live experiments state Intuitive ergonomic UI for experiment submission Testbed status page with running experiments and nodes properties Account management ... <a href="https://www.iot-lab.info/new-testbed-web-portal/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are glad to announce the release of our new <a href="/testbed/">Web portal</a> for IoT-LAB experiments submission.</p>
+<p>The new Web portal covers everything from the previous site, with some new features.</p>
+<p><b>What&#8217;s new:</b></p>
+<ul>
+<li>Faster dashboard with live experiments state</li>
+<li>Intuitive ergonomic UI for experiment submission</li>
+<li>Testbed status page with running experiments and nodes properties</li>
+<li>Account management with user profile</li>
+</ul>
+<p>Additional features will be added in the upcoming months as we complete them.</p>
+<p>The portal is built with the Vue.js framework and leverages a new version of IoT-LAB public <a href="https://api.iot-lab.info/">REST API</a>.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-testbed-web-portal/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>New types of nodes available on IoT-LAB: Zolertia Firefly and Arduino Zero</title>
+		<link>https://www.iot-lab.info/new-types-of-nodes-available-on-iot-lab-zolertia-firefly-and-arduino-zero/</link>
+		<comments>https://www.iot-lab.info/new-types-of-nodes-available-on-iot-lab-zolertia-firefly-and-arduino-zero/#comments</comments>
+		<pubDate>Tue, 22 May 2018 08:56:48 +0000</pubDate>
+		<dc:creator><![CDATA[Matthieu Berthomé]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7132</guid>
+		<description><![CDATA[After the addition of SAMR21 and LoRa nodes we want to formally announce the availability of new types of boards on some IoT-LAB sites, which will permit a wider range of possibilities on the testbed. &#8211; 9 Zolertia Firefly boards, featuring two radios (2.4 GHz 802.15.4 Zigbee and sub-GHz), have been deployed on the Lille ... <a href="https://www.iot-lab.info/new-types-of-nodes-available-on-iot-lab-zolertia-firefly-and-arduino-zero/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p><a href="https://www.iot-lab.info/wp-content/uploads/2018/03/firefly-4-zolertia.jpg" rel="lightbox[gallery-cTiy]"><img class="alignnone size-full wp-image-6327" src="https://www.iot-lab.info/wp-content/uploads/2018/03/firefly-4-zolertia.jpg" alt="firefly-4-zolertia" width="250" height="250" /></a><a href="https://www.iot-lab.info/wp-content/uploads/2017/07/ArduinoZero.png" rel="lightbox[gallery-cTiy]"><img class="alignnone size-full wp-image-6081" src="https://www.iot-lab.info/wp-content/uploads/2017/07/ArduinoZero.png" alt="ArduinoZero" width="250" height="250" /></a></p>
+<p>After the addition of SAMR21 and LoRa nodes we want to formally announce the<br />
+availability of new types of boards on some IoT-LAB sites, which will permit<br />
+a wider range of possibilities on the testbed.</p>
+<p>&#8211; <strong>9 Zolertia Firefly boards</strong>, featuring two radios (2.4 GHz 802.15.4 Zigbee and<br />
+sub-GHz), have been deployed on the Lille site. They are deployed throughout<br />
+the building and, depending on the firmware you flash, will enable heterogeneous<br />
+networking with co-located regular M3 nodes. A new tutorial demonstrating the short and<br />
+long range capabilities is available on the IoT-LAB website [1]</p>
+<p>&#8211; <strong>3 Arduino Zero boards</strong> with XBee shields have been deployed on the Saclay site.<br />
+They are close to the existing M3 and SAMR21 nodes and thus allow to test<br />
+802.15.4 (2.4GHz) interoperability between different types of radio. A new<br />
+tutorial showing the use of networking capabilities of RIOT on these boards is<br />
+also available on the IoT-LAB website [2]</p>
+<p>If you have some hardware that you would like to see deployed on Iot-LAB, check<br />
+out this documentation [3] to implement the initial support and we will help<br />
+you to finalize the on site deployment.</p>
+<p>Don&#8217;t hesitate to reach out to us on <span id="OBJ_PREFIX_DWT108_com_zimbra_url" class="Object"><span id="OBJ_PREFIX_DWT153_com_zimbra_url" class="Object"><a href="https://github.com/iot-lab/iot-lab/issues/" target="_blank">https://github.com/iot-lab/iot-lab/issues/</a></span></span><br />
+for any issue you might have with the new boards.<br />
+[1] <span id="OBJ_PREFIX_DWT109_com_zimbra_url" class="Object"><span id="OBJ_PREFIX_DWT154_com_zimbra_url" class="Object"><a href="https://www.iot-lab.info/tutorials/use-zolertia-firefly-nodes" target="_blank">https://www.iot-lab.info/tutorials/use-zolertia-firefly-nodes</a></span></span><br />
+[2] <span id="OBJ_PREFIX_DWT110_com_zimbra_url" class="Object"><span id="OBJ_PREFIX_DWT155_com_zimbra_url" class="Object"><a href="https://www.iot-lab.info/tutorials/use-arduino-zero-nodes" target="_blank">https://www.iot-lab.info/tutorials/use-arduino-zero-nodes</a></span></span><br />
+[3] <span id="OBJ_PREFIX_DWT111_com_zimbra_url" class="Object"><span id="OBJ_PREFIX_DWT156_com_zimbra_url" class="Object"><a href="https://github.com/iot-lab/iot-lab-gateway/blob/master/DEVELOPER.md" target="_blank">https://github.com/iot-lab/iot-lab-gateway/blob/master/DEVELOPER.md</a></span></span></p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-types-of-nodes-available-on-iot-lab-zolertia-firefly-and-arduino-zero/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>New LoRa/Sigfox nodes available on IoT-LAB</title>
+		<link>https://www.iot-lab.info/new-lora-sigfox-nodes/</link>
+		<comments>https://www.iot-lab.info/new-lora-sigfox-nodes/#comments</comments>
+		<pubDate>Mon, 14 May 2018 12:02:38 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandre Abadie]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7123</guid>
+		<description><![CDATA[We are very proud to announce you the availability of 25 new LoRa/Sigfox nodes in FIT IoT-LAB. The nodes are ST B-L072Z-LRWAN1 boards with ST MEMS extension X-NUCLEO-IKS01A2 and are only available in Saclay site for the moment. One important thing is the restricted access to these nodes: due to the regulated access to the ... <a href="https://www.iot-lab.info/new-lora-sigfox-nodes/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are very proud to announce you the availability of 25 new LoRa/Sigfox nodes in FIT IoT-LAB. The nodes are <a href="http://www.st.com/en/evaluation-tools/b-l072z-lrwan1.html">ST B-L072Z-LRWAN1 boards</a> with <a href="http://www.st.com/en/ecosystems/x-nucleo-iks01a2.html">ST MEMS extension X-NUCLEO-IKS01A2</a> and are <b>only available in Saclay site</b> for the moment.</p>
+<div class="text-danger">One important thing is the restricted access to these nodes: due to the regulated access to the ISM wireless bands in Europe (LoRa EU868 band), we will grant the access to them only for specifically approved users.</div>
+<p>Please send a request by email to <b>admin@iot-lab.info</b> explaining your motivation and detailing your use case if you want to use them.</p>
+<p><a href="https://www.iot-lab.info/tutorials/riot-ttn">A new tutorial</a> is written to guide you through your first steps using LoRaWAN with RIOT and TheThingsNetwork.</p>
+<p>Other tutorials are also available on the <a href="https://www.iot-lab.info/tutorials">IoT-LAB website</a>.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/new-lora-sigfox-nodes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Update of IoT-LAB tools</title>
+		<link>https://www.iot-lab.info/update-iotlab-tools/</link>
+		<comments>https://www.iot-lab.info/update-iotlab-tools/#comments</comments>
+		<pubDate>Mon, 07 May 2018 15:48:24 +0000</pubDate>
+		<dc:creator><![CDATA[Frederic Saint-marcel]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7111</guid>
+		<description><![CDATA[We would like to inform you about tools updates we made on the IoT-LAB SSH frontends. GNU Toolchain for ARM Version 7.2 of the GNU Toolchain for ARM is now installed in /opt/gcc-arm-none-eabi-7-2017-q4-major in addition to the actual one, version 4.9, which is still used by default. To know more on how to use it ... <a href="https://www.iot-lab.info/update-iotlab-tools/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We would like to inform you about tools updates we made on the IoT-LAB SSH frontends.</p>
+<h3>GNU Toolchain for ARM</h3>
+<p>Version 7.2 of the GNU Toolchain for ARM is now installed in /opt/gcc-arm-none-eabi-7-2017-q4-major in addition to the actual one, version 4.9, which is still used by default. To know more on how to use it or set it as the default version, see the <a href="https://github.com/iot-lab/iot-lab/wiki/Versions-of-the-GNU-toolchain-for-ARM">IoT-LAB wiki</a>.</p>
+<h3>IoT-LAB CLI Tools</h3>
+<p>For a better user experience, we released a <a href="https://pypi.org/project/iotlabcli/">new version of IoT-LAB command-line tools</a> (v2.5.3). It mainly consists in renaming, adding a common prefix to the different commands.</p>
+<p>Thus now you should use:</p>
+<ul>
+<li><strong>iotlab-experiment</strong> (experiment-cli)</li>
+<li><strong>iotlab-node</strong> (node-cli)</li>
+<li><strong>iotlab-profile</strong> (profile-cli)</li>
+<li><strong>iotlab-auth</strong> (auth-cli)</li>
+<li><strong>iotlab-robot</strong> (robot-cli)</li>
+<li><strong>iotlab-ssh</strong> (open-a8-cli)</li>
+</ul>
+<p>All legacy names are always available to ensure compatibility with old scripts and tools. A deprecated message is printed when using legacy commands.<br />
+Of course you are encouraged to update.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/update-iotlab-tools/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Paris site is IPv6 ready</title>
+		<link>https://www.iot-lab.info/paris-site-is-ipv6-ready/</link>
+		<comments>https://www.iot-lab.info/paris-site-is-ipv6-ready/#comments</comments>
+		<pubDate>Fri, 27 Apr 2018 09:11:16 +0000</pubDate>
+		<dc:creator><![CDATA[Frederic Saint-marcel]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=7089</guid>
+		<description><![CDATA[We are pleased to announce that the public IPv6 service on the FIT IoT-LAB testbed as been extended with the Paris site. As a reminder, five sites implement now this service: Grenoble Lille Paris Saclay Strasbourg You can find more details about M3/A8 nodes global IPv6 subnetting by following this tutorial. Moreover, on the tutorials page, ... <a href="https://www.iot-lab.info/paris-site-is-ipv6-ready/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are pleased to announce that the public IPv6 service on the FIT IoT-LAB testbed as been extended with the <b>Paris</b> site.</p>
+<p>As a reminder, five sites implement now this service:</p>
+<ul>
+<li><a title="Grenoble" href="https://www.iot-lab.info/deployment/grenoble/" target="">Grenoble</a></li>
+<li><a title="Lille" href="https://www.iot-lab.info/deployment/lille/" target="">Lille</a></li>
+<li><a title="Lille" href="https://www.iot-lab.info/deployment/paris/" target="">Paris</a></li>
+<li><a title="Saclay" href="https://www.iot-lab.info/deployment/saclay/" target="">Saclay</a></li>
+<li><a title="Strasbourg" href="https://www.iot-lab.info/deployment/strasbourg/" target="">Strasbourg</a></li>
+</ul>
+<p>You can find more details about M3/A8 nodes global IPv6 subnetting by following <a title="Understand IPv6 Subnetting on the FIT IoT-LAB testbed" href="https://www.iot-lab.info/tutorials/understand-ipv6-subnetting-on-the-fit-iot-lab-testbed/">this tutorial</a>.</p>
+<p>Moreover, on the <a title="Tutorials" href="/tutorials">tutorials</a> page, you will find some tutorials to learn how to use public IPv6 addresses with M3/A8 nodes with Contiki or RIOT.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/paris-site-is-ipv6-ready/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Join the first FIT / Grid5K school</title>
+		<link>https://www.iot-lab.info/join-the-first-fit-grid5k-school/</link>
+		<comments>https://www.iot-lab.info/join-the-first-fit-grid5k-school/#comments</comments>
+		<pubDate>Fri, 23 Feb 2018 16:03:10 +0000</pubDate>
+		<dc:creator><![CDATA[Nathalie Mitton]]></dc:creator>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=6320</guid>
+		<description><![CDATA[FIT and Grid5k infrastructures join their strengths to allow even more IoT experience into the newly SILECS infrastructure. As a first step, we are proud to announce the first joint school in which you will enjoy all testbeds, facilities and possibilities we offer through presentations, tutorials and challenges. Please, join us in Sophia Antipolis, on the ... <a href="https://www.iot-lab.info/join-the-first-fit-grid5k-school/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>FIT and Grid5k infrastructures join their strengths to allow even more IoT experience into the newly <a href="http://www.silecs.net">SILECS</a> infrastructure.</p>
+<p>As a first step, we are proud to announce the first joint school in which you will enjoy all testbeds, facilities and possibilities we offer through presentations, tutorials and challenges.</p>
+<p>Please, join us in Sophia Antipolis, on the French Riviera ! Registrations are open, and free <img src="https://www.iot-lab.info/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" /></p>
+<p>For more information, please visit <a href="http://www.silecs.net/1st-grid5000-fit-school/">this link</a>.</p>
+<p>See you soon there.</p>
+<p>&nbsp;</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/join-the-first-fit-grid5k-school/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Lille&#8217;s new physical topology released</title>
+		<link>https://www.iot-lab.info/lilles-new-physical-topology-released/</link>
+		<comments>https://www.iot-lab.info/lilles-new-physical-topology-released/#comments</comments>
+		<pubDate>Fri, 16 Feb 2018 11:58:57 +0000</pubDate>
+		<dc:creator><![CDATA[Julien Vandaele]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://www.iot-lab.info/?p=6306</guid>
+		<description><![CDATA[We are proud to announce the availability of the Lille new deployment: sparser, at the building scale. The whole 256 M3 nodes are available again*. But that’s not all. We took advantage of this operation to add a new type of board in this deployment. We deployed 9 Zolertia Frirefly (3 per floor), bringing sub-1GHz ... <a href="https://www.iot-lab.info/lilles-new-physical-topology-released/">Continue Reading  &#187;</a>]]></description>
+				<content:encoded><![CDATA[<div class="pf-content"><p>We are proud to announce the availability of the Lille new deployment: sparser, at the building scale. The whole 256 M3 nodes are available again*.<br />
+But that’s not all. We took advantage of this operation to add a new type of board in this deployment. We deployed 9 Zolertia Frirefly (3 per floor), bringing sub-1GHz communications alongside 2.4GHz.</p>
+<p><strong>Why?</strong><br />
+In its original deployment, released in 2014, the Lille nodes were deployed over a 225 m2 area, hosting 256 M3 nodes. The nodes were dispatched over a regular 2D-grid, plus a few number deployed vertically on wooden poles.</p>
+<p>The main drawback of this deployment was the density of the network – each node was able to communicate directly with any other node. Thus, we considered beneficial to propose an actual multi-hop network where the nodes are not all in range of each other. That is why we decided to make our deployment sparser and re-deploy more than half of the nodes.</p>
+<p><strong>How?</strong><br />
+The final scenario adopted is, in addition to the original dedicated room on the third floor, a distribution of nodes through offices, corridors, meeting or storage rooms across the three floors of our Inria Lille building, providing a connected network. Figures attached shows an overview of the new topology. Furthermore, offering such a topology, provides an actual deployment at a building scale.<br />
+Details, maps and pictures will be updated soon on the <a href="/deployment/lille">Lille&#8217;s deployment page</a>.</p>
+<p>We hope it will answer your needs and experimentation scenarios.</p>
+<p><small><em>*Be careful, coordinates of the nodes changed, and nodes ids too. Thus, experiments conduct with the same set of nodes ids, will not be ran with the same nodes and could bring different results than before.</em></small></p>
+<p><a href="https://www.iot-lab.info/wp-content/uploads/2018/02/lille_deployment_zones.png" rel="lightbox[gallery-hb5C]"><img src="https://www.iot-lab.info/wp-content/uploads/2018/02/lille_deployment_zones-724x1024.png" alt="lille_deployment_zones" width="724" height="1024" class="aligncenter size-large wp-image-6308" /></a></p>
+</div>]]></content:encoded>
+			<wfw:commentRss>https://www.iot-lab.info/lilles-new-physical-topology-released/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

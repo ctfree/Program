@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/contiki-private-ipv6-m3/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Private IPv6 (6LoWPAN/RPL) network with M3 nodes &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-7376 page-child parent-pageid-7210 page-template-default layout-1c">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+	
+	<div id="primary" class="content-area col-sm-8">
+
+				<main id="main" class="site-main" role="main">
+
+			<article role="article" id="post-7376" class="post-7376 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><h2>Private IPv6/6LoWPAN/RPL network with M3 nodes</h2>
+<p>&nbsp;</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="" width="30" height="30" /> <strong>Difficulty</strong>: High</p>
+<p><img class="size-full wp-image-1253 alignnone" src="../../wp-content/uploads/2014/02/duration.jpg" alt="" width="30" height="30" /> <strong>Duration</strong>: 45 minutes</p>
+<p><em><strong>Prerequisites</strong>: <a href="../ssh-access/index.html" target="_blank">Configure SSH Access</a> / <a title="Submit an experiment with M3 nodes using the web portal" href="../submit-experiment-m3-web/index.html" target="_blank">Submit an experiment with M3 nodes using the web portal</a></em></p>
+<p><em><strong>Description</strong>: The aim of this tutorial is to discover the basics of Contiki uIP stack &amp; tools for IoT-LAB IPv6. You will reserve some nodes on the Grenoble site, set them up with the two provided firmwares using CLI tools, and create a simple IPv6 network in IoT-LAB. You will access nodes over HTTP over IPv6 from the SSH frontend, using a Contiki tunslip6 bridge.</em></p>
+<ol>
+<li><a href="../../testbed/index.html" target="_blank">Log into the Web portal</a> with your account credentials</li>
+<li>Submit a new experiment:
+<ul>
+<li>Set an experiment name (no spaces nor funny chars in the experiment name)</li>
+<li>Duration: <strong>60 minutes</strong> and starting &#8220;<strong>As soon as possible</strong>&#8220;</li>
+<li>Choose ten nodes with Architecture m3 (at86rf231) / Site = grenoble / Number = 10 and click &#8220;Add to experiment&#8221;</li>
+</ul>
+</li>
+<li>Wait experiment state Running in the Schedule dashboard section. After click on experiment details and visualize which nodes you are booked and verify that you have Success in the deployment result</li>
+<li>Download firmware binaries on SSH frontend:
+<pre>my_computer$ ssh &lt;login&gt;@grenoble.iot-lab.info</pre>
+<ul>
+<li><strong>Border Router</strong>: bridge between the server and the IoT-LAB IPv6 network
+<pre>&lt;login&gt;@grenoble:~$ wget --no-check-certificate https://raw.githubusercontent.com/wiki/iot-lab/iot-lab/firmwares/contiki/border-router.iotlab-m3</pre>
+</li>
+</ul>
+<ul>
+<li><strong>HTTP server</strong>: simple IPv6 node
+<pre>&lt;login&gt;@grenoble:~$ wget --no-check-certificate https://raw.githubusercontent.com/wiki/iot-lab/iot-lab/firmwares/contiki/http-server.iotlab-m3</pre>
+</li>
+</ul>
+<p>View <a href="https://github.com/iot-lab/contiki/tree/master/examples/ipv6/rpl-border-router" target="_blank">Border Router</a> and <a href="https://github.com/iot-lab/contiki/tree/master/examples/ipv6/http-server" target="_blank">HTTP Server</a> source code on GitHub.</li>
+<li>Choose one node in your nodes list to implement the Border Router (BR) node
+<ul>
+<li>we chose node <strong>m3-4</strong></li>
+</ul>
+</li>
+<li>Start tunslip6 on the SSH frontend:
+<ul>
+<li>
+<pre>&lt;login&gt;@grenoble:~$ sudo tunslip6.py -v2 -L -a <strong>m3-4</strong> -p 20000 fd00::1/64
+slip connected to ``172.16.10.4:20000''
+
+10:26:01 opened tun device ``/dev/tun0''
+0000.000 ifconfig tun0 inet `hostname` up
+0000.007 ifconfig tun0 add fd00::1/64
+0000.010 ifconfig tun0 add fe80::0:0:0:1/64
+0000.013 ifconfig tun0
+
+tun0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          inet adr:192.168.1.5  P-t-P:192.168.1.5  Masque:255.255.255.255
+          adr inet6: fe80::1/64 Scope:Lien
+          adr inet6: fd00::1/64 Scope:Global
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 lg file transmission:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</pre>
+</li>
+<li><strong>Note 1: leave the terminal open</strong> (you don&#8217;t want to kill tunslip6, it bridges the BR to the front-end network)</li>
+<li><strong>Note 2</strong>: If you have <strong>an error &#8220;overlaps with routes&#8221;</strong>, it&#8217;s because another experiment is using the same ipv6 prefix (e.g. : fd00::1/64).You can view ipv6 prefix used on the frontend SSH with this command and choose another prefix in IPv6Network(&#8216;fd00::/8&#8242;) like fddd::1/64.
+<pre>&lt;login&gt;@grenoble:~$ ip -6 route
+<strong>fd00::/64 dev tun_7589</strong>  proto kernel  metric 256  mtu 1500 advmss 1440 hoplimit 4294967295
+fe80::/64 dev eth1  proto kernel  metric 256  mtu 1500 advmss 1440 hoplimit 4294967295
+fe80::/64 dev eth0  proto kernel  metric 256  mtu 1500 advmss 1440 hoplimit 4294967295</pre>
+</li>
+<li><strong>Note 3</strong>: if you did not already authenticate using <tt>iotlab-auth</tt>, do it now:
+<pre>&lt;login&gt;@grenoble:~$ iotlab-auth -u login</pre>
+</li>
+</ul>
+</li>
+<li>Deploy the Border Router (BR) node on selected node using the CLI tool <tt>iotlab-node</tt>.
+<pre>&lt;login&gt;@grenoble:~$ iotlab-node --update ~/border-router.iotlab-m3 -l grenoble,m3,<strong>4</strong>
+{
+    "0": [
+        "m3-4.grenoble.iot-lab.info"
+    ]
+}</pre>
+</li>
+<li>Get the Border Router IPv6 address from tunslip output:
+<pre>...
+Platform starting in 1... 
+GO!
+[in clock_init() DEBUG] Starting systick timer at 100Hz
+
+0081.141 *** Address:fd00::1 =&gt; fd00:0000:0000:0000
+0081.171  Starting 'Border router process' 'Web server'Got configuration message of type P
+0081.171 Setting prefix fd00::
+0181.141 Server IPv6 addresses:
+0181.141  fd00::9176
+0181.141  fe80::9176
+</pre>
+</li>
+<li>Ping6 BR node using global address:
+<pre>&lt;login&gt;@grenoble:~$ ping6 fd00::9176</pre>
+</li>
+<li>View BR&#8217;s web-interface :
+<pre>&lt;login&gt;@grenoble:~$ lynx -dump http://[fd00::9176]</pre>
+<p>You should see a web page with no neighbors and no routes.</p>
+<p><strong>Note:</strong> if you want to use your computer browser you can configure a<a href="#web-proxy"> Web proxy with SSH frontend</a></li>
+<li>Deploy one HTTP server node picking another node (here node 5)
+<pre>&lt;login&gt;@grenoble:~$ iotlab-node --update ~/http-server.iotlab-m3 -l grenoble,m3,5
+{
+    "0": [
+        "m3-5.grenoble.iot-lab.info"
+    ]
+}</pre>
+</li>
+<li>Check the BR&#8217;s web interface to see the newcomer</li>
+<li>Grab the HTTP server node&#8217;s IPv6 address from the BR&#8217;s web interface
+<pre>   Neighbors
+fe80::a176
+
+   Routes
+fd00::a176/128 (via fe80::a176) 16711424s</pre>
+<p>Understand <a href="https://github.com/iot-lab/iot-lab/wiki/Get-M3-and-A8-M3-nodes-uid---ipv6-address-match" target="_blank">M3 nodes uid / ipv6 address match</a>.</li>
+<li>Ping the HTTP server&#8217;s global address from SSH frontend
+<pre>&lt;login&gt;@grenoble:~$ ping6 fd00::a176</pre>
+</li>
+<li>Deploy one more HTTP server node</li>
+<li>Check again the BR&#8217;s web-interface and see the newcomer</li>
+<li>Download the page of the first HTTP server:
+<pre>&lt;login&gt;@grenoble:~$ lynx -dump http://[fd00::a176]/</pre>
+</li>
+<li>Deploy HTTP servers on all remaining nodes (with &#8211;exclude iotlab-node option)
+<pre>&lt;login&gt;@grenoble:~$ iotlab-node --update ~/http-server.iotlab-m3 --exclude grenoble,m3,4+5{
+    "0": [
+        "m3-1.grenoble.iot-lab.info", 
+        "m3-2.grenoble.iot-lab.info", 
+        "m3-3.grenoble.iot-lab.info", 
+        "m3-6.grenoble.iot-lab.info", 
+        "m3-13.grenoble.iot-lab.info", 
+        "m3-287.grenoble.iot-lab.info", 
+        "m3-288.grenoble.iot-lab.info", 
+        "m3-289.grenoble.iot-lab.info"
+    ]
+}</pre>
+</li>
+<li>Check again the BR&#8217;s web-interface (reload) and see the newcomers
+<pre>   Neighbors
+fe80::a176
+fe80::a682
+fe80::b868
+fe80::c370
+fe80::9982
+fe80::2354
+fe80::1162
+fe80::b982
+
+   Routes
+fd00::a176/128 (via fe80::a176) 16711415s
+fd00::a682/128 (via fe80::a682) 16711415s
+fd00::1162/128 (via fe80::a682) 16711421s
+fd00::9982/128 (via fe80::a682) 16711416s
+fd00::b868/128 (via fe80::b868) 16711415s
+fd00::c370/128 (via fe80::c370) 16711414s
+fd00::b982/128 (via fe80::c370) 16711420s
+fd00::2354/128 (via fe80::2354) 16711416s</pre>
+<p>Study how RPL shapes the routing table. Here: 5 nodes out of 7 neighbors are targeted as routers for other nodes (check the &#8220;via&#8221; addresses).</p>
+<p>The RPL tree can be represented as shown below:</p>
+<pre>&lt;login&gt;@grenoble:~$ wget --no-check-certificate https://github.com/iot-lab/contiki/raw/master/examples/ipv6/http-server/get_rpl_tree.sh
+&lt;login&gt;@grenoble:~$ bash get_rpl_tree.sh fd00::9176
+ fd00::9176
+     fd00::2354
+     fd00::a176
+     fd00::a682
+          fd00::1162
+     fd00::b868
+     fd00::c370
+          fd00::b982
+</pre>
+<p>&nbsp;</li>
+<li>Check again the first HTTP server page and see (some of) the newcomers, plus a new route.
+<pre>   Neighbors
+fe80::9176 PREFERRED
+fe80::b868
+fe80::c370
+fe80::2354
+fe80::9982
+fe80::a682
+
+   Default Route
+fe80::9176
+
+   Routes</pre>
+</li>
+<li>Check the &#8220;furthest&#8221; HTTP server listed in BR&#8217;s neighborhood:
+<pre>&lt;login&gt;@grenoble:~$ lynx -dump http://[fd00::1162]/
+Neighbors
+fe80::a682 PREFERRED
+fe80::b868
+fe80::c370
+fe80::2354
+fe80::9982
+fe80::b982
+fe80::9176
+fe80::a176
+
+   Default Route
+fe80::a682
+
+   Routes</pre>
+</li>
+<li>Check to see if all deployed nodes are reachable
+<ul>
+<li>check number of neighbors visible in BR vs number of deployed nodes</li>
+<li>use ping6 to check all nodes are reachable</li>
+</ul>
+</li>
+<li>Kill some of the RPL network nodes using &#8221;iotlab-node &#8211;stop&#8221;
+<pre>&lt;login&gt;@grenoble:~$ iotlab-node --stop -l grenoble,m3,288+289</pre>
+</li>
+<li>Check the effect on the RPL network by reloading the pages with lynx</li>
+<li>Restart one node using &#8221;iotlab-node &#8211;start&#8221;, check the effect
+<pre>&lt;login&gt;@grenoble:~$ iotlab-node --start -l grenoble,m3,288</pre>
+</li>
+</ol>
+<p>&nbsp;</p>
+<div class="alert-info">
+<h2>Additionnal details</h2>
+<h3><a id="web-proxy"></a>Configure a Web proxy with SSH frontend</h3>
+<p>Setup sock5 proxy with :</p>
+<pre>my_computer$ ssh -v -ND 1234 &lt;login&gt;@grenoble.iot-lab.info</pre>
+<p>Configure your browser to use sock5 proxy localhost:1234 :</p>
+<pre>my_computer$ google-chrome --proxy-server="socks://localhost:1234"</pre>
+<h3>Access serial port directly from your computer</h3>
+<p>Open a SSH tunnel between your computer and the M3 node</p>
+<pre>my_computer$ ssh -L 20000:m3-:20000 @grenoble.iot-lab.info</pre>
+<p>In another terminal, run nc locally as if you were on the ssh frontend.</p>
+<pre>my_computer $nc localhost 20000</pre>
+<h3>Run this tutorial on your computer</h3>
+<p>Go to <a href="../build-tunslip6/index.html" target="_blank">Build tunslip6 on your computer tutorial</a></p>
+</div>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-7376 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/contiki-private-ipv6-m3/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:21:01 GMT -->
+</html>

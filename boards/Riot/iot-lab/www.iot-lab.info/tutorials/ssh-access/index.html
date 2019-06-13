@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.iot-lab.info/tutorials/ssh-access/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:20:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8" />
+<!-- [if IE]> <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <! [endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<title>Configure your SSH access &#8226; FIT/IoT-LAB</title>
+<!--[if lt IE 9]><script src="https://www.iot-lab.info/wp-content/themes/alienship-1.2.5/js/html5shiv.js" type="text/javascript"></script><![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="FIT/IoT-LAB &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel='stylesheet' id='responsive-lightbox-swipebox-front-css'  href='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/swipebox2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='toc-screen-css'  href='../../wp-content/plugins/table-of-contents-plus/screen6149.css?ver=1404' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css'  href='../../wp-content/themes/alienship-1.2.5/style2f54.css?ver=4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/alienship-1.2.5/css/bootstrap.minb3e8.css?ver=0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='alienship-style-css'  href='../../wp-content/themes/alienship-1.2.5-child/styleb3e8.css?ver=0.1' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery90f9.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/assets/swipebox/source/jquery.swipebox.min2f54.js?ver=4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","custom_events":"","activeGalleries":"1","animation":"1","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/responsive-lightbox/js/front2f54.js?ver=4.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5-child/js/bootstrap-hover-dropdown.min2f54.js?ver=4.1'></script>
+<link rel='canonical' href='index.html' />
+        <style type="text/css" media="screen">
+          div.printfriendly {
+            margin: 12px 12px 12px 12px;;
+          }
+          div.printfriendly a, div.printfriendly a:link, div.printfriendly a:visited {
+            text-decoration: none;
+            font-size: 14px;
+            color: #6D9F00;
+            vertical-align: bottom;
+            border: none;
+          }
+
+          .printfriendly a:hover {
+            cursor: pointer;
+          }
+
+          .printfriendly a img  {
+            border: none;
+            padding:0;
+            margin-right: 6px;
+            display:inline-block;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+          }
+          .printfriendly a span{
+            vertical-align: bottom;
+          }
+          .pf-alignleft {
+            float: left;
+          }
+          .pf-alignright {
+            float: right;
+          }
+          div.pf-aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+          }
+        </style>
+        <style type="text/css" media="print">
+          .printfriendly {
+            display: none;
+          }
+        </style>
+ 	<style type="text/css">
+ 				#site-title,
+		#site-description {
+			position: absolute;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+ 		 	</style>
+ 	
+<!-- BEGIN GADWP v5.3.1.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115966924-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+</head>
+
+<body class="page page-id-6354 page-child parent-pageid-7210 page-template page-template-templates page-template-page-full page-template-templatespage-full-php layout-default">
+	<!--[if lt IE 9]><p class="browsehappy alert alert-danger">You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+	<!-- Top Menu -->
+	<nav class="navbar navbar-default navbar-onelab navbar-fixed-top top-navigation" role="navigation">
+	    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+							<a href="../../index.html"><img src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-iotlab3.png" /></a>
+					</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul id="menu-topmainmenu" class="nav navbar-nav"><li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a title="News" href="../../news/index.html">News</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-140 dropdown"><a title="Platform" data-toggle="dropdown" data-hover="dropdown" href="../../what-is-iot-lab/index.html">Platform <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-466"><a title="What is IoT-LAB?" href="../../what-is-iot-lab/index.html">What is IoT-LAB?</a></li>
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a title="Deployment" href="../../deployment/index.html">Deployment</a></li>
+	<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a title="Hardware" href="../../hardware/index.html">Hardware</a></li>
+	<li id="menu-item-4608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4608"><a title="Robots" href="../../robots/index.html">Robots</a></li>
+	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a title="About us" href="../../about-us/index.html">About us</a></li>
+</ul>
+</li>
+<li id="menu-item-1467" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1467 dropdown"><a title="Dev Center" data-toggle="dropdown" data-hover="dropdown" href="../../dev-center/index.html">Dev Center <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1957"><a title="Software Development" href="../../dev-center/index.html">Software Development</a></li>
+	<li id="menu-item-7329" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-7329"><a title="Tutorials" href="../index.html">Tutorials</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a title="Operating Systems" href="../../operating-systems/index.html">Operating Systems</a></li>
+	<li id="menu-item-1396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1396"><a title="Libraries" href="../../libraries/index.html">Libraries</a></li>
+	<li id="menu-item-1394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1394"><a title="Drivers" href="../../drivers/index.html">Drivers</a></li>
+	<li id="menu-item-7372" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7372"><a title="REST API documentation" href="http://api.iot-lab.info/">REST API documentation</a></li>
+</ul>
+</li>
+<li id="menu-item-3209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3209 dropdown"><a title="Community" data-toggle="dropdown" data-hover="dropdown" href="../../community/index.html">Community <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-3244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3244"><a title="Share your experience" href="../../community/index.html">Share your experience</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3210"><a title="Education" href="../../education/index.html">Education</a></li>
+	<li id="menu-item-2133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2133"><a title="Publications" href="../../publications/index.html">Publications</a></li>
+	<li id="menu-item-2405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2405"><a title="Charter" href="../../charter/index.html">Charter</a></li>
+</ul>
+</li>
+<li id="menu-item-1470" class="get_started menu-item menu-item-type-post_type menu-item-object-page menu-item-1470"><a title="Get Started" href="../../get_started/index.html">Get Started</a></li>
+</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="../../testbed/drawgantt.html" title="Testbed activity"><span class="glyphicon glyphicon-calendar"></span> Activity</a>
+				</li>
+
+
+
+			                        	<li><span><a href="../../testbed/index.html" class="btn btn-primary testbed" title="Login">Access the testbed</a></span></li>
+			                        </ul>
+		</div>
+	    </div>
+	</nav>
+<!-- End Top Menu -->
+
+
+	<div id="page" class="container hfeed site">
+
+				<header id="masthead" class="site-header" role="banner">
+			<p id="site-title" class="site-title"><a href="../../index.html" title="FIT/IoT-LAB" rel="home">FIT/IoT-LAB</a></p><p id="site-description" class="site-description">Very large scale open wireless sensor network testbed</p>		</header><!-- #masthead -->
+			<div id="content" class="site-content row">
+
+		<div id="primary" class="col-sm-12">
+
+				<main id="main" class="site-main" role="main">
+
+		<article role="article" id="post-6354" class="post-6354 page type-page status-publish hentry">
+		<div class="entry-content">
+		<div class="pf-content"><div id="toc_container" class="toc_wrap_right no_bullets"><p class="toc_title">Contents</p><ul class="toc_list"><li><a href="#Create_an_ssh_key_pair"><span class="toc_number toc_depth_1">1</span> Create an ssh key pair</a><ul><li><a href="#Unix"><span class="toc_number toc_depth_2">1.1</span> Unix</a></li><li><a href="#Windows"><span class="toc_number toc_depth_2">1.2</span> Windows</a></li></ul></li><li><a href="#Register_your_public_key_in_your_IoT-LAB_profile"><span class="toc_number toc_depth_1">2</span> Register your public key in your IoT-LAB profile</a></li><li><a href="#Testing_the_connection_to_the_IoT-LAB_SSH_servers"><span class="toc_number toc_depth_1">3</span> Testing the connection to the IoT-LAB SSH servers</a><ul><li><a href="#Troubleshooting"><span class="toc_number toc_depth_2">3.1</span> Troubleshooting</a></li></ul></li></ul></div>
+
+<p class="h2">Configure your SSH access</p>
+<p><img class="alignnone size-full wp-image-1252" src="../../wp-content/uploads/2014/02/difficulty.jpg" alt="" width="30" height="30" /> <strong>Difficulty</strong>: Medium</p>
+<p><img class="size-full wp-image-1253 alignnone" src="../../wp-content/uploads/2014/02/duration.jpg" alt="" width="30" height="30" /> <strong>Duration</strong>: 10 minutes</p>
+<p><em><strong>Description</strong>: The goal of this tutorial is to setup your ssh access to the IoT-LAB servers. You will create an ssh key pair for authentication, register the public key on the website, and test your access to a testbed server.</em></p>
+<h3><span id="Create_an_ssh_key_pair">Create an ssh key pair</span></h3>
+<p>The ssh key pair creation is different on Unix systems or Windows so please follow the proper section.</p>
+<h4><span id="Unix">Unix</span></h4>
+<p>The SSH key generation is fairly straightforward on Unix systems. Just type the following command in a terminal:</p>
+<pre class="code bash">you@yourpc:~$ <strong>ssh-keygen -t rsa
+</strong>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/you/.ssh/id_rsa): 
+Created directory '/home/you/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/you/.ssh/id_rsa.
+Your public key has been saved in /home/you/.ssh/id_rsa.pub.
+The key fingerprint is:
+14:13:be:59:3c:ab:fa:df:78:8e:39:fc:72:9c:9e:7d you@yourpc
+The key's randomart image is:
++--[ RSA 2048]----+
+|        +.       |
+|       . +       |
+|        o +      |
+|       . + o     |
+|        S .      |
+|         .       |
+|        .. . .   |
+|       .  +==o  E|
+|      ....=O* .. |
++-----------------+
+
+you@yourpc:~$ <strong>ls ~/.ssh/</strong>
+id_rsa  id_rsa.pub
+
+you@yourpc:~$ <strong>cat ~/.ssh/id_rsa.pub</strong> 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvO5swUgdzu/cLDf44R90OUrd32lScJtnI+hujpRh9WwZnYiFE/0M+DymrMzYe2UF65pA4T0rai5tUnnQ4K5a1rwM1qeXoe/JZPPZ+U3sn5KDh2iMlVwAUT00jubAi8mYjHC1eT1ZqpprrM0hsoj7BavXRjut737W9kp4cwt7zA6wGB3zemv7fLUJnriOA1DrAYis9kWqJLvEca0hW1Hbd0e9rvUajwoKAQPJrSSK+GFEaKZ/kbWCumUy4BXStGhrNt/+OABT1d9WXtfUi/AeKkYXZWjy/PO1hvtooeWw1VYT0htiKkAox9UellVxpK/ARmQYjlNyVIL/D9HlYMjCd you@yourpc
+</pre>
+<p>Two files will be created at the destination folder (by default <code>~/.ssh/</code>):</p>
+<ul>
+<li>The public key has the .pub extension. This is the key that you will copy on the webportal.</li>
+<li>The private key should never be sent to anyone, even us, and remain secret.</li>
+</ul>
+<p>You can get more info about the ssh-keygen command in the manpage (which can be found <a href="http://www.delafond.org/traducmanfr/man/man1/ssh-keygen.1.html" target="_blank">there (fr)</a> for instance).</p>
+<h4><span id="Windows">Windows</span></h4>
+<p>The SSH key generation can be a little bit more difficult on MS Windows. You need to use <a title="putty" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Puttygen</a> to generate keys and <a title="putty" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Putty</a> for the ssh connection.</p>
+<p><a href="../../wp-content/uploads/2014/05/Capture-du-2014-05-12-2105511.png" rel="lightbox[gallery-cgGz]"><img class="aligncenter size-full wp-image-2605" src="../../wp-content/uploads/2014/05/Capture-du-2014-05-12-2105511.png" alt="modify ssh keys via webportal" width="938" height="476" /></a></p>
+<h3><span id="Register_your_public_key_in_your_IoT-LAB_profile">Register your public key in your IoT-LAB profile</span></h3>
+<p>Now that you created your ssh key pair, you can register the public key in your IoT-LAB profile.</p>
+<ol>
+<li><a href="../../testbed-beta.html" target="_blank">Log into the Webportal</a> and click on the Account icon. Then choose the SSH Keys tab.</li>
+<li>Then paste the public key in the text input and save it by clicking on &#8216;Update SSH Keys&#8217; button.
+<p style="text-align: center;"><a href="../../wp-content/uploads/2018/03/ssh.png" rel="lightbox[gallery-cgGz]"><img class="alignnone size-full wp-image-2681" src="../../wp-content/uploads/2018/03/ssh.png" alt="modify_ssh_keys" width="800" /></a></p>
+</li>
+</ol>
+<p>Note: make sure the ssh key you copy ends-up as a single line of text in the text input; if it is broken into several lines, login will not work.</p>
+<p>And that&#8217;s it ! Your key is registered.</p>
+<h3><span id="Testing_the_connection_to_the_IoT-LAB_SSH_servers">Testing the connection to the IoT-LAB SSH servers</span></h3>
+<div class="alert alert-info">Each IoT-LAB site has a front-end SSH reachable with the following address : &lt;site_name&gt;.iot-lab.info. The sites name list is : [grenoble, lille, lyon, paris, saclay, strasbourg]</div>
+<p>Try to connect to Grenoble site frontend SSH.</p>
+<pre class="code bash">you@yourpc:~$ <strong>ssh &lt;login&gt;@grenoble.iot-lab.info # replace &lt;login&gt; by your iot-lab login </strong>
+The authenticity of host 'grenoble.iot-lab.info (194.199.16.167)' can't be established.
+RSA key fingerprint is 49:19:e5:fc:a2:be:fe:75:b2:11:33:29:d8:5e:fb:28.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'grenoble.iot-lab.info,194.199.16.167' (RSA) to the list of known hosts.
+Linux grenoble 2.6.32-5-amd64 #1 SMP Wed Apr 9 19:24:34 UTC 2014 x86_64
+Welcome FIT IoT-LAB users
+
+Charter:
+* FIT IoT-LAB is shared among several users, so do a reasonable use of the platform
+* Quote FIT IoT-LAB in your scientific papers
+
+Post your issues on:
+* the user mailing-list: users@iot-lab.info
+* or the bug-tracker: https://github.com/iot-lab/iot-lab/issues
+
+Last login: Thu May 15 14:20:48 2014 from dhcp6.inrialpes.fr
+&lt;login&gt;@grenoble:~$</pre>
+<h4><span id="Troubleshooting">Troubleshooting</span></h4>
+<p>If you have the <code>Permission denied (publickey).</code> error, check if you correctly pasted your public key on the IoT-LAB web interface <strong>(should be a single line of text)</strong> and retry connecting. Alternatively, restart the tutorial from the beginning.</p>
+</div>	</div><!-- .entry-content -->
+	
+</article><!-- #post-6354 -->
+
+
+			
+		</main><!-- #main -->
+		
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+	
+</div><!-- #page -->
+
+<footer class="site-footer" id="colophon" role="contentinfo">
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="bottom-navigation col-sm-6 col-sm-push-6">
+							</div><!-- .bottom-navigation -->
+                </div><!-- .row -->
+
+		<div class="row">
+			<div class="footer-text col-sm-9">
+				<a href="../../what-is-iot-lab/index.html">WHAT IS IOT-LAB?</a> <a href="../../about-us/index.html">ABOUT US</a> <a href="mailto:admin@iot-lab.info">CONTACT US</a> <a href="https://github.com/iot-lab/iot-lab/issues" target="_blank">SUPPORT</a> -<a href="https://github.com/iot-lab">GitHub</a>/<a href="https://twitter.com/FIT_IoTLAB">Twitter</a>/<a href="https://www.youtube.com/channel/UCrWBoYgLJCkMWgaJF8Hh3Og">Youtube</a>-   Copyright © FIT IoT-LAB			</div><!-- .footer-text -->
+			<div class="col-sm-3">
+				<a href="http://fit-equipex.fr/"><img class="fit-logo center-block" src="../../wp-content/themes/alienship-1.2.5-child/templates/parts/fit-white.svg"></a>
+			</div>
+
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	</footer><!-- #colophon -->
+      <script type="text/javascript">
+		
+          var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfHideImages = '0';
+          var pfImageDisplayStyle = 'right';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+		  (function() {
+            var e = document.createElement('script'); e.type="text/javascript";
+		    if('https:' == document.location.protocol) {
+			  js='https://pf-cdn.printfriendly.com/ssl/main.js';
+		    }
+		    else{
+			  js='http://cdn.printfriendly.com/printfriendly.js';
+		    }
+            e.src = js;
+            document.getElementsByTagName('head')[0].appendChild(e);
+	  	  })();
+      </script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/table-of-contents-plus/front6149.js?ver=1404'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/bootstrap.minb12b.js?ver=3.1.1'></script>
+<script type='text/javascript' src='../../wp-content/themes/alienship-1.2.5/js/alienship-helper8a54.js?ver=1.0.0'></script>
+
+</body>
+
+<!-- Mirrored from www.iot-lab.info/tutorials/ssh-access/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2019 12:20:48 GMT -->
+</html>

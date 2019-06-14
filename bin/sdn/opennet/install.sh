@@ -126,7 +126,7 @@ for host in $hosts; do
     echo "$host "
 done
 
-Install_Ansible
+#Install_Ansible
 SSH_Config_Setup
 SSH_Daemon_Setup
 Test_Network

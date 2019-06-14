@@ -1,0 +1,7 @@
+--- ns-3.21-backup/src/netanim/wscript	2014-12-02 20:51:57.485842717 +0800
++++ ns-3.21/src/netanim/wscript	2014-12-02 21:18:44.116700896 +0800
+@@ -26,3 +26,4 @@ def build (bld) :
+ 	if (bld.env['ENABLE_EXAMPLES']) :
+ 		bld.recurse('examples')
+ 
++	bld.ns3_python_bindings()

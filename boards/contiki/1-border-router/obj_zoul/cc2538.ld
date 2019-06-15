@@ -1112,7 +1112,6 @@ SECTIONS
         _text = .;
         *(.vectors)
         *(.text*)
-        _rodata = .;
         *(.rodata*)
         _etext = .;
     } > FLASH_FW= 0

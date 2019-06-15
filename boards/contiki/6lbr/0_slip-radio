@@ -1,9 +1,0 @@
-#!/bin/bash
-
-mytitle="Slip-radio"
-echo -e '\033]2;'$mytitle'\007'
-
-cd ~/Downloads/6lbr/examples/ipv6/slip-radio/
-BOARD=remote make slip-radio.upload PORT=/dev/ttyUSB0 TARGET="zoul"
-BOARD=remote make login PORT=/dev/ttyUSB0
-

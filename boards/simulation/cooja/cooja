@@ -1,3 +1,3 @@
 #!/bin/bash
-coojaPath=/home/aghiles/Aghiles/Program/C/bin/contiki/tools/cooja
+coojaPath=/home/aghiles/Aghiles/Program/boards/contiki/bin/contiki-os/tools/cooja
 cd $coojaPath && ant run

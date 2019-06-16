@@ -1,7 +1,7 @@
 CONTIKI_PROJECT=border-router
 all: $(CONTIKI_PROJECT) 
 
-CONTIKI=/home/aghiles/Aghiles/Program/boards/contiki/bin/contiki-os
+CONTIKI=/home/aghiles/Aghiles/Program/boards/contiki/contiki-os
 
 #APPS += mqtt #ubidots
 

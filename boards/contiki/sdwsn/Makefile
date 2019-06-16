@@ -1,7 +1,7 @@
 all: sdwsn-server 
 # use target "er-plugtest-server" explicitly when requried 
 
-CONTIKI= /home/aghiles/Aghiles/Program/boards/contiki/bin/contiki-os
+CONTIKI= /home/aghiles/Aghiles/Program/boards/contiki/contiki-os
 CONTIKI_WITH_IPV6 = 1
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 

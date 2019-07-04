@@ -207,6 +207,3 @@ void loop(void){
 		delay(10000);
 	}
 }
-
-
-

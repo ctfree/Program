@@ -1,5 +1,4 @@
 /*
- *  GPS sensor to test the LoRa gateway
  *
  *  Copyright (C) 2017 Congduc Pham & Mamour Diop, University of Pau, France
  *
@@ -146,7 +145,7 @@ unsigned int idlePeriodInMin = 20;
 //                             VCC  -----  VCC
 //
 #define GPS_PIN_POWER 
-#define GPS_PIN_POWER_PIN 8
+#define GPS_PIN_POWER_PIN 0
 ///////////////////////////////////////////////////////////////////
 
 #ifdef WITH_APPKEY

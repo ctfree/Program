@@ -1,0 +1,4 @@
+firmwares = {
+	"smart_tiles": "~/firmware/smart_tiles.elf",	
+	"radio_pinger": "~/firmware/radio_pinger.elf",	
+}

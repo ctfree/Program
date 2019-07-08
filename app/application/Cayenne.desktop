@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Link to Log in to Cayenne
+Type=Link
+URL=https://accounts.mydevices.com/auth/realms/cayenne/protocol/openid-connect/auth?response_type=code&scope=email+profile&client_id=cayenne-web-app&state=vXhB09WDvbF8jfeUKvYOxJvJkKUd7tjn3Yg3L4Fb&redirect_uri=https%3A%2F%2Fcayenne.mydevices.com%2Fauth%2Fcallback
+Icon=text-html
+Name[en_US]=Cayenne

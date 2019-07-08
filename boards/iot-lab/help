@@ -1,0 +1,24 @@
+iotlab-experiment submit -n riot_ttn -d 60 -l 1,archi=st-lrwan1:sx1276+site=saclay
+
+iotlab-experiment submit -d 120 -l saclay,m3,1,tutorial_a8_m3.elf
+iotlab-experiment wait
+iotlab-ws
+
+
+
+gedit -> make -> submit -> 
+
+
+
+iotlab-experiment submit -d 30 \
+      -l 8,archi=wsn430:cc1101+site=grenoble \
+      -l 50,archi=wsn430:cc2420+site=rennes
+
+
+
+iotlab-profile addm3 -n test_consumption -p dc -current -voltage -power -period 140 -avg 4
+
+
+iotlab-profile get -n test_consumption > profile.json
+
+iotlab-profile load -f profile.json

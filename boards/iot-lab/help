@@ -22,3 +22,19 @@ iotlab-profile addm3 -n test_consumption -p dc -current -voltage -power -period 
 iotlab-profile get -n test_consumption > profile.json
 
 iotlab-profile load -f profile.json
+
+
+plot_oml_consum -p -i ~/.iot-lab/<experiment id>/consumption/m3-<id>.oml
+
+
+
+1) réservation de resource software (make)
+
+2) réservation de resource hardware (submit)
+
+3) réservation de profile
+
+4) match
+
+5) plot
+

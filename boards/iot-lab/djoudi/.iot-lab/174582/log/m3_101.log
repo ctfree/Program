@@ -1,0 +1,28 @@
+2019-07-07 08:25:51,106 :: INFO :: Start experiment: djoudi-174582
+2019-07-07 08:25:51,119 :: INFO :: Control node : Starting of control node serial interface
+2019-07-07 08:25:51,130 :: INFO :: Control node : reset
+2019-07-07 08:25:51,140 :: INFO :: Reset Control Node
+2019-07-07 08:25:54,228 :: INFO :: Control node : start power of open node
+2019-07-07 08:25:54,257 :: INFO :: Node OpenOCD: Setup of openocd node
+2019-07-07 08:25:57,299 :: INFO :: Node OpenOCD: flash of openocd node
+2019-07-07 08:25:57,314 :: INFO :: Flash firmware on OpenOCD: /usr/lib/python2.7/site-packages/gateway_code/static/m3_idle.elf
+2019-07-07 08:26:02,694 :: INFO :: Control node : Start experiment
+2019-07-07 08:26:02,739 :: INFO :: Control Node set time delay: 1038 us
+2019-07-07 08:26:02,772 :: INFO :: Control node : profile configuration
+2019-07-07 08:26:02,779 :: INFO :: Configure profile on Control Node
+2019-07-07 08:26:02,852 :: INFO :: Start experiment succeeded
+2019-07-07 08:56:07,745 :: INFO :: Gateway Manager : Stop experiment
+2019-07-07 08:56:07,765 :: INFO :: Stop experiment
+2019-07-07 08:56:07,780 :: INFO :: Control node : stop of the experiment
+2019-07-07 08:56:07,794 :: INFO :: Control node : profile configuration
+2019-07-07 08:56:07,807 :: INFO :: Configure profile on Control Node
+2019-07-07 08:56:07,938 :: INFO :: Control node : start power of open node
+2019-07-07 08:56:07,998 :: INFO :: Node OpenOCD: teardown of openocd node
+2019-07-07 08:56:11,024 :: INFO :: openocd node debugger stop
+2019-07-07 08:56:11,711 :: INFO :: Node OpenOCD: flash of openocd node
+2019-07-07 08:56:11,725 :: INFO :: Flash firmware on OpenOCD: /usr/lib/python2.7/site-packages/gateway_code/static/m3_idle.elf
+2019-07-07 08:56:14,724 :: INFO :: Control node : Stop control node serial interface
+2019-07-07 08:56:14,741 :: INFO :: Control node : stop power of open node
+2019-07-07 08:56:14,845 :: INFO :: Control node : reset
+2019-07-07 08:56:14,858 :: INFO :: Reset Control Node
+2019-07-07 08:56:17,796 :: INFO :: Stop experiment succeeded

@@ -1,3 +1,0 @@
-add_subdirectory(iotlab_packet)
-add_subdirectory(iotlab_serial)
-add_subdirectory(iotlab_time)

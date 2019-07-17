@@ -1,0 +1,28 @@
+2019-07-07 07:55:30,937 :: INFO :: Start experiment: djoudi-174579
+2019-07-07 07:55:30,940 :: INFO :: Control node : Starting of control node serial interface
+2019-07-07 07:55:30,943 :: INFO :: Control node : reset
+2019-07-07 07:55:30,946 :: INFO :: Reset Control Node
+2019-07-07 07:55:34,080 :: INFO :: Control node : start power of open node
+2019-07-07 07:55:34,137 :: INFO :: Node OpenOCD: Setup of openocd node
+2019-07-07 07:55:37,178 :: INFO :: Node OpenOCD: flash of openocd node
+2019-07-07 07:55:37,192 :: INFO :: Flash firmware on OpenOCD: /tmp/tmpd4x7Y7--sensors-collecting.iotlab-m3
+2019-07-07 07:55:46,402 :: INFO :: Control node : Start experiment
+2019-07-07 07:55:46,476 :: INFO :: Control Node set time delay: 1068 us
+2019-07-07 07:55:46,494 :: INFO :: Control node : profile configuration
+2019-07-07 07:55:46,497 :: INFO :: Configure profile on Control Node
+2019-07-07 07:55:46,535 :: INFO :: Start experiment succeeded
+2019-07-07 08:10:51,334 :: INFO :: Gateway Manager : Stop experiment
+2019-07-07 08:10:51,355 :: INFO :: Stop experiment
+2019-07-07 08:10:51,370 :: INFO :: Control node : stop of the experiment
+2019-07-07 08:10:51,384 :: INFO :: Control node : profile configuration
+2019-07-07 08:10:51,397 :: INFO :: Configure profile on Control Node
+2019-07-07 08:10:51,531 :: INFO :: Control node : start power of open node
+2019-07-07 08:10:51,591 :: INFO :: Node OpenOCD: teardown of openocd node
+2019-07-07 08:10:54,620 :: INFO :: openocd node debugger stop
+2019-07-07 08:10:55,296 :: INFO :: Node OpenOCD: flash of openocd node
+2019-07-07 08:10:55,303 :: INFO :: Flash firmware on OpenOCD: /usr/lib/python2.7/site-packages/gateway_code/static/m3_idle.elf
+2019-07-07 08:10:58,280 :: INFO :: Control node : Stop control node serial interface
+2019-07-07 08:10:58,288 :: INFO :: Control node : stop power of open node
+2019-07-07 08:10:58,347 :: INFO :: Control node : reset
+2019-07-07 08:10:58,354 :: INFO :: Reset Control Node
+2019-07-07 08:11:01,376 :: INFO :: Stop experiment succeeded

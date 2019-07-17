@@ -1,2 +1,0 @@
-add_executable(battery_test main)
-target_link_libraries(battery_test platform)

@@ -1,3 +1,30 @@
+
+
+
+
+
+
+
+make \
+	setup-aggregation-tools \
+	setup-cli-tools \
+	setup-contiki \
+	setup-iot-lab-contiki-ng \
+	setup-iot-lab.wiki \
+	setup-oml-plot-tools \
+	setup-openlab \
+	setup-riot \
+	setup-wsn430 \
+	setup-zephyr 
+
+
+
+
+
+
+
+
+
 1) réservation de resource software
 
 make

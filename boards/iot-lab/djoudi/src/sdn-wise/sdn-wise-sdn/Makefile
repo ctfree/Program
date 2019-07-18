@@ -2,7 +2,7 @@ CONTIKI_PROJECT = sdn-wise
 all: $(CONTIKI_PROJECT)
 
 #SMALL = 1
-CONTIKI = /home/aghiles/Aghiles/Program/boards/contiki/contiki-os
+CONTIKI=/home/aghiles/Aghiles/Program/boards/iot-lab/djoudi/iot-lab/parts/contiki
 CONTIKI_WITH_RIME = 1
 #CONTIKI_WITH_IPV6 = 1
 #CONTIKI_WITH_RPL = 0

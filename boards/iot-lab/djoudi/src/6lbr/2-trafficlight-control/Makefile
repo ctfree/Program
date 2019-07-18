@@ -4,9 +4,9 @@ all: trafficlight-control trafficlight-control-slave
 SMALL = 1
 
 # Includes the project-conf configuration file
-CFLAGS += -DPROJECT_CONF_H=\"../project-conf.h\"
+CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
-CONTIKI=/home/aghiles/Aghiles/Program/boards/contiki/contiki-os
+CONTIKI=/home/aghiles/Aghiles/Program/boards/iot-lab/djoudi/iot-lab/parts/contiki
 
 # This flag includes the IPv6 libraries
 CONTIKI_WITH_IPV6 = 1

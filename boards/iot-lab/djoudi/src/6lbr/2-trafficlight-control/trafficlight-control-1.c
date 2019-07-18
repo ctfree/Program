@@ -6,7 +6,7 @@
 #include "net/ip/uip-udp-packet.h"
 #include "sys/ctimer.h"
 #include "sys/timer.h"
-#include "../example.h"
+#include "example.h"
 #include <stdio.h>
 #include <string.h>
 

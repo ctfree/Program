@@ -1,0 +1,31 @@
+coef.stergm             Separable Temporal Exponential Family Random
+                        Graph Models
+control.simulate.network
+                        Auxiliary for Controlling Separable Temporal
+                        ERGM Simulation
+control.stergm          Auxiliary for Controlling Separable Temporal
+                        ERGM Fitting
+control.tergm.godfather
+                        Control parameters for 'tergm.godfather()'.
+ergm-constraints        Formation and Dissolution Constraints for
+                        Exponential Family Random Graph Models
+ergm-terms              Temporally-Sensitive Terms used in Exponential
+                        Family Random Graph Models
+gof.stergm              Goodness-of-fit methods for STERGM CMLE and
+                        CMPLE fits
+impute.network.list     Impute missing dyads in a series of networks
+logLik.stergm           A 'logLik' method for 'stergm'.
+mcmc.diagnostics.stergm
+                        Conduct MCMC diagnostics on an ergm or stergm
+                        fit
+simulate.stergm         Draw from the distribution of an Separable
+                        Temporal Exponential Family Random Graph Model
+summary_formula.networkDynamic
+                        Calculation of networkDynamic statistics.
+tergm-package           Fit, Simulate and Diagnose Dynamic Network
+                        Models derived from Exponential-Family Random
+                        Graph Models
+tergm.godfather         A function to apply a given series of changes
+                        to a network.
+tergm_proposals         Metropolis-Hastings Proposal Methods for TERGM
+                        MCMC

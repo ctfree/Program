@@ -1,0 +1,110 @@
+Getting.Started         Getting Started with "ergm": Fit, simulate and
+                        diagnose exponential-family models for networks
+anova.ergm              ANOVA for ERGM Fits
+approx.hotelling.diff.test
+                        Approximate Hotelling T^2-Test for One Sample
+                        Means
+as.edgelist.compressed
+                        Convert a network object into a numeric
+                        edgelist matrix
+as.network.numeric      Create a Simple Random network of a Given Size
+check.ErgmTerm          Ensures an Ergm Term and its Arguments Meet
+                        Appropriate Conditions
+control.ergm            Auxiliary for Controlling ERGM Fitting
+control.ergm.bridge     Auxiliary for Controlling ergm.bridge
+control.ergm.godfather
+                        Control parameters for 'ergm.godfather()'.
+control.gof             Auxiliary for Controlling ERGM Goodness-of-Fit
+                        Evaluation
+control.logLik.ergm     Auxiliary for Controlling logLik.ergm
+control.san             Auxiliary for Controlling SAN
+control.simulate.ergm   Auxiliary for Controlling ERGM Simulation
+degreedist              Computes and Returns the Degree Distribution
+                        Information for a Given Network
+ecoli                   Two versions of an E. Coli network dataset
+edges                   'edges' (disambiguation)
+enformulate.curved      Convert a curved ERGM into a form suitable as
+                        initial values for the same ergm.
+ergm                    Exponential-Family Random Graph Models
+ergm-constraints        Sample Space Constraints for Exponential-Family
+                        Random Graph Models
+ergm-package            Fit, Simulate and Diagnose Exponential-Family
+                        Models for Networks
+ergm-parallel           Parallel Processing in the 'ergm' Package
+ergm-references         Reference Measures for Exponential-Family
+                        Random Graph Models
+ergm-terms              Terms used in Exponential Family Random Graph
+                        Models
+ergm.allstats           Calculate all possible vectors of statistics on
+                        a network for an ERGM
+ergm.bounddeg           Initializes the parameters to bound degree
+                        during sampling
+ergm.bridge.llr         Bridge sampling to evaluate ERGM
+                        log-likelihoods and log-likelihood ratios
+ergm.degeneracy         Checks an ergm Object for Degeneracy
+ergm.exact              Calculate the exact loglikelihood for an ERGM
+ergm.geodistdist        Calculate geodesic distance distribution for a
+                        network or edgelist
+ergm.getnetwork         Acquire and verify the network from the LHS of
+                        an 'ergm' formula and verify that it is a valid
+                        network.
+ergm.godfather          A function to apply a given series of changes
+                        to a network.
+ergmMPLE                ERGM Predictors and response for logistic
+                        regression calculation of MPLE
+ergm_MCMC_sample        Internal Function to Sample Networks and
+                        Network Statistics
+ergm_plot.mcmc.list     Plot MCMC list using 'lattice' package graphics
+eut-upgrade             Updating 'ergm.userterms' prior to 3.1
+faux.desert.high        Faux desert High School as a network object
+faux.dixon.high         Faux dixon High School as a network object
+faux.magnolia.high      Goodreau's Faux Magnolia High School as a
+                        network object
+faux.mesa.high          Goodreau's Faux Mesa High School as a network
+                        object
+fix.curved              Convert a curved ERGM into a corresponding
+                        "fixed" ERGM.
+florentine              Florentine Family Marriage and Business Ties
+                        Data as a "network" object
+g4                      Goodreau's four node network as a "network"
+                        object
+geweke.diag.mv          Multivariate version of 'coda"s
+                        'coda::geweke.diag()'.
+gof                     Conduct Goodness-of-Fit Diagnostics on a
+                        Exponential Family Random Graph Model
+hamming                 'hamming' (disambiguation)
+is.curved               Testing for curved exponential family
+is.durational           Testing for durational dependent models
+is.dyad.independent     Testing for dyad-independence
+is.inCH                 Determine whether a vector is in the closure of
+                        the convex hull of some sample of vectors
+kapferer                Kapferer's tailor shop data
+logLik.ergm             A 'logLik' method for 'ergm' fits.
+logLikNull              Calculate the null model likelihood
+mcmc.diagnostics        Conduct MCMC diagnostics on a model fit
+molecule                Synthetic network with 20 nodes and 28 edges
+network.list            A convenience container for a list of 'network'
+                        objects, output by 'simulate.ergm' among
+                        others.
+node-attr               Specifying nodal attributes and their levels
+nparam                  Length of the parameter vector associated with
+                        an object or with its terms.
+param_names             Names of the parameters associated with an
+                        object.
+print.summary.ergm      Summarizing ERGM Model Fits
+samplk                  Longitudinal networks of positive affection
+                        within a monastery as a "network" object
+sampson                 Cumulative network of positive affection within
+                        a monastery as a "network" object
+san                     Use Simulated Annealing to attempt to match a
+                        network to a vector of mean statistics
+search.ergmTerms        Search the ergm-terms documentation for
+                        appropriate terms
+simulate.ergm           Draw from the distribution of an Exponential
+                        Family Random Graph Model
+spectrum0.mvar          Multivariate version of 'coda"s
+                        'spectrum0.ar()'.
+summary.formula         Calculation of network or graph statistics or
+                        other attributes specified on a formula
+update.network          Update the edges in a network based on a matrix
+wtd.median              Weighted Median

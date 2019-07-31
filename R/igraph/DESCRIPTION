@@ -37,4 +37,4 @@ NeedsCompilation: yes
 Packaged: 2019-04-21 07:44:54 UTC; ripley
 Repository: CRAN
 Date/Publication: 2019-04-22 06:57:32 UTC
-Built: R 3.6.0; x86_64-pc-linux-gnu; 2019-07-19 08:31:53 UTC; unix
+Built: R 3.6.0; x86_64-pc-linux-gnu; 2019-07-28 09:22:20 UTC; unix

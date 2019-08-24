@@ -1,3 +1,4 @@
 #!/bin/bash
-coojaPath=/home/aghiles/Aghiles/Program/boards/contiki/bin/contiki-os/tools/cooja
+OSPATH=`targetos`
+coojaPath=$OSPATH/contiki/tools/cooja
 cd $coojaPath && ant run

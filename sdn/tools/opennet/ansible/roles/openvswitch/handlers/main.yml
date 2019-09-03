@@ -1,3 +1,0 @@
----
-- name: Restart OpenvSwitch daemon
-  service: name=openvswitch-switch state=restarted

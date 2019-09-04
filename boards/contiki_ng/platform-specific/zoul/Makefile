@@ -17,5 +17,5 @@ all: $(CONTIKI_PROJECT)
 
 PLATFORMS_ONLY = zoul
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

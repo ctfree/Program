@@ -4,7 +4,7 @@ APPLICATION = lua_basic
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 BOARD_INSUFFICIENT_MEMORY := blackpill bluepill calliope-mini cc2650-launchpad \
                              cc2650stk lobaro-lorabox maple-mini microbit \

@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = nullnet-unicast nullnet-broadcast
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 
 PLATFORMS_EXCLUDE = nrf52dk
 

@@ -5,7 +5,7 @@ APPLICATION = gnrc_tftp_example
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 BOARD_INSUFFICIENT_MEMORY := airfy-beacon arduino-duemilanove arduino-mega2560 \
                              arduino-uno b-l072z-lrwan1 blackpill bluepill calliope-mini \

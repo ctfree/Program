@@ -5,7 +5,7 @@ APPLICATION = posix_sockets_example
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 BOARD_INSUFFICIENT_MEMORY := airfy-beacon arduino-duemilanove arduino-mega2560 \
                              arduino-uno chronos mega-xplained msb-430 \

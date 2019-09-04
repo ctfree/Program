@@ -8,5 +8,5 @@ NRF52_WITHOUT_SOFTDEVICE=1
 
 all: $(CONTIKI_PROJECT)
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

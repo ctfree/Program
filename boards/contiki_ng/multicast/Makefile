@@ -6,7 +6,7 @@ PLATFORMS_EXCLUDE = nrf52dk
 # does not fit on sky and z1 motes
 PLATFORMS_EXCLUDE += sky z1
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 include $(CONTIKI)/Makefile.identify-target
 MODULES_REL += $(TARGET)

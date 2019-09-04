@@ -5,7 +5,7 @@ APPLICATION = gnrc_minimal
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 BOARD_INSUFFICIENT_MEMORY := arduino-duemilanove arduino-uno nucleo-f031k6
 

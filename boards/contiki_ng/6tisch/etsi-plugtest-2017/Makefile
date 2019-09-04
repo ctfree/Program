@@ -22,5 +22,5 @@ endif
 
 MAKE_MAC = MAKE_MAC_TSCH
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

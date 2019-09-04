@@ -5,7 +5,7 @@ APPLICATION = dtls_echo
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 # TinyDTLS only has support for 32-bit architectures ATM
 BOARD_BLACKLIST := arduino-duemilanove arduino-mega2560 arduino-uno chronos \

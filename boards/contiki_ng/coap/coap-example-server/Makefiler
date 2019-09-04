@@ -10,5 +10,5 @@ MODULES += os/net/app-layer/coap
 # Include CoAP resources
 MODULES_REL += ./resources
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

@@ -25,5 +25,5 @@ MODULES += os/services/orchestra
 CFLAGS += -DCONFIG_OPTIMS=2
 endif
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

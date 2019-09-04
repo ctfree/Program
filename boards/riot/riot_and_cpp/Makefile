@@ -9,7 +9,7 @@ BOARD ?= native
 BOARD_INSUFFICIENT_MEMORY= nucleo-f031k6 nucleo-f042k6 stm32f0discovery
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 # Uncomment these lines if you want to use platform support from external
 # repositories:

@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = node
 all: $(CONTIKI_PROJECT)
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 PLATFORMS_EXCLUDE = sky z1 nrf52dk native
 

@@ -1,5 +1,5 @@
 APPLICATION = timer_periodic_wakeup
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 BOARD ?= native
 USEMODULE += xtimer
 QUIET ?= 1

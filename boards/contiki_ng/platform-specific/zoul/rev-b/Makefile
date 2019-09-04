@@ -7,5 +7,5 @@ all: $(CONTIKI_PROJECT)
 PLATFORMS_ONLY = zoul
 BOARDS_ONLY = remote-revb
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

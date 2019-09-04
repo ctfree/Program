@@ -1,5 +1,5 @@
 CONTIKI_PROJECT = sensniff
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 PLATFORMS_ONLY = cc2538dk openmote-cc2538 z1 zoul cc26x0-cc13x0 jn516x simplelink
 

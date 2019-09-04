@@ -5,7 +5,7 @@ APPLICATION = riot_javascript
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 BOARD_INSUFFICIENT_MEMORY := airfy-beacon b-l072z-lrwan1 blackpill bluepill calliope-mini \
                              cc2650-launchpad cc2650stk hifive1 lobaro-lorabox \

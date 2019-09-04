@@ -1,5 +1,5 @@
 CONTIKI_PROJECT = button-hal-example
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 all: $(CONTIKI_PROJECT)
 

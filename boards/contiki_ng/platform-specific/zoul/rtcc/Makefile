@@ -8,5 +8,5 @@ PLATFORMS_ONLY = zoul
 # Only the Re-Mote is equiped with an RTCC
 BOARDS_ONLY = remote-reva remote-revb
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

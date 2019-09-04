@@ -5,7 +5,7 @@ APPLICATION = asymcute_mqttsn
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 # Not all boards have enough memory to build the default configuration of this
 # example...

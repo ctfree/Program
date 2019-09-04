@@ -8,5 +8,5 @@ PLATFORMS_EXCLUDE = sky z1
 # Include the CoAP implementation
 MODULES += os/net/app-layer/coap
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng-ng
 include $(CONTIKI)/Makefile.include

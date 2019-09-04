@@ -8,7 +8,7 @@ BOARD ?= nrf52dk
 BOARD_WHITELIST := nrf52dk nrf52840dk
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../..
+RIOTBASE ?=$(shell targetos)/RIOT
 
 # Include NimBLE
 USEPKG += nimble

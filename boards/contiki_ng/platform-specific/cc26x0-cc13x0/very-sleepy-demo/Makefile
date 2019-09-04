@@ -6,5 +6,5 @@ all: $(CONTIKI_PROJECT)
 
 MODULES += os/net/app-layer/coap
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

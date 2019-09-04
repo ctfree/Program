@@ -1,5 +1,5 @@
 all: websocket-example
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 include $(CONTIKI)/Makefile.include
 

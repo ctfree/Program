@@ -1,6 +1,6 @@
 CONTIKI_PROJECT = ip64-router
 all: $(CONTIKI_PROJECT)
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 # Currently only supported on Orion, the only platform with 802.15.4 + Ethernet
 PLATFORMS_ONLY = zoul

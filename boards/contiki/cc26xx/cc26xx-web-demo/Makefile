@@ -20,5 +20,5 @@ APPS += er-coap
 APPS += rest-engine
 APPS += mqtt
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

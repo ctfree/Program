@@ -1,6 +1,6 @@
 all: sky-websense
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 
 APPS += webbrowser
 

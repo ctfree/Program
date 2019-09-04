@@ -8,7 +8,7 @@ test-abc:
 	$(MAKE) test-abc.firmware && \
 	$(MAKE) test-abc.firmware
 
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 TARGET=msb430
 
 include $(CONTIKI)/Makefile.include

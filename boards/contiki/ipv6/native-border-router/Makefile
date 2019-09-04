@@ -2,7 +2,7 @@ CONTIKI_PROJECT=border-router
 all: $(CONTIKI_PROJECT)
 APPS = slip-cmd
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 
 #linker optimizations
 SMALL=1

@@ -2,7 +2,7 @@ CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 all: coap-client coap-server
 APPS=servreg-hack
-CONTIKI=../../../..
+CONTIKI=$(shell targetos)/contiki
 
 ifdef WITH_COMPOWER
 APPS+=powertrace

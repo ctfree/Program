@@ -61,7 +61,7 @@ override webserver_src = webserver.c httpd.c http-strings.c psock.c \
 
 PLATFORM_BUILD = 1
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 APPS = program-handler ${call appname,$(PRGS)}
 TARGET = win32
 -include $(CONTIKI)/Makefile.include

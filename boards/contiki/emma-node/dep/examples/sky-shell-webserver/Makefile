@@ -6,7 +6,7 @@ CFLAGS = -DWITH_UIP=1
 DEFINES=NETSTACK_MAC=nullmac_driver,NETSTACK_RDC=nullrdc_driver 
 SMALL=1
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 APPS = webserver serial-shell
 include $(CONTIKI)/Makefile.include
  

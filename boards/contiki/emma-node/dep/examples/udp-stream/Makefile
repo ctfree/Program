@@ -1,6 +1,6 @@
 all: udp-stream
 APPS = servreg-hack
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 
 ifndef TARGET
 TARGET = sky

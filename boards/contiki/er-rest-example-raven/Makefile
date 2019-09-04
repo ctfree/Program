@@ -4,7 +4,7 @@ APPS += raven-lcd-interface
 
 export
 
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 ER_REST_EXAMPLE=$(CONTIKI)/examples/er-rest-example
 

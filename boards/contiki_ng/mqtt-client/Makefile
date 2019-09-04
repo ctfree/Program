@@ -3,7 +3,7 @@ all: $(CONTIKI_PROJECT)
 
 MODULES += os/net/app-layer/mqtt
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 -include $(CONTIKI)/Makefile.identify-target
 
 MODULES_REL += arch/platform/$(TARGET)

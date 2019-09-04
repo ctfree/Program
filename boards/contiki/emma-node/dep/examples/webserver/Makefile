@@ -15,7 +15,7 @@ ifeq ($(HTTPD-CFS),1)
                            httpd-cfs.c urlconv.c
 endif
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include
 
 # Intentionally httpd.c and httpd-cfs.c implement the same interface. When

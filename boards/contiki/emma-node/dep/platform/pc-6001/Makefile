@@ -5,7 +5,7 @@
 # $Id: Makefile,v 1.7 2009/12/16 06:47:18 matsutsuka Exp $
 #
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 TARGET=pc-6001
 APPS_DESKTOP = program-handler calc process-list shell about
 APPS_NETWORK_CLIENT = $(APPS_DESKTOP) netconf webbrowser email telnet ftp irc

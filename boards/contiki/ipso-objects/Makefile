@@ -11,7 +11,7 @@ APPS += er-coap
 APPS += oma-lwm2m
 APPS += ipso-objects
 
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 CONTIKI_WITH_IPV6 = 1
 include $(CONTIKI)/Makefile.include
 

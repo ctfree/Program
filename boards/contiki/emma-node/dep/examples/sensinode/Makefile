@@ -15,5 +15,5 @@ CONTIKI_PROJECT += timer-test blink-hello broadcast-rime
 
 all: $(CONTIKI_PROJECT) 
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

@@ -3,7 +3,7 @@ CONTIKI_PROJECT = node
 TARGET ?= jn516x
 JN516x_WITH_DONGLE = 1
 
-CONTIKI=../../../../..
+CONTIKI=$(shell targetos)/contiki
 
 CONTIKI_WITH_IPV6 = 1
 

@@ -5,7 +5,7 @@ WITH_UIP6=1
 UIP_CONF_IPV6=1
 
 APPS=servreg-hack
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include
 -include /home/user/nes/testbed-scripts/Makefile.include
 

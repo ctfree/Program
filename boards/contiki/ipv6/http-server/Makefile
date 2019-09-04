@@ -1,7 +1,7 @@
 CONTIKI_PROJECT=http-server
 all: $(CONTIKI_PROJECT) 
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 
 #linker optimizations
 SMALL=1

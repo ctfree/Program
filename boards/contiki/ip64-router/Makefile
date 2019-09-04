@@ -1,5 +1,5 @@
 all: ip64-router
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 include $(CONTIKI)/Makefile.include
 

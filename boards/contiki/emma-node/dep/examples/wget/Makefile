@@ -3,5 +3,5 @@ all: $(CONTIKI_PROJECT)
 
 APPS = webbrowser
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

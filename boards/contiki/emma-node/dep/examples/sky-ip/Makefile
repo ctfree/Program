@@ -18,7 +18,7 @@ DEFINES=NETSTACK_CONF_RDC=cxmac_driver,NETSTACK_CONF_RDC_CHANNEL_CHECK_RATE=8
 #                          httpd-cfs.c
 # endif
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include
 
 sky-webserver.$(TARGET): $(OBJECTDIR)/ajax-cgi.o

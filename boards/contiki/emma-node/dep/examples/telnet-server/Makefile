@@ -5,5 +5,5 @@ APPS = telnetd program-handler
 
 WITH_UIP=1
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

@@ -1,4 +1,4 @@
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 
 SMALL=1
 

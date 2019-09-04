@@ -4,7 +4,7 @@ endif
 
 all: remotepowerswitch
 
-CONTIKI=../../../
+CONTIKI=$(shell targetos)/contiki
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 APPS += er-coap

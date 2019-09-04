@@ -1,6 +1,6 @@
 all: mbxxx-websense
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 
 APPS += webserver webbrowser
 

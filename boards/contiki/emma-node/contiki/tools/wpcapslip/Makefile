@@ -1,4 +1,4 @@
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 CFLAGS=-Wall -Werror -I$(CONTIKI)/core -I.
 

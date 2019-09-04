@@ -1,4 +1,4 @@
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 ifeq ($(MAKECMDGOALS),)

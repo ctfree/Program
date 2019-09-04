@@ -10,5 +10,5 @@ APPS=serial-shell
 
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

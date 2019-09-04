@@ -3,7 +3,7 @@ all: $(CONTIKI_PROJECT)
 
 TARGET ?= jn516x
 
-CONTIKI=../../../..
+CONTIKI=$(shell targetos)/contiki
 
 CONTIKI_WITH_IPV6 = 1
 

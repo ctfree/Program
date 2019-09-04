@@ -44,5 +44,5 @@ UIP_CONF_RPL=0
 endif
 endif
 
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

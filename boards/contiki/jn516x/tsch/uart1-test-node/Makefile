@@ -4,7 +4,7 @@ TARGET = jn516x
 JN516x_WITH_DR1174 = 1
 TARGET_WITH_UART1 = 1
 
-CONTIKI=../../../..
+CONTIKI=$(shell targetos)/contiki
 CONTIKI_WITH_IPV6 = 1
 
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"

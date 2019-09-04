@@ -2,7 +2,7 @@ CONTIKI_PROJECT = jcreate-shell
 all: $(CONTIKI_PROJECT)
 
 APPS = serial-shell
-CONTIKI = ../..
+CONTIKI=$(shell targetos)/contiki
 
 jcreate-blink:
 	(echo; sleep 4; echo "~K"; sleep 4; \

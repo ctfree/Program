@@ -3,7 +3,7 @@ TARGET=stm32test
 all: stm32tst 
 
 
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 CONTIKI_TARGET_MAIN=contiki-main.c
 

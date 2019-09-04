@@ -7,5 +7,5 @@ CONTIKI_WITH_RPL = 0
 
 APPS += mqtt
 
-CONTIKI=../../..
+CONTIKI=$(shell targetos)/contiki
 include $(CONTIKI)/Makefile.include

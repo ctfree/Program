@@ -5,7 +5,7 @@ all: core
 core: 
 	$(MAKE) core.$(TARGET)
 
-CONTIKI=../..
+CONTIKI=$(shell targetos)/contiki
 
 CORE=core-nosyms.$(TARGET)
 

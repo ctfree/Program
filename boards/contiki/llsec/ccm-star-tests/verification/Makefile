@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = tests
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ../../../..
+CONTIKI=$(shell targetos)/contiki
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 #linker optimizations

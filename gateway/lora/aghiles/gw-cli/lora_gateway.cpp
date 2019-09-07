@@ -214,7 +214,7 @@
  */
 
 // Include the SX1272 
-#include "SX1272.h"
+#include "lib/SX1272.h"
 
 #ifdef ARDUINO
 // IMPORTANT when using an Arduino only. For a Raspberry-based gateway the distribution uses a radio.makefile file
@@ -290,10 +290,10 @@
 #if not defined ARDUINO && defined DOWNLINK
 #define MAX_DOWNLINK_ENTRY 100
 
-#include "rapidjson/reader.h"
-#include "rapidjson/document.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
+#include "lib/rapidjson/reader.h"
+#include "lib/rapidjson/document.h"
+#include "lib/rapidjson/writer.h"
+#include "lib/rapidjson/stringbuffer.h"
 #include <iostream>
 
 using namespace rapidjson;
@@ -387,7 +387,7 @@ uint32_t loraChannelArray[MAX_NB_CHANNEL]={CH_00_433,CH_01_433,CH_02_433,CH_03_4
 #endif
 
 #ifdef LORA_LAS
-#include "LoRaActivitySharing.h"
+#include "lib/LoRaActivitySharing.h"
 // acting as the LR-BS
 LASBase loraLAS = LASBase();
 #endif

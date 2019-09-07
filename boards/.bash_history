@@ -190,3 +190,14 @@ cd
 ls
 cd ..
 ls
+ls
+rm -rf A8
+rm -rf 6lbr
+rm -rf emma-node
+rm -rf sdn-wise
+rm -rf sdwsn
+rm -rf border-router.iotlab-m3 
+rm -rf er-example-server.iotlab-m3 
+rm -rf tutorial_m3.elf 
+rm -rf backup 
+rm -rf doc

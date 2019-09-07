@@ -5,6 +5,6 @@
 #
 BACKUP_SERVER=djoudi@grenoble.iot-lab.info:
 
-/usr/bin/rsync -avz  /home/aghiles/Aghiles/Program/boards/ $BACKUP_SERVER
+/usr/bin/rsync -avz $BACKUP_SERVER /home/aghiles/Aghiles/Program/boards/ 
 
 

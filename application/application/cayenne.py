@@ -2,6 +2,8 @@
 from coapthon.client.helperclient import HelperClient
 import cayenne.client
 
+#hackathon_silecs_final
+
 # CoAP node to observe,
 # based on 06-rpl-tsch-coap Contiki firmware
 COAP_HOST = "2001:660:4701:f0a0::c0c0"

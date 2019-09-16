@@ -9,7 +9,7 @@ cd "$directory"
 #git remote add $filename https://BRICOMATA8@github.com/BRICOMATA8/$filename.git
 
 git add -v .
-git add /home/aghiles/Downloads/bin/ns-3/examples
+git add -v  /home/aghiles/Downloads/bin/ns-3/examples
 git commit -m "commit"
 git push -u -f $filename master
 #firefox https://github.com/BRICOMATA8/$filename.git

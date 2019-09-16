@@ -1,4 +1,0 @@
-#!/bin/bash
-OSPATH=`targetos`
-coojaPath=$OSPATH/contiki/tools/cooja
-cd $coojaPath && ant run

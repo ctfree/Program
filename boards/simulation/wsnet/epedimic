@@ -1,0 +1,27 @@
+#!/bin/bash
+
+cp -r template $1
+
+sed -ir "s/YOUR_LIBRARY_NAME/libapplication_`echo $1`/g" "$1/Makefile.am"
+sed -ir "s/YOUR_LIBRARY_SOURCES/\.\.\/`echo $1`\.c/g" "$1/Makefile.am"
+
+#sed -ir 's/YOUR_LIBRARY_SOURCES/$1' "$1/Makefile.am"
+#sed -ir 's/YOUR_LIBRARY_SOURCES/..\/$1.c' "$1/Makefile.am"
+
+export PATH=$PATH:/usr/local/wsnet-2.0/bin
+export WSNET_MODDIR=/home/aghiles/Aghiles/Program/boards/simulation/wsnet/lib
+
+cd $1
+
+./bootstrap
+./configure --prefix=/home/aghiles/Aghiles/Program/boards/simulation/wsnet --with-wsnet-dir=/usr/local/wsnet-2.0
+make 
+make install
+
+cd ..
+wsnet -c $1.xml
+
+
+
+
+

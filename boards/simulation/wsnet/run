@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export PATH=$PATH:/usr/local/wsnet-2.0/bin
-wsnet -c /usr/local/wsnet-2.0/demo/cbr.xml

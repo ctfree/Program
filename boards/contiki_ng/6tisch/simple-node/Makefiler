@@ -3,7 +3,7 @@ all: $(CONTIKI_PROJECT)
 
 PLATFORMS_EXCLUDE = sky nrf52dk native simplelink
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
  # force Orchestra from command line
 MAKE_WITH_ORCHESTRA ?= 0

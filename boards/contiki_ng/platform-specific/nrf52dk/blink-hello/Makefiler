@@ -8,5 +8,5 @@ all: $(CONTIKI_PROJECT)
 
 PLATFORMS_ONLY = nrf52dk
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.include

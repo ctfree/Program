@@ -1,5 +1,5 @@
 CONTIKI_PROJECT = rgb-led-example
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 MODULES_REL += $(TARGET)
 

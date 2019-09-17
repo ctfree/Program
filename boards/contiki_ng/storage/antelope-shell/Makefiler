@@ -1,4 +1,4 @@
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 MODULES += os/storage/antelope os/services/unit-test
 

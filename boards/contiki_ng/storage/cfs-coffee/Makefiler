@@ -1,4 +1,4 @@
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 PLATFORMS_ONLY= cc2538dk zoul sky
 

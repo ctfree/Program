@@ -5,7 +5,7 @@ MODULES += os/services/slip-cmd
 # slip-radio is only intended for platforms with SLIP support
 PLATFORMS_EXCLUDE = native nrf52dk
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.identify-target
 
 MODULES_REL += $(TARGET)

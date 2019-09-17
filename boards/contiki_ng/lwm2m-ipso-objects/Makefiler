@@ -10,7 +10,7 @@ MODULES += os/net/app-layer/coap
 MODULES += os/services/lwm2m
 MODULES += os/services/ipso-objects
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 include $(CONTIKI)/Makefile.identify-target
 MODULES_REL += $(TARGET)
 

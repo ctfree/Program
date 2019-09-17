@@ -1,5 +1,5 @@
 CONTIKI_PROJECT = gpio-hal-example
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 PLATFORMS_ONLY = cc26x0-cc13x0 cc2538dk openmote-cc2538 zoul native simplelink
 

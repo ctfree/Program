@@ -4,7 +4,7 @@ all: $(CONTIKI_PROJECT)
 PLATFORMS_EXCLUDE = sky z1 nrf52dk native simplelink
 
 PROJECT_SOURCEFILES += sf-simple.c
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=$(shell targetos)/contiki-ng
 
 MAKE_WITH_SECURITY ?= 0 # force Security from command line
 

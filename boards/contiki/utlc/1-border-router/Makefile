@@ -1,7 +1,6 @@
 CONTIKI_PROJECT=border-router
 all: $(CONTIKI_PROJECT) 
 
-
 CONTIKI=$(shell targetos)/contiki
 
 #APPS += mqtt #ubidots

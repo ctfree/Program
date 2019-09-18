@@ -79,8 +79,7 @@ static void _send_message(void)
     semtech_loramac_recv(&loramac);
 }
 
-static void *sender(void *arg)
-{
+static void *sender(void *arg){
     (void)arg;
 
     msg_t msg;
@@ -101,8 +100,7 @@ static void *sender(void *arg)
     return NULL;
 }
 
-int main(void)
-{
+int main(void){
     puts("LoRaWAN Class A low-power application");
     puts("=====================================");
 
@@ -132,8 +130,7 @@ int main(void)
     puts("Join procedure succeeded");
 
     /* start the sender thread */
-    sender_pid = thread_create(sender_stack, sizeof(sender_stack),
-                               SENDER_PRIO, 0, sender, NULL, "sender");
+    sender_pid = thread_create(sender_stack, sizeof(sender_stack), SENDER_PRIO, 0, sender, NULL, "sender");
 
     /* trigger the first send */
     msg_t msg;

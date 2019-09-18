@@ -1,60 +1,106 @@
-obj_zoul/slip-net.o: slip-net.c ../../../core/./contiki.h \
- ../../../core/./contiki-version.h \
- ../../../platform/zoul/./contiki-conf.h project-conf.h \
- ../../../platform/zoul/remote-revb/board.h \
- ../../../cpu/cc2538/./dev/gpio.h ../../../cpu/cc2538/./reg.h \
- ../../../cpu/cc2538/./dev/nvic.h ../../../cpu/cc2538/./cc2538_cm3.h \
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cm3.h \
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h \
- ../../../cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h \
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h \
- ../../../core/./contiki-default-conf.h ../../../core/./sys/process.h \
- ../../../core/./sys/pt.h ../../../core/./sys/lc.h \
- ../../../core/./sys/lc-switch.h ../../../core/./sys/cc.h \
- ../../../core/./sys/cc-gcc.h ../../../core/./sys/autostart.h \
- ../../../core/./sys/process.h ../../../core/./sys/timer.h \
- ../../../core/./sys/clock.h ../../../core/./sys/ctimer.h \
- ../../../core/./sys/etimer.h ../../../core/./sys/timer.h \
- ../../../core/./sys/etimer.h ../../../core/./sys/rtimer.h \
- ../../../cpu/cc2538/./rtimer-arch.h ../../../cpu/cc2538/./dev/gptimer.h \
- ../../../core/./sys/pt.h ../../../core/./sys/procinit.h \
- ../../../core/./sys/loader.h ../../../core/./sys/clock.h \
- ../../../core/./sys/energest.h ../../../core/./sys/rtimer.h \
- ../../../core/./net/netstack.h ../../../core/./net/llsec/llsec.h \
- ../../../core/./net/mac/mac.h ../../../core/./dev/radio.h \
- ../../../core/./net/mac/rdc.h ../../../core/./net/llsec/llsec802154.h \
- ../../../core/./net/mac/frame802154.h ../../../core/./net/linkaddr.h \
- ../../../core/./net/ip/uip.h ../../../core/./net/ip/uipopt.h \
- ../../../core/./net/ip/tcpip.h ../../../core/./net/mac/framer.h \
- ../../../core/./net/packetbuf.h ../../../core/./net/mac/tsch/tsch-conf.h \
- ../../../core/./dev/slip.h
-slip-net.c ../../../core/./contiki.h :
- ../../../core/./contiki-version.h :
- ../../../platform/zoul/./contiki-conf.h project-conf.h :
- ../../../platform/zoul/remote-revb/board.h :
- ../../../cpu/cc2538/./dev/gpio.h ../../../cpu/cc2538/./reg.h :
- ../../../cpu/cc2538/./dev/nvic.h ../../../cpu/cc2538/./cc2538_cm3.h :
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cm3.h :
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h :
- ../../../cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h :
- ../../../cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h :
- ../../../core/./contiki-default-conf.h ../../../core/./sys/process.h :
- ../../../core/./sys/pt.h ../../../core/./sys/lc.h :
- ../../../core/./sys/lc-switch.h ../../../core/./sys/cc.h :
- ../../../core/./sys/cc-gcc.h ../../../core/./sys/autostart.h :
- ../../../core/./sys/process.h ../../../core/./sys/timer.h :
- ../../../core/./sys/clock.h ../../../core/./sys/ctimer.h :
- ../../../core/./sys/etimer.h ../../../core/./sys/timer.h :
- ../../../core/./sys/etimer.h ../../../core/./sys/rtimer.h :
- ../../../cpu/cc2538/./rtimer-arch.h ../../../cpu/cc2538/./dev/gptimer.h :
- ../../../core/./sys/pt.h ../../../core/./sys/procinit.h :
- ../../../core/./sys/loader.h ../../../core/./sys/clock.h :
- ../../../core/./sys/energest.h ../../../core/./sys/rtimer.h :
- ../../../core/./net/netstack.h ../../../core/./net/llsec/llsec.h :
- ../../../core/./net/mac/mac.h ../../../core/./dev/radio.h :
- ../../../core/./net/mac/rdc.h ../../../core/./net/llsec/llsec802154.h :
- ../../../core/./net/mac/frame802154.h ../../../core/./net/linkaddr.h :
- ../../../core/./net/ip/uip.h ../../../core/./net/ip/uipopt.h :
- ../../../core/./net/ip/tcpip.h ../../../core/./net/mac/framer.h :
- ../../../core/./net/packetbuf.h ../../../core/./net/mac/tsch/tsch-conf.h :
- ../../../core/./dev/slip.h :
+obj_zoul/slip-net.o: slip-net.c \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h \
+ project-conf.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./cc2538_cm3.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cm3.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-default-conf.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/lc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/lc-switch.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/cc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/cc-gcc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/autostart.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/timer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/ctimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/etimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/timer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/etimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./rtimer-arch.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gptimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/procinit.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/loader.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/energest.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/netstack.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/llsec/llsec.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/mac.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/radio.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/rdc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/llsec/llsec802154.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/frame802154.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/linkaddr.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/framer.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/packetbuf.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/tsch/tsch-conf.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h
+slip-net.c :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h :
+ project-conf.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./cc2538_cm3.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cm3.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-default-conf.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/lc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/lc-switch.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/cc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/cc-gcc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/autostart.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/timer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/ctimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/etimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/timer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/etimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./rtimer-arch.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gptimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/procinit.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/loader.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/energest.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/netstack.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/llsec/llsec.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/mac.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/radio.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/rdc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/llsec/llsec802154.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/frame802154.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/linkaddr.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/framer.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/packetbuf.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/tsch/tsch-conf.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h :

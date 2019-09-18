@@ -1,6 +1,7 @@
 all: emma-node-example
 
-CONTIKI=$(shell targetos)/contiki
+CONTIKI=/home/aghiles/Aghiles/Program/boards/contiki/emma-node/contiki
+#CONTIKI=$(shell targetos)/contiki
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
 
 # for static routing, if enabled

@@ -4,7 +4,7 @@ obj_zoul/rpl-ext-header.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h \
  project-conf.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h \
@@ -77,7 +77,7 @@ obj_zoul/rpl-ext-header.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h :
  project-conf.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h :

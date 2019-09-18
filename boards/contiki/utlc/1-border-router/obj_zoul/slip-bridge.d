@@ -1,10 +1,9 @@
 obj_zoul/slip-bridge.o: slip-bridge.c \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h \
  project-conf.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h \
@@ -13,6 +12,9 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-default-conf.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h \
@@ -37,11 +39,6 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/energest.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart1.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h \
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-ds6.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/stimer.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-nd6.h \
@@ -58,15 +55,17 @@ obj_zoul/slip-bridge.o: slip-bridge.c \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/framer.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./lib/list.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-ds6-nbr.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart1.h \
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip-debug.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/net-debug.h
 slip-bridge.c :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h :
  project-conf.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/remote-revb/board.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/nvic.h :
@@ -75,6 +74,9 @@ slip-bridge.c :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmInstr.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/cmsis_gcc.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/../arm/common/CMSIS/core_cmFunc.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-default-conf.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/process.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/pt.h :
@@ -99,11 +101,6 @@ slip-bridge.c :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/clock.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/energest.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/rtimer.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart1.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uipopt.h :
- /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/tcpip.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-ds6.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./sys/stimer.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-nd6.h :
@@ -120,5 +117,8 @@ slip-bridge.c :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/mac/framer.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./lib/list.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/uip-ds6-nbr.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./dev/slip.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart1.h :
+ /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/uart.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ip/uip-debug.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/net-debug.h :

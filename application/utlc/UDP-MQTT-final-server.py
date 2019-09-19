@@ -10,7 +10,7 @@ from random import randint
 import struct
 from ctypes import *
 
-ID_STRING      = "V0.1"
+ID_STRING         = "V0.1"
 MQTT_URL          = "things.ubidots.com"		# Url for accesing the Broker MQTT
 MQTT_PORT         = 1883						# MQTT port
 MQTT_KEEPALIVE    = 50

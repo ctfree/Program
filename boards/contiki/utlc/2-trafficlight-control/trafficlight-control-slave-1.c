@@ -178,7 +178,7 @@ tcpip_handler(void)
     }
     if (rcv->option) {
         // Send confirmation of the new state
-        msg.id = 0x4;
+        msg.id = 0x3;
         msg.counter = counter;
         msg.value1 = my_state;
         msg.value2 = 1; /* Set QoS */
@@ -217,7 +217,7 @@ send_packet_event(void)
   uint16_t aux;
   counter++;
 
-  msg.id = 0x4; /* Set traffic light/sensor ID */
+  msg.id = 0x3; /* Set traffic light/sensor ID */
   msg.counter = counter;
   // if (my_state == 0)  /* Set traffic light state */
   //   msg.value1 = 2;
@@ -259,7 +259,7 @@ send_packet_sensor(void)
   uint16_t aux;
   counter++;
 
-  msg.id = 0x4; /* Set traffic light/sensor ID */
+  msg.id = 0x3; /* Set traffic light/sensor ID */
   msg.counter = counter;
   // if (my_state == 0)  /* Set traffic light state */
   //   msg.value1 = 2;

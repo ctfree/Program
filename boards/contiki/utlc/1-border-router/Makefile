@@ -11,7 +11,7 @@ CONTIKI=$(shell targetos)/contiki
 
 SMALL=1
 
-CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\"
+CFLAGS += -DPROJECT_CONF_H=\"../project-conf.h\"
 PROJECT_SOURCEFILES += slip-bridge.c
 
 CFLAGS += -DUIP_FALLBACK_INTERFACE=rpl_interface

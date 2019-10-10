@@ -1,7 +1,7 @@
 obj_zoul/uip-udp-packet.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/net/ip/uip-udp-packet.c \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h \
- project-conf.h \
+ ../project-conf.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h \
@@ -50,7 +50,7 @@ obj_zoul/uip-udp-packet.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./net/ipv6/multicast/uip-mcast6-stats.h
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/net/ip/uip-udp-packet.c :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h :
- project-conf.h :
+ ../project-conf.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h :

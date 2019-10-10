@@ -3,14 +3,12 @@
 mytitle="Tunslip6"
 echo -e '\033]2;'$mytitle'\007'
 
-projectPath=`/home/aghiles/Aghiles/Tool/commands/targetos`
+projectPath=`/home/aghiles/Aghiles/Tool/commands/program/targetos`
 projectPath=$projectPath/contiki
 
+echo "You have to make the access to USB0 free !!!"
 cd $projectPath/tools/
 make tunslip6 && sudo ./tunslip6 -s /dev/ttyUSB0 aaaa::1/64
-
-
-
 
 
 #title1="Connexion"

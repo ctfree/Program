@@ -41,7 +41,7 @@
 #include "net/ip/uip.h"
 #include "net/ipv6/uip-ds6.h"
 #include "net/rpl/rpl.h"
-#include "example.h"
+#include "../example.h"
 
 #include "net/netstack.h"
 #include "dev/button-sensor.h"

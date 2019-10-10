@@ -3,7 +3,7 @@ obj_zoul/cc2538-ccm-star.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h \
- project-conf.h \
+ ../project-conf.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h \
@@ -49,7 +49,7 @@ obj_zoul/cc2538-ccm-star.o: \
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/core/./contiki-version.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/./contiki-conf.h :
- project-conf.h :
+ ../project-conf.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/platform/zoul/firefly/board.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./dev/gpio.h :
  /home/aghiles/Aghiles/Program/boards/iot-lab/parts/contiki/cpu/cc2538/./reg.h :

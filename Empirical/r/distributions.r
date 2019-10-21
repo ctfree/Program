@@ -6,14 +6,11 @@ library("formattable")
 
 library("GGally", quietly = TRUE)
 source("script/setup.r")
-library("fitdistrplus")
 library("mc2d")  ## needed for dtriang
-library("formattable")
 library("ggplot2")
 
 tmp=read.csv(file = "calc_cent.csv")
 calc_cent=as.list(tmp)
-
 
 
 

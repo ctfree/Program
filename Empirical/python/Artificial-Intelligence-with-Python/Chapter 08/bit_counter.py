@@ -94,7 +94,7 @@ if __name__ == "__main__":
             if random.random() < probab_mutating:
                 toolbox.mutate(mutant)
                 del mutant.fitness.values
-    
+        
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
         fitnesses = map(toolbox.evaluate, invalid_ind)

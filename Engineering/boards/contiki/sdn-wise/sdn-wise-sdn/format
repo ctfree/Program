@@ -1,2 +1,0 @@
-clang-format -i *.c
-sed -i 's/  /\t/g' *.c

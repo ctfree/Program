@@ -1,8 +1,0 @@
-/home/aghiles/Aghiles/Program/Engineering/boards_iot-lab/iot-lab/parts/RIOT/examples/my_project/bin/native/cpu/tramp.o: \
- /home/aghiles/Aghiles/Program/Engineering/boards_iot-lab/iot-lab/parts/RIOT/cpu/native/tramp.S \
- /usr/include/stdc-predef.h \
- /home/aghiles/Aghiles/Program/Engineering/boards_iot-lab/iot-lab/parts/RIOT/examples/my_project/bin/native/riotbuild/riotbuild.h
-
-/usr/include/stdc-predef.h:
-
-/home/aghiles/Aghiles/Program/Engineering/boards_iot-lab/iot-lab/parts/RIOT/examples/my_project/bin/native/riotbuild/riotbuild.h:

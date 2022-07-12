@@ -1,8 +1,0 @@
-notifications:
-  email: false
-
-language: java
-sudo: false
-
-jdk:
-  - oraclejdk8

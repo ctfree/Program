@@ -1,1 +1,0 @@
-make connect-router-cooja
